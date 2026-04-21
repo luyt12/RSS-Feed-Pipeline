@@ -1,0 +1,47 @@
+name: Daily RSS Full-Text Emails
+
+on:
+  schedule:
+    - cron: '35 6 * * *'  # 14:35 Beijing Time
+  workflow_dispatch:
+    inputs:
+      feed_name:
+        description: 'Specific feed to run (leave empty for all)'
+        required: false
+        default: ''
+        type: string
+
+env:
+  BAIDU_APPID: ${{ secrets.BAIDU_APPID }}
+  BAIDU_API_KEY: ${{ secrets.BAIDU_API_KEY }}
+  EMAIL_TO: ${{ secrets.EMAIL_TO }}
+  EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+  SMTP_HOST: ${{ secrets.SMTP_HOST }}
+  SMTP_PORT: ${{ secrets.SMTP_PORT }}
+  SMTP_USER: ${{ secrets.SMTP_USER }}
+  SMTP_PASS: ${{ secrets.SMTP_PASS }}
+
+jobs:
+  send-emails:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily task
+        run: python daily_task.py
+
+      - name: Commit & push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add data/processed_urls.json
+          git diff --staged --quiet || git commit -m "Update processed_urls [skip ci]"
+          git push
