@@ -11,6 +11,9 @@ on:
         default: ''
         type: string
 
+permissions:
+  contents: write
+
 env:
   BAIDU_APPID: ${{ secrets.BAIDU_APPID }}
   BAIDU_API_KEY: ${{ secrets.BAIDU_API_KEY }}
