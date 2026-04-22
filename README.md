@@ -18,15 +18,15 @@
 ```json
 [
   {
-    "name": "中国笔会",
-    "url": "https://www.chinesepen.org/feed",
+    "name": "XXX",
+    "url": "https://www.XXX.org/feed",
     "lang": "zh",
     "max_daily": 10,
     "enabled": true
   },
   {
-    "name": "Foreign Affairs",
-    "url": "https://www.foreignaffairs.com/rss.xml",
+    "name": "YYYAffairs",
+    "url": "https://www.YYY.com/rss.xml",
     "lang": "en",
     "max_daily": 5,
     "enabled": true
