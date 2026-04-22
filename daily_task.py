@@ -222,6 +222,103 @@ def translate_articles(articles: list, feed_name: str) -> list:
     return articles
 
 
+import re as _re
+import html as _html
+
+
+def _md_inline(text: str) -> str:
+    """行内 markdown 转 HTML"""
+    text = _html.escape(text)
+    text = _re.sub(r'`(.+?)`', r'<code>\1</code>', text)
+    text = _re.sub(r'**(.+?)**', r'<strong>\1</strong>', text)
+    text = _re.sub(r'__(.+?)__', r'<strong>\1</strong>', text)
+    text = _re.sub(r'*(.+?)*', r'<em>\1</em>', text)
+    text = _re.sub(r'_(.+?)_', r'<em>\1</em>', text)
+    text = _re.sub(r'[(.+?)]((.+?))', r'<a href="\2">\1</a>', text)
+    return text
+
+
+def _md_to_html(text: str) -> str:
+    """将 markdown 文本转为语义化 HTML"""
+    lines = text.split('\n')
+    result = []
+    in_list = False
+    in_ol = False
+    in_blockquote = False
+    i = 0
+    pending = []
+
+    def flush_para(p):
+        if p:
+            result.append('<p>' + _md_inline(' '.join(p)) + '</p>')
+
+    while i < len(lines):
+        stripped = lines[i].strip()
+
+        # 引用块
+        if stripped.startswith('>'):
+            if in_list:
+                result.append('</ul>' if in_ol else '</ol>')
+                in_list = in_ol = False
+            if not in_blockquote:
+                result.append('<blockquote>')
+                in_blockquote = True
+            result.append('<p>' + _md_inline(stripped.lstrip('> ')) + '</p>')
+            i += 1
+            continue
+        elif in_blockquote:
+            result.append('</blockquote>')
+            in_blockquote = False
+
+        # 标题
+        m = _re.match(r'^(#{1,6})\s+(.+)', stripped)
+        if m:
+            flush_para(pending); pending = []
+            lvl = min(len(m.group(1)), 3)
+            result.append('<h' + str(lvl+1) + '>' + _md_inline(m.group(2)) + '</h' + str(lvl+1) + '>')
+            i += 1; continue
+
+        # 无序列表
+        m = _re.match(r'^[-*+]\s+(.+)', stripped)
+        if m:
+            flush_para(pending); pending = []
+            if in_ol and in_list: result.append('</ol>')
+            if not in_list: result.append('<ul>')
+            in_list = True; in_ol = False
+            result.append('<li>' + _md_inline(m.group(1)) + '</li>')
+            i += 1; continue
+
+        # 有序列表
+        m = _re.match(r'^\d+\.\s+(.+)', stripped)
+        if m:
+            flush_para(pending); pending = []
+            if not in_ol and in_list: result.append('</ul>')
+            if not in_list: result.append('<ol>')
+            in_list = True; in_ol = True
+            result.append('<li>' + _md_inline(m.group(1)) + '</li>')
+            i += 1; continue
+
+        # 水平线
+        if _re.match(r'^-{3,}$', stripped) or _re.match(r'^\*{3,}$', stripped):
+            flush_para(pending); pending = []
+            if in_list: result.append('</ul>' if in_ol else '</ol>'); in_list = in_ol = False
+            result.append('<hr>')
+            i += 1; continue
+
+        # 空行
+        if not stripped:
+            flush_para(pending); pending = []
+            i += 1; continue
+
+        pending.append(stripped)
+        i += 1
+
+    flush_para(pending)
+    if in_list: result.append('</ul>' if in_ol else '</ol>')
+    if in_blockquote: result.append('</blockquote>')
+    return '\n'.join(result)
+
+
 def build_html(feed_name: str, articles: list, is_translated: bool):
     """构建 HTML 邮件"""
     hdr_bg = '#1b4332' if not is_translated else '#1a237e'
@@ -269,7 +366,7 @@ def build_html(feed_name: str, articles: list, is_translated: bool):
   <div class="art">
     <h2><a href="{link}">{i}. {title}</a></h2>
     <div class="meta">📅 {pub}</div>
-    <div class="txt"><p>{content}</p></div>
+    <div class="txt">{content}</div>
   </div>
 """
 
