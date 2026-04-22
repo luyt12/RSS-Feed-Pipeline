@@ -42,8 +42,7 @@ SMTP_USER = os.environ.get('SMTP_USER', '')
 SMTP_PASS = os.environ.get('SMTP_PASS', '')
 EMAIL_FROM = os.environ.get('EMAIL_FROM', '')
 EMAIL_TO = os.environ.get('EMAIL_TO', '')
-BAIDU_APPID = os.environ.get('BAIDU_APPID', '')
-BAIDU_API_KEY = os.environ.get('BAIDU_API_KEY', '')
+BAIDU_API_KEY = os.environ.get('BAIDU_API_KEY', '')  # Bearer Token（直接使用，无需 OAuth）
 
 STATE_FILE = Path('data/processed_urls.json')
 
@@ -149,73 +148,60 @@ def extract_full_text(url: str):
         return None
 
 
-# ─── 百度翻译（Bearer Token）───
-_ACCESS_TOKEN = None
-_TOKEN_EXPIRE = 0
+# ─── 百度翻译（Bearer Token 直接调用）───
 
-
-def _get_access_token():
-    global _ACCESS_TOKEN, _TOKEN_EXPIRE
-    if not BAIDU_APPID or not BAIDU_API_KEY:
-        return None
-
-    now = time.time()
-    if _ACCESS_TOKEN and now < _TOKEN_EXPIRE:
-        return _ACCESS_TOKEN
-
-    logger.info("获取百度 Access Token...")
-    params = urllib.parse.urlencode({
-        'grant_type': 'client_credentials',
-        'client_id': BAIDU_APPID,
-        'client_secret': BAIDU_API_KEY
-    })
-    req = urllib.request.Request(f"https://aip.baidubbs.com/oauth/2.0/token?{params}")
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        data = json.loads(resp.read().decode())
-
-    if 'access_token' not in data:
-        logger.error(f"Token 获取失败: {data}")
-        return None
-
-    _ACCESS_TOKEN = data['access_token']
-    _TOKEN_EXPIRE = now + 7100
-    logger.info("Token 获取成功")
-    return _ACCESS_TOKEN
-
-
-def _translate_text(text: str, token: str) -> str:
-    """翻译单段文本"""
-    if len(text) > 5500:
+def _translate_text(text: str, api_key: str) -> str:
+    """翻译单段文本，直接使用 Bearer Token"""
+    if len(text) > 5000:
         mid = len(text) // 2
         split = text.rfind('。', max(0, mid - 500), mid + 500)
         if split == -1:
             split = mid
-        return _translate_text(text[:split + 1], token) + _translate_text(text[split + 1:], token)
+        return _translate_text(text[:split + 1], api_key) + _translate_text(text[split + 1:], api_key)
 
-    payload = json.dumps({'text': text, 'from': 'auto', 'to': 'zh'}).encode('utf-8')
+    payload = urllib.parse.urlencode({
+        'q': text,
+        'from': 'auto',
+        'to': 'zh'
+    }).encode('utf-8')
+
     headers = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {token}'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': f'Bearer {api_key}'
     }
+
     req = urllib.request.Request(
-        'https://aip.baidubbs.com/ait/api/aiTextTranslate',
+        'https://fanyi-api.baidu.com/api/trans/vip/translate',
         data=payload, headers=headers, method='POST'
     )
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        result = json.loads(resp.read().decode())
 
-    err = result.get('error_code') or result.get('code')
-    if err in ('52001', '52002', '52003', '54001', '54000'):
-        logger.error(f"百度翻译失败 [{err}]: {result}")
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            result = json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        logger.error(f"百度翻译 HTTP 错误 {e.code}: {e.read().decode()}")
         return ''
-    return result.get('data', {}).get('translateResult', '') or text
+    except Exception as e:
+        logger.error(f"百度翻译请求失败: {e}")
+        return ''
+
+    err_code = result.get('error_code')
+    if err_code:
+        logger.error(f"百度翻译 API 错误 [{err_code}]: {result}")
+        return ''
+
+    # 提取翻译结果（trans_result 是列表，每项有 src 和 dst）
+    trans_result = result.get('trans_result', [])
+    if not trans_result:
+        return ''
+
+    return ''.join(item.get('dst', '') for item in trans_result)
 
 
 def translate_articles(articles: list, feed_name: str) -> list:
     """翻译文章列表中的全文"""
-    token = _get_access_token()
-    if not token:
-        logger.warning("百度翻译未配置，跳过翻译")
+    if not BAIDU_API_KEY:
+        logger.warning("BAIDU_API_KEY 未配置，跳过翻译")
         return articles
 
     for art in articles:
@@ -224,7 +210,7 @@ def translate_articles(articles: list, feed_name: str) -> list:
             continue
 
         logger.info(f"翻译: {art['title'][:50]}...")
-        translated = _translate_text(content, token)
+        translated = _translate_text(content, BAIDU_API_KEY)
         if translated:
             art['content'] = translated
             logger.info(f"  ✓ 翻译完成 ({len(translated)} 字符)")
