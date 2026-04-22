@@ -1,6 +1,6 @@
 # RSS Full-Text Email Pipeline
 
-通用 RSS 全文抓取 → 翻译 → 邮件推送 Pipeline。
+通用 RSS 全文抓取 → 邮件推送 Pipeline。
 
 ## 功能
 
@@ -13,20 +13,20 @@
 
 ## Feed 配置
 
-编辑 `config/feeds.json`：
+编辑 `config/feeds.json`，添加/启用 feed：
 
 ```json
 [
   {
-    "name": "XXX",
-    "url": "https://www.XXX.org/feed",
+    "name": "中国笔会",
+    "url": "https://www.chinesepen.org/feed",
     "lang": "zh",
     "max_daily": 10,
     "enabled": true
   },
   {
-    "name": "YYYAffairs",
-    "url": "https://www.YYY.com/rss.xml",
+    "name": "My Foreign Source",
+    "url": "https://example.com/rss.xml",
     "lang": "en",
     "max_daily": 5,
     "enabled": true
@@ -38,38 +38,31 @@
 |------|------|
 | `name` | Feed 名称（邮件标题用） |
 | `url` | RSS feed URL |
-| `lang` | 语言 `zh`（中文）或 `en`（外文，自动翻译） |
+| `lang` | `zh`=中文（直接发），`en` 或其他=外文（翻译后发） |
 | `max_daily` | 每日最多处理篇数 |
-| `enabled` | 是否启用 |
+| `enabled` | `true`=启用，`false`=跳过 |
 
-## 添加新 Feed 步骤
+## 添加新 Feed
 
-1. 编辑 `config/feeds.json`，添加新 feed 配置
-2. Push 到 GitHub（手动触发或等次日定时运行）
+1. 编辑 `config/feeds.json`，添加配置
+2. Push 到 GitHub，自动触发 workflow
 
-## GitHub Secrets 配置
+## GitHub Secrets
 
 | Secret | 说明 |
 |--------|------|
-| `BAIDU_APPID` | 百度翻译 APPID |
+| `BAIDU_APPID` | 百度翻译 APPID（外文 feed 需要） |
 | `BAIDU_API_KEY` | 百度翻译 API Key |
 | `EMAIL_TO` | 收件邮箱 |
 | `EMAIL_FROM` | 发件邮箱 |
 | `SMTP_HOST` | SMTP 服务器 |
-| `SMTP_PORT` | SMTP 端口 |
+| `SMTP_PORT` | SMTP 端口（465 或 587） |
 | `SMTP_USER` | SMTP 用户名 |
 | `SMTP_PASS` | SMTP 密码 |
 
-## 本地测试
-
-```bash
-pip install -r requirements.txt
-python daily_task.py
-```
-
 ## 技术栈
 
-- **全文提取**: [trafilatura](https://github.com/adbar/trafilatura) — 无需 API Key 的文章提取库
+- **全文提取**: [trafilatura](https://github.com/adbar/trafilatura) — 无需 API Key
 - **RSS 解析**: feedparser
-- **翻译**: 百度大模型文本翻译 API（Bearer Token）
+- **翻译**: 百度大模型文本翻译 API
 - **邮件**: SMTP (AgentMail)
