@@ -449,4 +449,13 @@ p{{margin:8px 0;color:#444;font-size:15px;line-height:1.7}}
 
 
 if __name__ == '__main__':
-    main()
+    import traceback
+    try:
+        main()
+    except Exception as e:
+        import traceback as tb
+        logger.error("=" * 60)
+        logger.error(f"FATAL: {type(e).__name__}: {e}")
+        logger.error(tb.format_exc())
+        logger.error("=" * 60)
+        sys.exit(1)
