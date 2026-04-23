@@ -5,5 +5,12 @@
     "lang": "zh",
     "max_daily": 10,
     "enabled": true
+  },
+  {
+    "name": "SCOTUSblog",
+    "url": "https://www.scotusblog.com/feed/",
+    "lang": "en",
+    "max_daily": 10,
+    "enabled": true
   }
 ]
