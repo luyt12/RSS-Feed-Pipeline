@@ -3,10 +3,10 @@
 每日任务主流程：
 1. 读取 config/feeds.json 中所有启用的 feed
 2. 对每个 feed：
-   a. 抓取当日 RSS 文章
+   a. 抓取当日 RSS 文章（最多 max_daily 篇）
    b. 过滤掉已处理过的文章
-   c. 提取全文
-   d. 中文 feed → 直接发邮件；外文 feed → 翻译后发邮件
+   c. 提取全文（trafilatura）
+   d. 中文 feed → 直接发邮件；外文 feed → Kimi 翻译+综述后发邮件
 3. 更新 processed_urls.json
 4. 提交变更到 GitHub
 """
@@ -25,8 +25,7 @@ import feedparser
 import trafilatura
 import re
 import time
-import urllib.request
-import urllib.parse
+import requests
 
 logging.basicConfig(
     level=logging.INFO,
@@ -42,46 +41,54 @@ SMTP_USER = os.environ.get('SMTP_USER', '')
 SMTP_PASS = os.environ.get('SMTP_PASS', '')
 EMAIL_FROM = os.environ.get('EMAIL_FROM', '')
 EMAIL_TO = os.environ.get('EMAIL_TO', '')
-BAIDU_API_KEY = os.environ.get('BAIDU_API_KEY', '')  # Bearer Token（直接使用，无需 OAuth）
+KIMI_API_KEY = os.environ.get('kimi_API_KEY', '')
+KIMI_MODEL = os.environ.get('KIMI_MODEL', 'moonshotai/kimi-k2.5')
+KIMI_API_URL = os.environ.get('KIMI_API_URL', 'https://integrate.api.nvidia.com/v1/chat/completions')
 
 STATE_FILE = Path('data/processed_urls.json')
 
+KIMI_PROMPT = """你是一位专业的翻译者，擅长将英文文章翻译为简体中文。请对以下文章进行翻译和综述：
+
+# 要求
+1. 使用 Markdown 格式输出
+2. 每篇文章使用二级标题 (##)
+3. 保留原文链接
+4. 准确性：忠实于原文，不遗漏关键信息
+5. 流畅性：符合现代简体中文表达习惯
+6. 主动拆分长句，避免翻译腔
+
+# 输出格式
+直接输出翻译后的综述，不要加入任何无关内容"""
+
 
 def load_feeds():
-    """加载 feeds.json 配置"""
     config_file = Path('config/feeds.json')
     if not config_file.exists():
         logger.error(f"配置文件不存在: {config_file}")
         sys.exit(1)
-
     with open(config_file, 'r', encoding='utf-8') as f:
         feeds = json.load(f)
-
     enabled = [f for f in feeds if f.get('enabled', True)]
     logger.info(f"共加载 {len(feeds)} 个 feed，{len(enabled)} 个已启用")
     return enabled
 
 
-def load_state() -> dict:
-    """加载已处理状态"""
+def load_state():
     if STATE_FILE.exists():
         with open(STATE_FILE, 'r', encoding='utf-8') as f:
             return json.load(f)
     return {}
 
 
-def save_state(state: dict):
-    """保存已处理状态"""
+def save_state(state):
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(STATE_FILE, 'w', encoding='utf-8') as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 
-def fetch_today_articles(url: str, max_items: int = 10):
-    """抓取 RSS，返回当日文章列表"""
+def fetch_today_articles(url, max_items=10):
     logger.info(f"抓取 RSS: {url}")
     feed = feedparser.parse(url)
-
     if feed.bozo and feed.bozo_exception:
         logger.warning(f"RSS 解析异常: {feed.bozo_exception}")
 
@@ -89,7 +96,6 @@ def fetch_today_articles(url: str, max_items: int = 10):
     articles = []
 
     for entry in feed.entries[:max_items]:
-        # 解析发布时间
         published = None
         if entry.get('published_parsed'):
             dt = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc)
@@ -105,7 +111,6 @@ def fetch_today_articles(url: str, max_items: int = 10):
         if published != today:
             continue
 
-        # 提取内容
         content = ''
         if hasattr(entry, 'content') and entry.content:
             content = entry.content[0].value
@@ -128,13 +133,11 @@ def fetch_today_articles(url: str, max_items: int = 10):
     return articles
 
 
-def extract_full_text(url: str):
-    """使用 trafilatura 提取全文"""
+def extract_full_text(url):
     try:
         downloaded = trafilatura.fetch_url(url)
         if not downloaded:
             return None
-
         text = trafilatura.extract(downloaded,
                                     include_comments=False,
                                     include_tables=True,
@@ -148,179 +151,48 @@ def extract_full_text(url: str):
         return None
 
 
-# ─── 百度翻译（Bearer Token 直接调用）───
-
-def _translate_text(text: str, api_key: str) -> str:
-    """翻译单段文本，直接使用 Bearer Token"""
-    if len(text) > 5000:
-        mid = len(text) // 2
-        split = text.rfind('。', max(0, mid - 500), mid + 500)
-        if split == -1:
-            split = mid
-        return _translate_text(text[:split + 1], api_key) + _translate_text(text[split + 1:], api_key)
-
-    payload = urllib.parse.urlencode({
-        'q': text,
-        'from': 'auto',
-        'to': 'zh'
-    }).encode('utf-8')
+def kimi_translate(content):
+    """使用 Kimi K2.5 翻译+综述（与 TimeEmail 相同）"""
+    if not KIMI_API_KEY:
+        logger.error("kimi_API_KEY 未配置")
+        return None
 
     headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': f'Bearer {api_key}'
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {KIMI_API_KEY}"
+    }
+    data = {
+        "model": KIMI_MODEL,
+        "messages": [
+            {"role": "system", "content": KIMI_PROMPT},
+            {"role": "user", "content": content}
+        ],
+        "temperature": 0.7,
+        "max_tokens": 16000
     }
 
-    req = urllib.request.Request(
-        'https://fanyi-api.baidu.com/api/trans/vip/translate',
-        data=payload, headers=headers, method='POST'
-    )
-
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            result = json.loads(resp.read().decode())
-    except urllib.error.HTTPError as e:
-        logger.error(f"百度翻译 HTTP 错误 {e.code}: {e.read().decode()}")
-        return ''
-    except Exception as e:
-        logger.error(f"百度翻译请求失败: {e}")
-        return ''
-
-    err_code = result.get('error_code')
-    if err_code:
-        logger.error(f"百度翻译 API 错误 [{err_code}]: {result}")
-        return ''
-
-    # 提取翻译结果（trans_result 是列表，每项有 src 和 dst）
-    trans_result = result.get('trans_result', [])
-    if not trans_result:
-        return ''
-
-    return ''.join(item.get('dst', '') for item in trans_result)
+    for attempt in range(5):
+        try:
+            logger.info(f"Kimi 翻译请求 (attempt {attempt + 1}/5)...")
+            resp = requests.post(KIMI_API_URL, headers=headers, json=data, timeout=300)
+            resp.raise_for_status()
+            result = resp.json()
+            if result.get("choices") and result["choices"][0]:
+                return result["choices"][0]["message"]["content"]
+            else:
+                logger.error(f"API 响应错误: {result}")
+                if attempt < 4:
+                    wait = 30 * (2 ** attempt)
+                    logger.info(f"等待 {wait}s 后重试...")
+                    time.sleep(wait)
+        except Exception as e:
+            logger.error(f"请求失败: {e}")
+            if attempt < 4:
+                time.sleep(30 * (2 ** attempt))
+    return None
 
 
-def translate_articles(articles: list, feed_name: str) -> list:
-    """翻译文章列表中的全文"""
-    if not BAIDU_API_KEY:
-        logger.warning("BAIDU_API_KEY 未配置，跳过翻译")
-        return articles
-
-    for art in articles:
-        content = art.get('content', '')
-        if not content:
-            continue
-
-        logger.info(f"翻译: {art['title'][:50]}...")
-        translated = _translate_text(content, BAIDU_API_KEY)
-        if translated:
-            art['content'] = translated
-            logger.info(f"  ✓ 翻译完成 ({len(translated)} 字符)")
-        else:
-            logger.warning(f"  ✗ 翻译失败，保留原文")
-
-        time.sleep(0.5)  # 避免请求过快
-
-    return articles
-
-
-import re as _re
-import html as _html
-
-
-def _md_inline(text: str) -> str:
-    """行内 markdown 转 HTML"""
-    text = _html.escape(text)
-    text = _re.sub(r'`(.+?)`', r'<code>\1</code>', text)
-    text = _re.sub(r'**(.+?)**', r'<strong>\1</strong>', text)
-    text = _re.sub(r'__(.+?)__', r'<strong>\1</strong>', text)
-    text = _re.sub(r'*(.+?)*', r'<em>\1</em>', text)
-    text = _re.sub(r'_(.+?)_', r'<em>\1</em>', text)
-    text = _re.sub(r'[(.+?)]((.+?))', r'<a href="\2">\1</a>', text)
-    return text
-
-
-def _md_to_html(text: str) -> str:
-    """将 markdown 文本转为语义化 HTML"""
-    lines = text.split('\n')
-    result = []
-    in_list = False
-    in_ol = False
-    in_blockquote = False
-    i = 0
-    pending = []
-
-    def flush_para(p):
-        if p:
-            result.append('<p>' + _md_inline(' '.join(p)) + '</p>')
-
-    while i < len(lines):
-        stripped = lines[i].strip()
-
-        # 引用块
-        if stripped.startswith('>'):
-            if in_list:
-                result.append('</ul>' if in_ol else '</ol>')
-                in_list = in_ol = False
-            if not in_blockquote:
-                result.append('<blockquote>')
-                in_blockquote = True
-            result.append('<p>' + _md_inline(stripped.lstrip('> ')) + '</p>')
-            i += 1
-            continue
-        elif in_blockquote:
-            result.append('</blockquote>')
-            in_blockquote = False
-
-        # 标题
-        m = _re.match(r'^(#{1,6})\s+(.+)', stripped)
-        if m:
-            flush_para(pending); pending = []
-            lvl = min(len(m.group(1)), 3)
-            result.append('<h' + str(lvl+1) + '>' + _md_inline(m.group(2)) + '</h' + str(lvl+1) + '>')
-            i += 1; continue
-
-        # 无序列表
-        m = _re.match(r'^[-*+]\s+(.+)', stripped)
-        if m:
-            flush_para(pending); pending = []
-            if in_ol and in_list: result.append('</ol>')
-            if not in_list: result.append('<ul>')
-            in_list = True; in_ol = False
-            result.append('<li>' + _md_inline(m.group(1)) + '</li>')
-            i += 1; continue
-
-        # 有序列表
-        m = _re.match(r'^\d+\.\s+(.+)', stripped)
-        if m:
-            flush_para(pending); pending = []
-            if not in_ol and in_list: result.append('</ul>')
-            if not in_list: result.append('<ol>')
-            in_list = True; in_ol = True
-            result.append('<li>' + _md_inline(m.group(1)) + '</li>')
-            i += 1; continue
-
-        # 水平线
-        if _re.match(r'^-{3,}$', stripped) or _re.match(r'^\*{3,}$', stripped):
-            flush_para(pending); pending = []
-            if in_list: result.append('</ul>' if in_ol else '</ol>'); in_list = in_ol = False
-            result.append('<hr>')
-            i += 1; continue
-
-        # 空行
-        if not stripped:
-            flush_para(pending); pending = []
-            i += 1; continue
-
-        pending.append(stripped)
-        i += 1
-
-    flush_para(pending)
-    if in_list: result.append('</ul>' if in_ol else '</ol>')
-    if in_blockquote: result.append('</blockquote>')
-    return '\n'.join(result)
-
-
-def build_html(feed_name: str, articles: list, is_translated: bool):
-    """构建 HTML 邮件"""
+def build_html(feed_name, articles, is_translated):
     hdr_bg = '#1b4332' if not is_translated else '#1a237e'
     badge_bg = '#40916c' if not is_translated else '#1565c0'
     badge_txt = '🌐 英文原文' if not is_translated else '🔄 中文翻译'
@@ -358,10 +230,8 @@ def build_html(feed_name: str, articles: list, is_translated: bool):
         title = art.get('title', '无标题')
         link = art.get('link', '#')
         pub = art.get('published', '')
-        content = (art.get('content') or art.get('summary', '（无内容）'))
-        # markdown → HTML
-        content = (content.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
-                   .replace('\n\n', '</p><p>').replace('\n', '<br>'))
+        content = art.get('content') or art.get('summary', '（无内容）')
+        content = content.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;').replace('\n\n','</p><p>').replace('\n','<br>')
         body += f"""
   <div class="art">
     <h2><a href="{link}">{i}. {title}</a></h2>
@@ -376,8 +246,7 @@ def build_html(feed_name: str, articles: list, is_translated: bool):
     return body
 
 
-def send_mail(feed_name: str, articles: list, is_translated: bool) -> bool:
-    """发送邮件"""
+def send_mail(feed_name, articles, is_translated):
     if not all([SMTP_HOST, SMTP_USER, SMTP_PASS, EMAIL_FROM, EMAIL_TO]):
         logger.error("SMTP 环境变量未配置")
         return False
@@ -390,7 +259,7 @@ def send_mail(feed_name: str, articles: list, is_translated: bool) -> bool:
     subject = f"{prefix} [{feed_name}] 今日更新 · {len(articles)} 篇"
 
     plain = '\n\n'.join(
-        f"{i}. {a.get('title','')}\n{a.get('link','')}\n{a.get('content','')[:500]}"
+        f"{i}. {a.get('title','')}\n{a.get('link','')}\n{(a.get('content') or a.get('summary',''))[:500]}"
         for i, a in enumerate(articles, 1)
     )
     html = build_html(feed_name, articles, is_translated)
@@ -413,7 +282,6 @@ def send_mail(feed_name: str, articles: list, is_translated: bool) -> bool:
                 s.starttls(context=ctx)
                 s.login(SMTP_USER, SMTP_PASS)
                 s.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
-
         logger.info(f"✅ 邮件已发送: {subject}")
         return True
     except Exception as e:
@@ -476,13 +344,83 @@ def main():
         # 4. 翻译（非中文 feed）
         is_translated = False
         if lang != 'zh':
-            logger.info(f"  → 非中文 Feed，执行翻译...")
-            new_articles = translate_articles(new_articles, name)
-            is_translated = True
+            logger.info(f"  → 非中文 Feed，执行 Kimi 翻译+综述...")
+            # 合并所有文章内容
+            combined = "\n\n---\n\n".join(
+                f"## {a['title']}\n\n链接：{a['link']}\n\n{a.get('content', a.get('summary', ''))}"
+                for a in new_articles
+            )
+            translated = kimi_translate(combined)
+            if translated:
+                # 更新每个 article 的 content 为翻译后的对应部分
+                for i, art in enumerate(new_articles):
+                    # 由于 Kimi 一次性翻译所有文章，这里简化处理：
+                    # 将翻译结果作为第一个 article 的 content，其他清空
+                    # 实际上 send_mail 会按 article 逐个生成 HTML
+                    # 所以这里需要重新分割翻译结果
+                    pass
+                # 简化：发送时整体发送翻译后的内容
+                is_translated = True
+                # 直接用翻译结果作为邮件内容
+                html_content = translated
+                # 重新构造 articles 结构用于发送
+                # 为了兼容现有发送逻辑，这里单独处理
+                prefix = '🔄'
+                subject = f"{prefix} [{name}] 今日更新 · {len(new_articles)} 篇"
 
-        # 5. 发送邮件（每 feed 一封）
+                msg = MIMEMultipart('alternative')
+                msg['Subject'] = subject
+                msg['From'] = EMAIL_FROM
+                msg['To'] = EMAIL_TO
+
+                # 将 markdown 转为 HTML
+                try:
+                    import markdown
+                    html_body = markdown.markdown(translated, extensions=['tables', 'fenced_code'])
+                except:
+                    html_body = f"<pre>{translated}</pre>"
+
+                # 包装 HTML
+                html_full = f"""<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+body{{font-family:-apple-system,'Microsoft YaHei',sans-serif;line-height:1.8;color:#333;max-width:800px;margin:0 auto;padding:20px;background:#f5f5f5}}
+.container{{background:#fff;padding:30px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.08)}}
+h2{{color:#1a1a1a;border-top:1px solid #e0e0e0;padding-top:20px;margin-top:30px;font-size:18px}}
+a{{color:#0066cc;text-decoration:none}}
+p{{margin:8px 0;color:#444;font-size:15px;line-height:1.7}}
+</style></head><body>
+<div class="container">{html_body}</div></body></html>"""
+
+                msg.attach(MIMEText(translated, 'plain', 'utf-8'))
+                msg.attach(MIMEText(html_full, 'html', 'utf-8'))
+
+                try:
+                    ctx = ssl.create_default_context()
+                    if SMTP_PORT == 465:
+                        with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=ctx) as s:
+                            s.login(SMTP_USER, SMTP_PASS)
+                            s.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
+                    else:
+                        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as s:
+                            s.starttls(context=ctx)
+                            s.login(SMTP_USER, SMTP_PASS)
+                            s.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
+                    logger.info(f"✅ 邮件已发送: {subject}")
+                except Exception as e:
+                    logger.error(f"邮件发送失败: {e}")
+                    continue
+
+                # 更新状态
+                new_links = set(a['link'] for a in new_articles)
+                state[url] = list(processed | new_links)
+                save_state(state)
+                logger.info(f"  ✅ {name} 处理完成，{len(new_articles)} 篇已发送")
+                total_sent += 1
+                continue  # 跳过后面的通用发送逻辑
+
+        # 5. 发送邮件（中文 feed 或翻译失败的英文 feed）
         if send_mail(name, new_articles, is_translated):
-            # 更新状态
             new_links = set(a['link'] for a in new_articles)
             state[url] = list(processed | new_links)
             save_state(state)
