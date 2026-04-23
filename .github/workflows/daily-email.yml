@@ -2,8 +2,7 @@ name: RSS Feed Pipeline
 
 on:
   schedule:
-    - cron: '0 1 * * *'   # 09:00 Beijing
-    - cron: '0 11 * * *'  # 19:00 Beijing
+    - cron: '0 18 * * *'  # 北京时间 02:00（次日）
   workflow_dispatch:
 
 permissions:
