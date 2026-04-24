@@ -1,0 +1,18 @@
+# Above the Law - 北京时间 12:00 (UTC 04:00)
+name: Above the Law RSS
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # UTC 04:00 = 北京 12:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'Above the Law'
+      feed_url: 'https://abovethelaw.com/feed/'
+      feed_lang: 'en'
+      max_daily: 3
+      skip_trafilatura: true
+    secrets: inherit
