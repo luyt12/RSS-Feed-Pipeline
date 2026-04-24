@@ -86,6 +86,8 @@
   {
     "name": "Simplicius76 Substack",
     "url": "https://simplicius76.substack.com/feed",
-    "language": "en"
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true
   }
 ]
