@@ -1,13 +1,60 @@
 {
   "https://www.chinesepen.org/feed": [
+    "https://www.chinesepen.org/blog/archives/209068",
+    "https://www.chinesepen.org/blog/archives/209056",
+    "https://www.chinesepen.org/blog/archives/209095",
     "https://www.chinesepen.org/blog/archives/209093",
-    "https://www.chinesepen.org/blog/archives/209072"
+    "https://www.chinesepen.org/blog/archives/209059",
+    "https://www.chinesepen.org/blog/archives/209072",
+    "https://www.chinesepen.org/blog/archives/209040",
+    "https://www.chinesepen.org/blog/archives/191428",
+    "https://www.chinesepen.org/blog/archives/31235",
+    "https://www.chinesepen.org/blog/archives/209076"
   ],
   "https://www.scotusblog.com/feed/": [
+    "https://www.scotusblog.com/2026/04/scotusblogs-new-look/",
+    "https://www.scotusblog.com/2026/04/justices-to-consider-relationship-between-federal-and-state-rules-for-cancer-warnings-on-pestici/",
+    "https://www.scotusblog.com/2026/04/justices-seem-receptive-to-secs-use-of-disgorgement-in-securities-enforcement/",
+    "https://www.scotusblog.com/2026/04/justice-thomas-wrong-headed-attack-on-progressivism/",
+    "https://www.scotusblog.com/2026/04/court-appears-skeptical-of-right-to-jury-trial-in-fcc-proceedings/",
+    "https://www.scotusblog.com/2026/04/what-the-new-york-times-got-wrong-and-right-about-the-emergency-docket/",
+    "https://www.scotusblog.com/2026/04/a-big-day-for-scotusblog/",
+    "https://www.scotusblog.com/2026/04/justices-debate-rights-of-lawful-permanent-residents-against-backdrop-of-trumps-immigration-crac/",
+    "https://www.scotusblog.com/2026/04/court-to-hear-argument-on-law-enforcements-use-of-geofence-warrants/",
+    "https://www.scotusblog.com/2026/04/justices-reject-certain-protections-for-contractors-in-war-zones/",
+    "https://www.scotusblog.com/2026/04/the-emergency-dockets-mistaken-birthday/",
     "https://www.scotusblog.com/2026/04/two-new-opinions/",
     "https://www.scotusblog.com/2026/04/seven-relists-walk-into-a-bar/",
-    "https://www.scotusblog.com/2026/04/justices-reject-certain-protections-for-contractors-in-war-zones/",
-    "https://www.scotusblog.com/2026/04/justices-to-consider-relationship-between-federal-and-state-rules-for-cancer-warnings-on-pestici/",
-    "https://www.scotusblog.com/2026/04/court-holds-that-30-day-deadline-for-removing-cases-to-federal-court-is-mandatory/"
+    "https://www.scotusblog.com/2026/04/court-holds-that-30-day-deadline-for-removing-cases-to-federal-court-is-mandatory/",
+    "https://www.scotusblog.com/2026/04/court-adds-two-cases-to-2026-27-docket/"
+  ],
+  "https://foreignpolicy.com/tag/geopolitics/feed/": [
+    "https://foreignpolicy.com/2026/04/21/trump-iran-us-negotiations-diplomacy/",
+    "https://foreignpolicy.com/2026/04/23/trump-quad-india-japan-australia-modi-china-summit-diplomacy-geopolitics/",
+    "https://foreignpolicy.com/2026/04/21/iran-war-china-us-competition-geopolitics/",
+    "https://foreignpolicy.com/2026/04/09/brett-mcgurk-middle-east-israel-gaza-iran/",
+    "https://foreignpolicy.com/2026/04/13/international-aid-food-humanitarian-crisis-usaid-development/",
+    "https://foreignpolicy.com/2026/04/14/china-iran-us-blockade-xi-jinping-diplomacy/",
+    "https://foreignpolicy.com/2026/04/10/iran-war-cease-fire-john-bolton/",
+    "https://foreignpolicy.com/2026/04/22/karim-sadjadpour-iran-regime-future-war-gulf-energy-hormuz-cease-fire/",
+    "https://foreignpolicy.com/2026/04/08/xi-jinping-cheng-li-wun-china-taiwan-meeting-invasion/",
+    "https://foreignpolicy.com/2026/04/14/stephen-walt-iran-war-united-states-rogue-state/"
+  ],
+  "https://abovethelaw.com/feed/": [
+    "https://www.lawnext.com/2026/04/clio-work-clios-ai-workspace-is-now-available-to-solo-and-smaller-law-firms-as-a-standalone-product.html",
+    "https://abovethelaw.com/2026/04/biglaw-partnership-isnt-always-the-financial-windfall-you-may-think-it-is/",
+    "https://abovethelaw.com/2026/04/no-facts-no-problem-see-also/"
+  ],
+  "https://legalinsurrection.com/feed/": [
+    "https://legalinsurrection.com/2026/04/six-discriminatory-scholarships-at-viterbo-university-challenged-by-equal-protection-project/?utm_source=rss&utm_medium=rss&utm_campaign=six-discriminatory-scholarships-at-viterbo-university-challenged-by-equal-protection-project",
+    "https://legalinsurrection.com/2026/04/splc-the-racial-arsonist-fundraised-off-the-fire/?utm_source=rss&utm_medium=rss&utm_campaign=splc-the-racial-arsonist-fundraised-off-the-fire"
+  ],
+  "https://reason.com/volokh/feed/": [
+    "https://reason.com/volokh/2026/04/24/open-thread-184/"
+  ],
+  "https://harvardlawreview.org/feed/": [
+    "https://harvardlawreview.org/print/vol-139/indigenous-constitutionalism/",
+    "https://harvardlawreview.org/print/vol-139/alas/",
+    "https://harvardlawreview.org/print/vol-139/introduction-11/"
   ]
 }
