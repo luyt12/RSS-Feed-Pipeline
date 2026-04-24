@@ -1,0 +1,18 @@
+# Foreign Policy Geopolitics - 北京时间 10:00 (UTC 02:00)
+name: Foreign Policy Geopolitics RSS
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # UTC 02:00 = 北京 10:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'Foreign Policy Geopolitics'
+      feed_url: 'https://foreignpolicy.com/tag/geopolitics/feed/'
+      feed_lang: 'en'
+      max_daily: 10
+      skip_trafilatura: false
+    secrets: inherit
