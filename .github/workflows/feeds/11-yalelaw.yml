@@ -1,0 +1,18 @@
+# Yale Law Journal - 北京时间 18:00 (UTC 10:00)
+name: Yale Law Journal RSS
+
+on:
+  schedule:
+    - cron: '0 10 * * *'  # UTC 10:00 = 北京 18:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'Yale Law Journal'
+      feed_url: 'https://www.yalelawjournal.org/rss.xml'
+      feed_lang: 'en'
+      max_daily: 3
+      skip_trafilatura: false
+    secrets: inherit
