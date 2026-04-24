@@ -89,5 +89,12 @@
     "lang": "en",
     "max_daily": 3,
     "enabled": true
+  },
+  {
+    "name": "Not Boring",
+    "url": "https://www.notboring.co/feed",
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true
   }
 ]
