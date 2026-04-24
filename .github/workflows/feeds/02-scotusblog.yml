@@ -1,0 +1,18 @@
+# SCOTUSblog - 北京时间 09:00 (UTC 01:00)
+name: SCOTUSblog RSS
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # UTC 01:00 = 北京 09:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'SCOTUSblog'
+      feed_url: 'https://www.scotusblog.com/feed/'
+      feed_lang: 'en'
+      max_daily: 10
+      skip_trafilatura: false
+    secrets: inherit
