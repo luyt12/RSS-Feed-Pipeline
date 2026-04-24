@@ -47,18 +47,19 @@ KIMI_API_URL = os.environ.get('KIMI_API_URL', 'https://integrate.api.nvidia.com/
 
 STATE_FILE = Path('data/processed_urls.json')
 
-KIMI_PROMPT = """你是一位专业的翻译者，擅长将英文文章翻译为简体中文。请对以下文章进行翻译和综述：
+KIMI_PROMPT = """You are a professional translator and editor. Please complete the following task on the article below:
 
-# 要求
-1. 使用 Markdown 格式输出
-2. 每篇文章使用二级标题 (##)
-3. 保留原文链接
-4. 准确性：忠实于原文，不遗漏关键信息
-5. 流畅性：符合现代简体中文表达习惯
-6. 主动拆分长句，避免翻译腔
+## Task: Extract and Summarize
+Extract key points from the English article and write a Chinese summary with these requirements:
+1. No need to translate the full text - extract key points directly
+2. High information density - cover main points, background, and significance  
+3. Keep key details (names, institutions, data)
+4. Word count: if original > 2000 English words, Chinese summary ~1000 characters (~50% of original); if < 2000 words, can translate fully
+5. Concise style, avoid "This article discusses..." filler
+6. Stay neutral on controversial topics
 
-# 输出格式
-直接输出翻译后的综述，不要加入任何无关内容"""
+## Output Format
+Output the Chinese summary directly, no introductions or meta-comments."""
 
 
 def load_feeds():
