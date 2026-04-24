@@ -12,5 +12,12 @@
     "lang": "en",
     "max_daily": 10,
     "enabled": true
+  },
+  {
+    "name": "Foreign Policy Geopolitics",
+    "url": "https://foreignpolicy.com/tag/geopolitics/feed/",
+    "lang": "en",
+    "max_daily": 10,
+    "enabled": true
   }
 ]
