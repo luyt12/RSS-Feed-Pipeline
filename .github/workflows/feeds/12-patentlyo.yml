@@ -1,0 +1,18 @@
+name: Patently-O RSS Feed
+
+on:
+  schedule:
+    - cron: '0 11 * * *'  # 北京时间 19:00
+  workflow_dispatch:
+
+jobs:
+  fetch-translate-send:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: "Patently-O"
+      feed_index: 12
+    secrets:
+      KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
+      EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
