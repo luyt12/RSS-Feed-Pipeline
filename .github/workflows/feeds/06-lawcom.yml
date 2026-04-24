@@ -1,0 +1,18 @@
+# Law.com - 北京时间 13:00 (UTC 05:00)
+name: Law.com RSS
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # UTC 05:00 = 北京 13:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'Law.com'
+      feed_url: 'https://www.law.com/feed/'
+      feed_lang: 'en'
+      max_daily: 3
+      skip_trafilatura: true
+    secrets: inherit
