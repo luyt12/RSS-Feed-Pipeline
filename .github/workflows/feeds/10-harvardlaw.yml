@@ -1,0 +1,18 @@
+# Harvard Law Review - 北京时间 17:00 (UTC 09:00)
+name: Harvard Law Review RSS
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # UTC 09:00 = 北京 17:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'Harvard Law Review'
+      feed_url: 'https://harvardlawreview.org/feed/'
+      feed_lang: 'en'
+      max_daily: 3
+      skip_trafilatura: false
+    secrets: inherit
