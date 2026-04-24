@@ -19,5 +19,12 @@
     "lang": "en",
     "max_daily": 10,
     "enabled": true
+  },
+  {
+    "name": "ABA Journal News",
+    "url": "https://www.abajournal.com/news/feed/",
+    "lang": "en",
+    "max_daily": 10,
+    "enabled": true
   }
 ]
