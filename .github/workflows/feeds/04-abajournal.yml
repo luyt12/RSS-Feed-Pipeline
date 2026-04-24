@@ -1,0 +1,18 @@
+# ABA Journal News - 北京时间 11:00 (UTC 03:00)
+name: ABA Journal News RSS
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # UTC 03:00 = 北京 11:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'ABA Journal News'
+      feed_url: 'https://www.abajournal.com/news/feed/'
+      feed_lang: 'en'
+      max_daily: 10
+      skip_trafilatura: false
+    secrets: inherit
