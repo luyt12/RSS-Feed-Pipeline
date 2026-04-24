@@ -1,0 +1,18 @@
+# 中国笔会 - 北京时间 08:00 (UTC 00:00)
+name: 中国笔会 RSS
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # UTC 00:00 = 北京 08:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: '中国笔会'
+      feed_url: 'https://www.chinesepen.org/feed'
+      feed_lang: 'zh'
+      max_daily: 10
+      skip_trafilatura: false
+    secrets: inherit
