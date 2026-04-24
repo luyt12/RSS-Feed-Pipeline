@@ -354,6 +354,11 @@ def main():
 
         # 3. 提取全文
         for art in new_articles:
+            skip_t = feed.get('skip_trafilatura', False)
+            if skip_t:
+                art['content'] = art.get('summary', '')
+                logger.info(f"    ⟳ 跳过 trafilatura，使用 RSS 摘要")
+                continue
             logger.info(f"  提取全文: {art['title'][:50]}...")
             text = extract_full_text(art['link'])
             if text:
