@@ -3,7 +3,7 @@
 每日任务主流程：
 1. 读取 config/feeds.json 中所有启用的 feed
 2. 对每个 feed：
-   a. 抓取当日 RSS 文章（最多 max_daily 篇）
+   a. 抓取 RSS 文章（优先当日，无则回退到历史未处理文章）
    b. 过滤掉已处理过的文章
    c. 提取全文（trafilatura）
    d. 中文 feed → 直接发邮件；外文 feed → Kimi 翻译+综述后发邮件
@@ -86,16 +86,20 @@ def save_state(state):
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 
-def fetch_today_articles(url, max_items=10):
+def fetch_articles(url, max_items=10, processed_urls=None):
+    """抓取 RSS 文章，优先当日，无则回退到历史未处理文章"""
     logger.info(f"抓取 RSS: {url}")
     feed = feedparser.parse(url)
     if feed.bozo and feed.bozo_exception:
         logger.warning(f"RSS 解析异常: {feed.bozo_exception}")
 
     today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
-    articles = []
+    processed_urls = processed_urls or set()
+    
+    all_articles = []
+    today_articles = []
 
-    for entry in feed.entries[:max_items]:
+    for entry in feed.entries:
         published = None
         if entry.get('published_parsed'):
             dt = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc)
@@ -105,10 +109,6 @@ def fetch_today_articles(url, max_items=10):
             published = dt.strftime('%Y-%m-%d')
 
         if not published:
-            logger.warning(f"  跳过无发布时间: {entry.get('title', '')[:50]}")
-            continue
-
-        if published != today:
             continue
 
         content = ''
@@ -121,16 +121,36 @@ def fetch_today_articles(url, max_items=10):
 
         content = re.sub(r'<[^>]+>', '', content).strip()
 
-        articles.append({
+        article = {
             'title': entry.get('title', 'NO_TITLE'),
             'link': entry.get('link', ''),
             'published': published,
             'summary': content[:500]
-        })
-        logger.info(f"  ✓ [{published}] {articles[-1]['title'][:60]}")
+        }
+        
+        all_articles.append(article)
+        if published == today:
+            today_articles.append(article)
 
-    logger.info(f"今日新文章: {len(articles)} 篇")
-    return articles
+    logger.info(f"  RSS 共 {len(all_articles)} 篇文章，今日 {len(today_articles)} 篇")
+
+    # 优先返回当日文章
+    if today_articles:
+        logger.info(f"  → 使用今日文章: {len(today_articles)} 篇")
+        for a in today_articles[:max_items]:
+            logger.info(f"    ✓ [{a['published']}] {a['title'][:60]}")
+        return today_articles[:max_items], True
+    
+    # 无当日文章，回退到历史未处理文章
+    historical_unprocessed = [a for a in all_articles if a['link'] not in processed_urls]
+    if historical_unprocessed:
+        logger.info(f"  → 今日无文章，回退到历史未处理: {len(historical_unprocessed)} 篇")
+        for a in historical_unprocessed[:max_items]:
+            logger.info(f"    ✓ [{a['published']}] {a['title'][:60]}")
+        return historical_unprocessed[:max_items], False
+    
+    logger.info(f"  → 无新文章")
+    return [], False
 
 
 def extract_full_text(url):
@@ -192,10 +212,11 @@ def kimi_translate(content):
     return None
 
 
-def build_html(feed_name, articles, is_translated):
+def build_html(feed_name, articles, is_translated, is_today):
     hdr_bg = '#1b4332' if not is_translated else '#1a237e'
     badge_bg = '#40916c' if not is_translated else '#1565c0'
     badge_txt = '🌐 英文原文' if not is_translated else '🔄 中文翻译'
+    date_label = '今日' if is_today else '历史'
 
     body = f"""<!DOCTYPE html>
 <html><head><meta charset="UTF-8">
@@ -223,7 +244,7 @@ def build_html(feed_name, articles, is_translated):
     <h1>{feed_name}</h1>
     <div class="sub">{len(articles)} 篇文章 · {datetime.now().strftime('%Y-%m-%d')} 自动推送</div>
   </div>
-  <div class="bar">📡 今日新文章 <strong>{len(articles)}</strong> 篇</div>
+  <div class="bar">📡 {date_label}文章 <strong>{len(articles)}</strong> 篇</div>
 """
 
     for i, art in enumerate(articles, 1):
@@ -246,7 +267,7 @@ def build_html(feed_name, articles, is_translated):
     return body
 
 
-def send_mail(feed_name, articles, is_translated):
+def send_mail(feed_name, articles, is_translated, is_today):
     if not all([SMTP_HOST, SMTP_USER, SMTP_PASS, EMAIL_FROM, EMAIL_TO]):
         logger.error("SMTP 环境变量未配置")
         return False
@@ -256,13 +277,14 @@ def send_mail(feed_name, articles, is_translated):
         return False
 
     prefix = '🔄' if is_translated else '🌐'
-    subject = f"{prefix} [{feed_name}] 今日更新 · {len(articles)} 篇"
+    date_label = '今日' if is_today else '历史'
+    subject = f"{prefix} [{feed_name}] {date_label}更新 · {len(articles)} 篇"
 
     plain = '\n\n'.join(
         f"{i}. {a.get('title','')}\n{a.get('link','')}\n{(a.get('content') or a.get('summary',''))[:500]}"
         for i, a in enumerate(articles, 1)
     )
-    html = build_html(feed_name, articles, is_translated)
+    html = build_html(feed_name, articles, is_translated, is_today)
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
@@ -313,19 +335,19 @@ def main():
         logger.info(f"\n{'─' * 40}")
         logger.info(f"处理 Feed: {name} (语言={lang})")
 
-        # 1. 抓取 RSS
-        articles = fetch_today_articles(url, max_daily)
+        # 1. 抓取 RSS（优先当日，无则历史未处理）
+        processed = set(state.get(url, []))
+        articles, is_today = fetch_articles(url, max_daily, processed)
+        
         if not articles:
-            logger.info(f"  没有今日新文章，跳过")
+            logger.info(f"  没有新文章，跳过")
             continue
 
-        # 2. 去重
-        processed = set(state.get(url, []))
+        # 2. 去重（历史文章已在 fetch_articles 中过滤，这里再确认）
         new_articles = [a for a in articles if a['link'] not in processed]
-        skipped = len(articles) - len(new_articles)
-        if skipped:
-            logger.info(f"  跳过 {skipped} 篇已处理文章")
-
+        if len(new_articles) < len(articles):
+            logger.info(f"  去重后: {len(new_articles)} 篇")
+        
         if not new_articles:
             logger.info("  所有文章均已处理，跳过")
             continue
@@ -345,42 +367,28 @@ def main():
         is_translated = False
         if lang != 'zh':
             logger.info(f"  → 非中文 Feed，执行 Kimi 翻译+综述...")
-            # 合并所有文章内容
             combined = "\n\n---\n\n".join(
                 f"## {a['title']}\n\n链接：{a['link']}\n\n{a.get('content', a.get('summary', ''))}"
                 for a in new_articles
             )
             translated = kimi_translate(combined)
             if translated:
-                # 更新每个 article 的 content 为翻译后的对应部分
-                for i, art in enumerate(new_articles):
-                    # 由于 Kimi 一次性翻译所有文章，这里简化处理：
-                    # 将翻译结果作为第一个 article 的 content，其他清空
-                    # 实际上 send_mail 会按 article 逐个生成 HTML
-                    # 所以这里需要重新分割翻译结果
-                    pass
-                # 简化：发送时整体发送翻译后的内容
                 is_translated = True
-                # 直接用翻译结果作为邮件内容
-                html_content = translated
-                # 重新构造 articles 结构用于发送
-                # 为了兼容现有发送逻辑，这里单独处理
                 prefix = '🔄'
-                subject = f"{prefix} [{name}] 今日更新 · {len(new_articles)} 篇"
+                date_label = '今日' if is_today else '历史'
+                subject = f"{prefix} [{name}] {date_label}更新 · {len(new_articles)} 篇"
 
                 msg = MIMEMultipart('alternative')
                 msg['Subject'] = subject
                 msg['From'] = EMAIL_FROM
                 msg['To'] = EMAIL_TO
 
-                # 将 markdown 转为 HTML
                 try:
                     import markdown
                     html_body = markdown.markdown(translated, extensions=['tables', 'fenced_code'])
                 except:
                     html_body = f"<pre>{translated}</pre>"
 
-                # 包装 HTML
                 html_full = f"""<!DOCTYPE html>
 <html><head><meta charset="utf-8">
 <style>
@@ -411,16 +419,15 @@ p{{margin:8px 0;color:#444;font-size:15px;line-height:1.7}}
                     logger.error(f"邮件发送失败: {e}")
                     continue
 
-                # 更新状态
                 new_links = set(a['link'] for a in new_articles)
                 state[url] = list(processed | new_links)
                 save_state(state)
                 logger.info(f"  ✅ {name} 处理完成，{len(new_articles)} 篇已发送")
                 total_sent += 1
-                continue  # 跳过后面的通用发送逻辑
+                continue
 
         # 5. 发送邮件（中文 feed 或翻译失败的英文 feed）
-        if send_mail(name, new_articles, is_translated):
+        if send_mail(name, new_articles, is_translated, is_today):
             new_links = set(a['link'] for a in new_articles)
             state[url] = list(processed | new_links)
             save_state(state)
