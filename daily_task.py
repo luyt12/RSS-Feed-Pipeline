@@ -353,21 +353,26 @@ def main():
             logger.info("  所有文章均已处理，跳过")
             continue
 
-        # 3. 提取全文
+        # 3. 提取全文（动态判断：RSS 有全文则用，没有再抓取）
         for art in new_articles:
-            skip_t = feed.get('skip_trafilatura', False)
-            if skip_t:
-                art['content'] = art.get('summary', '')
-                logger.info(f"    ⟳ 跳过 trafilatura，使用 RSS 摘要")
+            rss_content = art.get('summary', '')
+            rss_len = len(rss_content)
+            
+            # 检查 RSS 是否包含全文（>2000字符认为是全文）
+            if rss_len > 2000:
+                art['content'] = rss_content
+                logger.info(f"    ✓ RSS 已含全文 ({rss_len} 字符)，直接使用")
                 continue
-            logger.info(f"  提取全文: {art['title'][:50]}...")
+            
+            # RSS 没有全文，用 trafilatura 抓取
+            logger.info(f"  提取全文: {art['title'][:50]}... (RSS 仅 {rss_len} 字符)")
             text = extract_full_text(art['link'])
-            if text:
+            if text and len(text) > rss_len:
                 art['content'] = text
-                logger.info(f"    ✓ {len(text)} 字符")
+                logger.info(f"    ✓ 抓取成功: {len(text)} 字符")
             else:
-                art['content'] = art.get('summary', '')
-                logger.warning(f"    ✗ 全文提取失败，使用摘要")
+                art['content'] = rss_content
+                logger.warning(f"    ✗ 全文提取失败，使用 RSS 摘要")
 
         # 4. 翻译（非中文 feed）
         is_translated = False
