@@ -2,6 +2,7 @@ name: RSS Feed Pipeline
 
 on:
   schedule:
+    - cron: '0 7 * * *'   # 北京时间 15:00
     - cron: '0 8 * * *'   # 北京时间 16:00
     - cron: '0 18 * * *'  # 北京时间 02:00（次日）
   workflow_dispatch:
