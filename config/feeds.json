@@ -82,5 +82,13 @@
     "max_daily": 3,
     "enabled": true,
     "skip_trafilatura": false
+  },
+  {
+    "name": "Patently-O",
+    "url": "https://patentlyo.com/feed",
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true,
+    "skip_trafilatura": true
   }
 ]
