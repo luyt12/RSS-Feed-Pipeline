@@ -1,0 +1,18 @@
+# Legal Insurrection - 北京时间 14:00 (UTC 06:00)
+name: Legal Insurrection RSS
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # UTC 06:00 = 北京 14:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'Legal Insurrection'
+      feed_url: 'https://legalinsurrection.com/feed/'
+      feed_lang: 'en'
+      max_daily: 3
+      skip_trafilatura: true
+    secrets: inherit
