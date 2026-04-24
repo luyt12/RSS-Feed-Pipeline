@@ -193,15 +193,25 @@ def main():
         if len(new_articles) >= MAX_DAILY:
             break
 
-        # 提取内容
+        # 提取内容（动态判断：RSS 有全文则用，没有再抓取）
         title = entry.get('title', '无标题')
         summary = entry.get('summary', '') or entry.get('description', '')
-
-        if SKIP_TRAFILATURA:
+        rss_len = len(summary)
+        
+        # 检查 RSS 是否包含全文（>2000字符认为是全文）
+        if rss_len > 2000:
             content = summary
+            print(f"[{FEED_NAME}] RSS 已含全文 ({rss_len} 字符)，直接使用")
         else:
+            # RSS 没有全文，用 trafilatura 抓取
+            print(f"[{FEED_NAME}] RSS 仅 {rss_len} 字符，尝试抓取全文...")
             full_content = extract_content(link)
-            content = full_content if full_content else summary
+            if full_content and len(full_content) > rss_len:
+                content = full_content
+                print(f"[{FEED_NAME}] 抓取成功: {len(full_content)} 字符")
+            else:
+                content = summary
+                print(f"[{FEED_NAME}] 抓取失败，使用 RSS 摘要")
 
         # 翻译（非中文内容）
         if FEED_LANG != 'zh' and content:
