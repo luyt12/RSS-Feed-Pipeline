@@ -1,0 +1,18 @@
+# Lawfare - 北京时间 16:00 (UTC 08:00)
+name: Lawfare RSS
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # UTC 08:00 = 北京 16:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'Lawfare'
+      feed_url: 'https://www.lawfaremedia.org/rss.xml'
+      feed_lang: 'en'
+      max_daily: 3
+      skip_trafilatura: true
+    secrets: inherit
