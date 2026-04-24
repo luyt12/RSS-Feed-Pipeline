@@ -1,4 +1,4 @@
-feedparser==6.0.11
-trafilatura==1.11.0
-markdown==3.7
-requests==2.32.3
+# requirements.txt
+feedparser==6.0.10
+requests==2.31.0
+trafilatura==1.6.2
