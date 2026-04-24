@@ -26,5 +26,61 @@
     "lang": "en",
     "max_daily": 10,
     "enabled": true
+  },
+  {
+    "name": "Above the Law",
+    "url": "https://abovethelaw.com/feed/",
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true,
+    "skip_trafilatura": true
+  },
+  {
+    "name": "Law.com",
+    "url": "https://www.law.com/feed/",
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true,
+    "skip_trafilatura": true
+  },
+  {
+    "name": "Legal Insurrection",
+    "url": "https://legalinsurrection.com/feed/",
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true,
+    "skip_trafilatura": true
+  },
+  {
+    "name": "The Volokh Conspiracy",
+    "url": "https://reason.com/volokh/feed/",
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true,
+    "skip_trafilatura": true
+  },
+  {
+    "name": "Lawfare",
+    "url": "https://www.lawfaremedia.org/rss.xml",
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true,
+    "skip_trafilatura": true
+  },
+  {
+    "name": "Harvard Law Review",
+    "url": "https://harvardlawreview.org/feed/",
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true,
+    "skip_trafilatura": false
+  },
+  {
+    "name": "Yale Law Journal",
+    "url": "https://www.yalelawjournal.org/rss.xml",
+    "lang": "en",
+    "max_daily": 3,
+    "enabled": true,
+    "skip_trafilatura": false
   }
 ]
