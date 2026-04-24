@@ -1,0 +1,18 @@
+# The Volokh Conspiracy - 北京时间 15:00 (UTC 07:00)
+name: The Volokh Conspiracy RSS
+
+on:
+  schedule:
+    - cron: '0 7 * * *'  # UTC 07:00 = 北京 15:00
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: 'The Volokh Conspiracy'
+      feed_url: 'https://reason.com/volokh/feed/'
+      feed_lang: 'en'
+      max_daily: 3
+      skip_trafilatura: true
+    secrets: inherit
