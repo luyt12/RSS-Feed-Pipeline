@@ -2,16 +2,16 @@ name: RSS Feed Pipeline
 
 on:
   schedule:
-    - cron: '0 7 * * *'   # 北京时间 15:00
-    - cron: '0 8 * * *'   # 北京时间 16:00
-    - cron: '0 18 * * *'  # 北京时间 02:00（次日）
+    - cron: '0 7 * * *'   # 北京时间 15:00 - 第一批（已有 feeds）
+    - cron: '0 12 * * *'  # 北京时间 20:00 - 第二批（新法律博客）
+    - cron: '0 18 * * *'  # 北京时间 02:00（次日）- 第三批
   workflow_dispatch:
 
 permissions:
   contents: write
 
 env:
-  kimi_API_KEY: ${{ secrets.KIMI_API_KEY }}
+  kimi_API_KEY: ${{ secrets.kimi_API_KEY }}
   KIMI_MODEL: moonshotai/kimi-k2.5
   KIMI_API_URL: https://integrate.api.nvidia.com/v1/chat/completions
   EMAIL_TO: ${{ secrets.EMAIL_TO }}
