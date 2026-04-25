@@ -1,0 +1,18 @@
+# TIME Magazine - 北京时间 9:00
+name: TIME Magazine RSS
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: "TIME Magazine"
+      feed_url: "https://plink.anyfeeder.com/time"
+      feed_lang: "en"
+      max_daily: 5
+      skip_trafilatura: false
+    secrets: inherit
