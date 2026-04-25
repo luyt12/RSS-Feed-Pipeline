@@ -8,7 +8,7 @@ on:
 
 jobs:
   process:
-    uses: ./rss-feed.yml@main
+    uses: .github/workflows/rss-feed.yml@main
     with:
       feed_name: "Foreign Affairs"
       feed_url: "http://ftr.fivefilters.org/makefulltextfeed.php?url=http://www.foreignaffairs.com/rss.xml&max=3"
