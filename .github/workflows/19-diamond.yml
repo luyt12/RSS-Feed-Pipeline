@@ -3,7 +3,7 @@ name: DIAMOND 财经 RSS
 
 on:
   schedule:
-    - cron: '0 17 * * *'
+    - cron: '0 19 * * *'
   workflow_dispatch:
 
 permissions:
