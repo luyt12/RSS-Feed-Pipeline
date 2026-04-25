@@ -1,0 +1,51 @@
+# FP Geopolitics - 北京时间 17:00
+name: FP Geopolitics RSS
+
+on:
+  schedule:
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Process feed
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          BAIDU_APPID: ${{ secrets.BAIDU_APPID }}
+          BAIDU_API_KEY: ${{ secrets.BAIDU_API_KEY }}
+          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          FEED_NAME: 'Foreign Policy Geopolitics'
+          FEED_URL: 'https://foreignpolicy.com/feed/'
+          FEED_LANG: 'en'
+          MAX_DAILY: 5
+        run: python daily_task_single.py
+
+      - name: Commit processed URLs
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add data/processed_urls.json 2>/dev/null || true
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update processed URLs [skip ci]"
+          git push
