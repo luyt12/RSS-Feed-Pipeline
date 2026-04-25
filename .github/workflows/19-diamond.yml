@@ -1,0 +1,18 @@
+# DIAMOND - 北京时间 1:00
+name: DIAMOND RSS
+
+on:
+  schedule:
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: "DIAMOND 财经"
+      feed_url: "https://news.yahoo.co.jp/rss/media/diamond/all.xml"
+      feed_lang: "ja"
+      max_daily: 5
+      skip_trafilatura: false
+    secrets: inherit
