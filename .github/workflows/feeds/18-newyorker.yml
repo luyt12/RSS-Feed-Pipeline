@@ -1,0 +1,18 @@
+# The New Yorker - 北京时间 17:00
+name: The New Yorker RSS
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: "The New Yorker"
+      feed_url: "https://feedx.net/rss/newyorker.xml"
+      feed_lang: "en"
+      max_daily: 5
+      skip_trafilatura: false
+    secrets: inherit
