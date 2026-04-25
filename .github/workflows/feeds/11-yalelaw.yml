@@ -8,7 +8,7 @@ on:
 
 jobs:
   process:
-    uses: ./rss-feed.yml@main
+    uses: .github/workflows/rss-feed.yml@main
     with:
       feed_name: 'Yale Law Journal'
       feed_url: 'https://www.yalelawjournal.org/rss.xml'
