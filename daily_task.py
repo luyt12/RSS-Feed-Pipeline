@@ -41,7 +41,7 @@ SMTP_USER = os.environ.get('SMTP_USER', '')
 SMTP_PASS = os.environ.get('SMTP_PASS', '')
 EMAIL_FROM = os.environ.get('EMAIL_FROM', '')
 EMAIL_TO = os.environ.get('EMAIL_TO', '')
-KIMI_API_KEY = os.environ.get('kimi_API_KEY', '')
+KIMI_API_KEY = os.environ.get('KIMI_API_KEY', '')
 KIMI_MODEL = os.environ.get('KIMI_MODEL', 'moonshotai/kimi-k2.5')
 KIMI_API_URL = os.environ.get('KIMI_API_URL', 'https://integrate.api.nvidia.com/v1/chat/completions')
 
