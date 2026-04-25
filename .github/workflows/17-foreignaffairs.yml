@@ -1,0 +1,18 @@
+# Foreign Affairs - 北京时间 13:00
+name: Foreign Affairs RSS
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: "Foreign Affairs"
+      feed_url: "http://ftr.fivefilters.org/makefulltextfeed.php?url=http://www.foreignaffairs.com/rss.xml&max=3"
+      feed_lang: "en"
+      max_daily: 5
+      skip_trafilatura: false
+    secrets: inherit
