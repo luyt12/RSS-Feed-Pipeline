@@ -36,8 +36,6 @@ jobs:
           BAIDU_APPID: ${{ secrets.BAIDU_APPID }}
           BAIDU_API_KEY: ${{ secrets.BAIDU_API_KEY }}
           KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
-          KIMI_API_URL: ${{ secrets.KIMI_API_URL }}
-          KIMI_MODEL: ${{ secrets.KIMI_MODEL }}
           FEED_NAME: 'Simplicius76 Substack'
           FEED_URL: 'https://simplicius76.substack.com/feed'
           FEED_LANG: 'en'
