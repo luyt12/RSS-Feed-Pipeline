@@ -81,7 +81,8 @@
     "url": "https://patentlyo.com/feed",
     "lang": "en",
     "max_daily": 3,
-    "enabled": true
+    "enabled": true,
+    "skip_trafilatura": true
   },
   {
     "name": "Simplicius76 Substack",
