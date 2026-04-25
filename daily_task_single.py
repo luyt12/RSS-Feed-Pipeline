@@ -30,7 +30,7 @@ EMAIL_TO = os.environ.get('EMAIL_TO', '')
 
 # Kimi API 配置
 KIMI_API_KEY = os.environ.get('KIMI_API_KEY', '')
-KIMI_API_URL = os.environ.get('KIMI_API_URL', 'https://api.moonshot.cn/v1/chat/completions')
+KIMI_API_URL = os.environ.get('KIMI_API_URL', 'https://integrate.api.nvidia.com/v1/chat/completions')
 
 # 路径配置
 DATA_DIR = 'data'
