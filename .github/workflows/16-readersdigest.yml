@@ -1,0 +1,18 @@
+# Reader's Digest - 北京时间 11:00
+name: Reader's Digest RSS
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  process:
+    uses: ./.github/workflows/templates/rss-feed.yml
+    with:
+      feed_name: "Reader's Digest"
+      feed_url: "https://www.rd.com/feed/"
+      feed_lang: "en"
+      max_daily: 5
+      skip_trafilatura: false
+    secrets: inherit
