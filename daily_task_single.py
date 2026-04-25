@@ -6,6 +6,7 @@ import os
 import json
 import feedparser
 import requests
+import time
 import trafilatura
 from datetime import datetime, timezone
 from email.mime.text import MIMEText
@@ -75,16 +76,24 @@ def extract_content(url):
         return ''
 
 
-def translate_with_kimi(text, max_retries=3):
-    """使用 Kimi API 翻译"""
+def translate_with_kimi(text, max_retries=5):
+    """使用 Kimi API 翻译+摘要（与原始 daily_task.py 相同）"""
     if not text or not KIMI_API_KEY:
         return text
 
-    prompt = f"""请将以下英文内容翻译成中文，保持原文的结构和语气：
+    KIMI_PROMPT = """You are a professional translator and editor. Please complete the following task on the article below:
 
-{text[:4000]}
+## Task: Extract and Summarize
+Extract key points from the English article and write a Chinese summary with these requirements:
+1. No need to translate the full text - extract key points directly
+2. High information density - cover main points, background, and significance  
+3. Keep key details (names, institutions, data)
+4. Word count: if original > 2000 English words, Chinese summary ~1000 characters (~50% of original); if < 2000 words, can translate fully
+5. Concise style, avoid "This article discusses..." filler
+6. Stay neutral on controversial topics
 
-只输出翻译结果，不要添加任何解释或评论。"""
+## Output Format
+Output the Chinese summary directly, no introductions or meta-comments."""
 
     headers = {
         'Authorization': f'Bearer {KIMI_API_KEY}',
@@ -94,23 +103,31 @@ def translate_with_kimi(text, max_retries=3):
     payload = {
         'model': 'moonshotai/kimi-k2.5',
         'messages': [
-            {'role': 'user', 'content': prompt}
+            {'role': 'system', 'content': KIMI_PROMPT},
+            {'role': 'user', 'content': text}
         ],
-        'temperature': 0.3,
-        'max_tokens': 4096
+        'temperature': 0.7,
+        'max_tokens': 16000
     }
 
     for attempt in range(max_retries):
         try:
-            response = requests.post(KIMI_API_URL, headers=headers, json=payload, timeout=120)
+            print(f"Kimi 翻译请求 (attempt {attempt + 1}/{max_retries})...")
+            response = requests.post(KIMI_API_URL, headers=headers, json=payload, timeout=300)
             response.raise_for_status()
             result = response.json()
-            return result['choices'][0]['message']['content']
+            if result.get('choices') and result['choices'][0]:
+                return result['choices'][0]['message']['content']
+            else:
+                print(f"API 响应错误: {result}")
+                if attempt < max_retries - 1:
+                    wait = 30 * (2 ** attempt)
+                    print(f"等待 {wait}s 后重试...")
+                    time.sleep(wait)
         except Exception as e:
             print(f"翻译失败 (attempt {attempt + 1}): {e}")
-            if attempt == max_retries - 1:
-                return text
-
+            if attempt < max_retries - 1:
+                time.sleep(30 * (2 ** attempt))
     return text
 
 
