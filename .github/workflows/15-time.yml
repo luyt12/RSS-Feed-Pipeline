@@ -8,7 +8,7 @@ on:
 
 jobs:
   process:
-    uses: ./rss-feed.yml@main
+    uses: .github/workflows/rss-feed.yml@main
     with:
       feed_name: "TIME Magazine"
       feed_url: "https://plink.anyfeeder.com/time"
