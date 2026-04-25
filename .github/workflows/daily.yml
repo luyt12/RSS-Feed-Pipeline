@@ -2,7 +2,7 @@ name: Daily RSS Full-Text Emails
 
 on:
   schedule:
-    - cron: '29 2 2 *'  # 14:35 Beijing Time
+    - cron: '0 0 31 2 *'  # 14:35 Beijing Time
   workflow_dispatch:
     inputs:
       feed_name:
