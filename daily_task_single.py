@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 单源 RSS 处理脚本 - 从环境变量读取 feed 配置
+对齐 daily_task.py 逻辑：历史文章回退、精美邮件格式、翻译优化
 """
 import os
 import json
@@ -8,6 +9,7 @@ import feedparser
 import requests
 import time
 import trafilatura
+import re
 from datetime import datetime, timezone
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -36,6 +38,21 @@ KIMI_API_URL = os.environ.get('KIMI_API_URL', 'https://integrate.api.nvidia.com/
 # 路径配置
 DATA_DIR = 'data'
 PROCESSED_URLS_FILE = os.path.join(DATA_DIR, 'processed_urls.json')
+
+# Kimi 翻译 Prompt（与 daily_task.py 相同）
+KIMI_PROMPT = """You are a professional translator and editor. Please complete the following task on the article below:
+
+## Task: Extract and Summarize
+Extract key points from the English article and write a Chinese summary with these requirements:
+1. No need to translate the full text - extract key points directly
+2. High information density - cover main points, background, and significance  
+3. Keep key details (names, institutions, data)
+4. Word count: if original > 2000 English words, Chinese summary ~1000 characters (~50% of original); if < 2000 words, can translate fully
+5. Concise style, avoid "This article discusses..." filler
+6. Stay neutral on controversial topics
+
+## Output Format
+Output the Chinese summary directly, no introductions or meta-comments."""
 
 
 def load_processed_urls():
@@ -67,33 +84,24 @@ def fetch_feed(url):
 def extract_content(url):
     """使用 trafilatura 提取全文"""
     try:
-        response = requests.get(url, timeout=30)
-        response.raise_for_status()
-        content = trafilatura.extract(response.content, include_comments=False)
-        return content if content else ''
+        downloaded = trafilatura.fetch_url(url)
+        if not downloaded:
+            return ''
+        text = trafilatura.extract(downloaded,
+                                   include_comments=False,
+                                   include_tables=True,
+                                   output_format='markdown',
+                                   favor_precision=True)
+        return text if text and len(text) >= 200 else ''
     except Exception as e:
         print(f"提取全文失败: {e}")
         return ''
 
 
 def translate_with_kimi(text, max_retries=5):
-    """使用 Kimi API 翻译+摘要（与原始 daily_task.py 相同）"""
+    """使用 Kimi API 翻译+摘要"""
     if not text or not KIMI_API_KEY:
         return text
-
-    KIMI_PROMPT = """You are a professional translator and editor. Please complete the following task on the article below:
-
-## Task: Extract and Summarize
-Extract key points from the English article and write a Chinese summary with these requirements:
-1. No need to translate the full text - extract key points directly
-2. High information density - cover main points, background, and significance  
-3. Keep key details (names, institutions, data)
-4. Word count: if original > 2000 English words, Chinese summary ~1000 characters (~50% of original); if < 2000 words, can translate fully
-5. Concise style, avoid "This article discusses..." filler
-6. Stay neutral on controversial topics
-
-## Output Format
-Output the Chinese summary directly, no introductions or meta-comments."""
 
     headers = {
         'Authorization': f'Bearer {KIMI_API_KEY}',
@@ -131,27 +139,81 @@ Output the Chinese summary directly, no introductions or meta-comments."""
     return text
 
 
-def send_email(articles, feed_name):
+def build_html(feed_name, articles, is_translated, is_today):
+    """构建精美 HTML 邮件（与 daily_task.py 相同风格）"""
+    hdr_bg = '#1b4332' if not is_translated else '#1a237e'
+    badge_bg = '#40916c' if not is_translated else '#1565c0'
+    badge_txt = '🌐 原文' if not is_translated else '🔄 中文翻译'
+    date_label = '今日' if is_today else '历史'
+
+    body = f"""<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<style>
+  body{{font-family:-apple-system,'Microsoft YaHei',Arial,sans-serif;margin:0;padding:20px;background:#f0f2f5}}
+  .wrap{{max-width:720px;margin:0 auto;background:white;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08)}}
+  .hdr{{background:{hdr_bg};color:white;padding:28px 32px}}
+  .badge{{display:inline-block;background:{badge_bg};color:white;padding:4px 12px;border-radius:12px;font-size:11px;margin-bottom:8px}}
+  .hdr h1{{margin:0;font-size:22px;font-weight:700}}
+  .hdr .sub{{opacity:0.8;margin-top:6px;font-size:13px}}
+  .bar{{background:#f8f9fa;padding:14px 32px;font-size:13px;color:#555;border-bottom:1px solid #eee}}
+  .art{{padding:22px 32px;border-bottom:1px solid #f0f0f0}}
+  .art:last-child{{border-bottom:none}}
+  .art h2{{font-size:16px;font-weight:600;color:#1a1a1a;margin:0 0 8px 0;line-height:1.4}}
+  .art h2 a{{color:inherit;text-decoration:none}}
+  .meta{{font-size:11px;color:#aaa;margin-bottom:12px}}
+  .txt{{font-size:14px;line-height:1.85;color:#333}}
+  .txt p{{margin:0 0 10px 0}}
+  .ft{{padding:14px 32px;background:#f8f9fa;text-align:center;font-size:11px;color:#bbb}}
+</style>
+</head><body>
+<div class="wrap">
+  <div class="hdr">
+    <div class="badge">{badge_txt}</div>
+    <h1>{feed_name}</h1>
+    <div class="sub">{len(articles)} 篇文章 · {datetime.now().strftime('%Y-%m-%d')} 自动推送</div>
+  </div>
+  <div class="bar">📡 {date_label}文章 <strong>{len(articles)}</strong> 篇</div>
+"""
+
+    for i, art in enumerate(articles, 1):
+        title = art.get('title', '无标题')
+        link = art.get('link', '#')
+        pub = art.get('published', '')
+        content = art.get('content') or art.get('summary', '（无内容）')
+        # HTML 转义
+        content = content.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        content = content.replace('\n\n', '</p><p>').replace('\n', '<br>')
+        body += f"""
+  <div class="art">
+    <h2><a href="{link}">{i}. {title}</a></h2>
+    <div class="meta">📅 {pub}</div>
+    <div class="txt">{content}</div>
+  </div>
+"""
+
+    body += f"""
+  <div class="ft">AI 助手自动抓取推送</div>
+</div></body></html>"""
+    return body
+
+
+def send_email(articles, feed_name, is_translated, is_today):
     """发送邮件"""
     if not articles:
         print(f"[{feed_name}] 无新文章，不发送邮件")
         return False
 
-    subject = f"[{feed_name}] RSS 订阅 - {datetime.now().strftime('%Y-%m-%d')}"
+    prefix = '🔄' if is_translated else '🌐'
+    date_label = '今日' if is_today else '历史'
+    subject = f"{prefix} [{feed_name}] {date_label}更新 · {len(articles)} 篇"
 
-    # 构建 HTML 正文
-    html_parts = [f"<h1>{feed_name} - 今日更新</h1>"]
-    html_parts.append(f"<p>共 {len(articles)} 篇文章</p><hr>")
+    # 纯文本版本
+    text_content = f"{feed_name} - {date_label}更新\n共 {len(articles)} 篇文章\n\n" + \
+                   '\n\n'.join([f"{i}. {a['title']}\n{a['link']}\n{(a.get('content') or a.get('summary',''))[:500]}"
+                                for i, a in enumerate(articles, 1)])
 
-    for i, article in enumerate(articles, 1):
-        html_parts.append(f"<h2>{i}. {article['title']}</h2>")
-        html_parts.append(f"<p><a href=\"{article['link']}\">原文链接</a></p>")
-        html_parts.append(f"<div style=\"margin: 20px 0;\">{article['content']}</div>")
-        html_parts.append("<hr>")
-
-    html_content = '\n'.join(html_parts)
-    text_content = f"{feed_name} - 今日更新\n共 {len(articles)} 篇文章\n\n" + \
-                   '\n\n'.join([f"{i}. {a['title']}\n{a['link']}" for i, a in enumerate(articles, 1)])
+    # HTML 版本
+    html_content = build_html(feed_name, articles, is_translated, is_today)
 
     # 创建邮件
     msg = MIMEMultipart('alternative')
@@ -161,13 +223,18 @@ def send_email(articles, feed_name):
     msg.attach(MIMEText(text_content, 'plain', 'utf-8'))
     msg.attach(MIMEText(html_content, 'html', 'utf-8'))
 
-    # 发送邮件
+    # 发送邮件（自动判断 SSL/STARTTLS）
     try:
         ctx = ssl.create_default_context()
-        with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-            server.starttls(context=ctx)
-            server.login(SMTP_USER, SMTP_PASS)
-            server.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
+        if SMTP_PORT == 465:
+            with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=ctx) as server:
+                server.login(SMTP_USER, SMTP_PASS)
+                server.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
+        else:
+            with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+                server.starttls(context=ctx)
+                server.login(SMTP_USER, SMTP_PASS)
+                server.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
         print(f"[{feed_name}] 邮件发送成功: {subject}")
         return True
     except Exception as e:
@@ -180,11 +247,11 @@ def main():
     print(f"URL: {FEED_URL}")
     print(f"语言: {FEED_LANG}")
     print(f"每日上限: {MAX_DAILY}")
-    print(f"跳过 trafilatura: {SKIP_TRAFILATURA}")
+    print(f"跳过全文提取: {SKIP_TRAFILATURA}")
 
     # 加载已处理的 URL
     processed_urls = load_processed_urls()
-    feed_processed = processed_urls.get(FEED_NAME, [])
+    feed_processed = set(processed_urls.get(FEED_NAME, []))
 
     # 获取 feed
     feed = fetch_feed(FEED_URL)
@@ -192,67 +259,125 @@ def main():
         print(f"[{FEED_NAME}] 无法获取 feed 或无文章")
         return
 
-    # 筛选新文章
-    today = datetime.now(timezone.utc).date()
-    new_articles = []
+    # 解析所有文章
+    today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    all_articles = []
+    today_articles = []
 
     for entry in feed.entries:
         link = entry.get('link', '')
-        if not link or link in feed_processed:
+        if not link:
             continue
 
-        # 检查发布日期（可选：只处理今天的文章）
-        published = entry.get('published_parsed')
-        if published:
-            pub_date = datetime(*published[:6], tzinfo=timezone.utc).date()
-            # 如果不是今天的文章，跳过（可配置为处理所有未处理的文章）
+        # 解析发布日期
+        published = ''
+        if entry.get('published_parsed'):
+            dt = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc)
+            published = dt.strftime('%Y-%m-%d')
+        elif entry.get('updated_parsed'):
+            dt = datetime(*entry.updated_parsed[:6], tzinfo=timezone.utc)
+            published = dt.strftime('%Y-%m-%d')
 
-        if len(new_articles) >= MAX_DAILY:
-            break
+        # 提取 RSS 摘要
+        content = ''
+        if hasattr(entry, 'content') and entry.content:
+            content = entry.content[0].value
+        elif entry.get('summary'):
+            content = entry.summary
+        elif entry.get('description'):
+            content = entry.description
 
-        # 提取内容（动态判断：RSS 有全文则用，没有再抓取）
-        title = entry.get('title', '无标题')
-        summary = entry.get('summary', '') or entry.get('description', '')
-        rss_len = len(summary)
-        
-        # 检查 RSS 是否包含全文（>2000字符认为是全文）
-        if rss_len > 2000:
-            content = summary
-            print(f"[{FEED_NAME}] RSS 已含全文 ({rss_len} 字符)，直接使用")
+        # 清理 HTML 标签
+        content = re.sub(r'<[^>]+>', '', content).strip()
+
+        article = {
+            'title': entry.get('title', '无标题'),
+            'link': link,
+            'published': published,
+            'summary': content[:500] if content else ''
+        }
+
+        all_articles.append(article)
+        if published == today_str:
+            today_articles.append(article)
+
+    print(f"[{FEED_NAME}] RSS 共 {len(all_articles)} 篇文章，今日 {len(today_articles)} 篇")
+
+    # 优先使用今日文章，无则回退到历史未处理文章（对齐 daily_task.py）
+    if today_articles:
+        candidates = today_articles
+        is_today = True
+        print(f"  → 使用今日文章: {len(candidates)} 篇")
+    else:
+        candidates = [a for a in all_articles if a['link'] not in feed_processed]
+        is_today = False
+        if candidates:
+            print(f"  → 今日无文章，回退到历史未处理: {len(candidates)} 篇")
         else:
-            # RSS 没有全文，用 trafilatura 抓取
-            print(f"[{FEED_NAME}] RSS 仅 {rss_len} 字符，尝试抓取全文...")
+            print(f"  → 无新文章")
+            return
+
+    # 限制数量
+    candidates = candidates[:MAX_DAILY]
+
+    # 处理每篇文章
+    new_articles = []
+    for art in candidates:
+        link = art['link']
+        if link in feed_processed:
+            continue
+
+        title = art['title']
+        rss_content = art.get('summary', '')
+        rss_len = len(rss_content)
+
+        # 提取全文（动态判断）
+        if SKIP_TRAFILATURA:
+            print(f"  [跳过全文] {title[:50]}...")
+            content = rss_content
+        elif rss_len > 2000:
+            print(f"  RSS 已含全文 ({rss_len} 字符)，直接使用")
+            content = rss_content
+        else:
+            print(f"  提取全文: {title[:50]}... (RSS 仅 {rss_len} 字符)")
             full_content = extract_content(link)
             if full_content and len(full_content) > rss_len:
                 content = full_content
-                print(f"[{FEED_NAME}] 抓取成功: {len(full_content)} 字符")
+                print(f"    ✓ 抓取成功: {len(full_content)} 字符")
             else:
-                content = summary
-                print(f"[{FEED_NAME}] 抓取失败，使用 RSS 摘要")
+                content = rss_content
+                print(f"    ✗ 全文提取失败，使用 RSS 摘要")
 
-        # 翻译（非中文内容）
+        # 翻译（仅非中文 feed，只翻译正文，不翻译标题）
         if FEED_LANG != 'zh' and content:
-            print(f"[{FEED_NAME}] 翻译: {title[:50]}...")
-            content = translate_with_kimi(content)
-            title = translate_with_kimi(title)
+            print(f"  翻译正文: {title[:50]}...")
+            translated = translate_with_kimi(content)
+            if translated and translated != content:
+                content = translated
+                print(f"    ✓ 翻译完成")
+            else:
+                print(f"    ✗ 翻译失败，使用原文")
+        # 中文 feed 不翻译
 
         new_articles.append({
             'title': title,
             'link': link,
-            'content': content
+            'published': art.get('published', ''),
+            'content': content,
+            'summary': art.get('summary', '')
         })
 
-        # 标记为已处理
-        feed_processed.append(link)
+        feed_processed.add(link)
 
     print(f"[{FEED_NAME}] 新文章: {len(new_articles)} 篇")
 
     # 发送邮件
+    is_translated = FEED_LANG != 'zh'
     if new_articles:
-        send_email(new_articles, FEED_NAME)
+        send_email(new_articles, FEED_NAME, is_translated, is_today)
 
     # 保存已处理的 URL
-    processed_urls[FEED_NAME] = feed_processed
+    processed_urls[FEED_NAME] = list(feed_processed)
     save_processed_urls(processed_urls)
     print(f"[{FEED_NAME}] 处理完成")
 
