@@ -97,5 +97,40 @@
     "lang": "en",
     "max_daily": 3,
     "enabled": true
+  },
+  {
+    "name": "TIME Magazine",
+    "url": "https://plink.anyfeeder.com/time",
+    "lang": "en",
+    "max_daily": 5,
+    "enabled": true
+  },
+  {
+    "name": "Reader's Digest",
+    "url": "https://www.rd.com/feed/",
+    "lang": "en",
+    "max_daily": 5,
+    "enabled": true
+  },
+  {
+    "name": "Foreign Affairs",
+    "url": "http://ftr.fivefilters.org/makefulltextfeed.php?url=http://www.foreignaffairs.com/rss.xml&max=3",
+    "lang": "en",
+    "max_daily": 5,
+    "enabled": true
+  },
+  {
+    "name": "The New Yorker",
+    "url": "https://feedx.net/rss/newyorker.xml",
+    "lang": "en",
+    "max_daily": 5,
+    "enabled": true
+  },
+  {
+    "name": "DIAMOND 财经",
+    "url": "https://news.yahoo.co.jp/rss/media/diamond/all.xml",
+    "lang": "ja",
+    "max_daily": 5,
+    "enabled": true
   }
 ]
