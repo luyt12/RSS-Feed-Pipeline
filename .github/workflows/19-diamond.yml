@@ -8,7 +8,7 @@ on:
 
 jobs:
   process:
-    uses: ./rss-feed.yml@main
+    uses: .github/workflows/rss-feed.yml@main
     with:
       feed_name: "DIAMOND 财经"
       feed_url: "https://news.yahoo.co.jp/rss/media/diamond/all.xml"
