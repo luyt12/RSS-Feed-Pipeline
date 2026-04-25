@@ -1,4 +1,4 @@
-# Patently-O - 北京时间 12:00
+# Patently-O - 北京时间 17:00
 name: Patently-O RSS
 
 on:
@@ -33,13 +33,12 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          BAIDU_APPID: ${{ secrets.BAIDU_APPID }}
-          BAIDU_API_KEY: ${{ secrets.BAIDU_API_KEY }}
           KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
           FEED_NAME: 'Patently-O'
           FEED_URL: 'https://patentlyo.com/feed/'
           FEED_LANG: 'en'
           MAX_DAILY: 5
+          SKIP_TRAFILATURA: true
         run: python daily_task_single.py
 
       - name: Commit processed URLs
