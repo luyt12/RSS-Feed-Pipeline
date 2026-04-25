@@ -8,7 +8,7 @@ on:
 
 jobs:
   process:
-    uses: ./.github/workflows/templates/rss-feed.yml
+    uses: ./templates/rss-feed.yml@main
     with:
       feed_name: 'Foreign Policy Geopolitics'
       feed_url: 'https://foreignpolicy.com/tag/geopolitics/feed/'
