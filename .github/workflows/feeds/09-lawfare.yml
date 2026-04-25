@@ -8,7 +8,7 @@ on:
 
 jobs:
   process:
-    uses: ./templates/rss-feed.yml@main
+    uses: ./rss-feed.yml@main
     with:
       feed_name: 'Lawfare'
       feed_url: 'https://www.lawfaremedia.org/rss.xml'
