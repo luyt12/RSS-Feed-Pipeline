@@ -175,7 +175,7 @@ def extract_full_text(url):
 def kimi_translate(content):
     """使用 Kimi K2.5 翻译+综述（与 TimeEmail 相同）"""
     if not KIMI_API_KEY:
-        logger.error("kimi_API_KEY 未配置")
+        logger.error("KIMI_API_KEY 未配置")
         return None
 
     headers = {
