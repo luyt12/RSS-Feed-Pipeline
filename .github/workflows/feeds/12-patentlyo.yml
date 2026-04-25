@@ -1,18 +1,53 @@
-name: Patently-O RSS Feed
+# Patently-O - 北京时间 12:00
+name: Patently-O RSS
 
 on:
   schedule:
-    - cron: '0 11 * * *'  # 北京时间 19:00
+    - cron: '0 4 * * 1'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  fetch-translate-send:
-    uses: .github/workflows/rss-feed.yml@main
-    with:
-      feed_name: "Patently-O"
-      feed_index: 12
-    secrets:
-      KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
-      EMAIL_TO: ${{ secrets.EMAIL_TO }}
-      EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Process feed
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          BAIDU_APPID: ${{ secrets.BAIDU_APPID }}
+          BAIDU_API_KEY: ${{ secrets.BAIDU_API_KEY }}
+          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          KIMI_API_URL: ${{ secrets.KIMI_API_URL }}
+          KIMI_MODEL: ${{ secrets.KIMI_MODEL }}
+          FEED_NAME: 'Patently-O'
+          FEED_URL: 'https://patentlyo.com/feed/'
+          FEED_LANG: 'en'
+          MAX_DAILY: 5
+        run: python daily_task_single.py
+
+      - name: Commit processed URLs
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add data/processed_urls.json 2>/dev/null || true
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update processed URLs [skip ci]"
+          git push
