@@ -8,7 +8,7 @@ on:
 
 jobs:
   process:
-    uses: ./templates/rss-feed.yml
+    uses: ./templates/rss-feed.yml@main
     with:
       feed_name: "The New Yorker"
       feed_url: "https://feedx.net/rss/newyorker.xml"
