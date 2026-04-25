@@ -7,7 +7,7 @@ on:
 
 jobs:
   fetch-feed:
-    uses: ./templates/rss-feed.yml@main
+    uses: ./rss-feed.yml@main
     with:
       feed_name: "Simplicius76 Substack"
       feed_url: "https://simplicius76.substack.com/feed"
