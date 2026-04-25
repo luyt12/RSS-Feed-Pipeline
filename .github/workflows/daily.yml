@@ -16,6 +16,9 @@ permissions:
 
 env:
   BAIDU_APPID: ${{ secrets.BAIDU_APPID }}
+  KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+  KIMI_API_URL: ${{ secrets.KIMI_API_URL }}
+  KIMI_MODEL: ${{ secrets.KIMI_MODEL }}
   BAIDU_API_KEY: ${{ secrets.BAIDU_API_KEY }}
   EMAIL_TO: ${{ secrets.EMAIL_TO }}
   EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
