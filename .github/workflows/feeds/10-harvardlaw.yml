@@ -8,7 +8,7 @@ on:
 
 jobs:
   process:
-    uses: ./templates/rss-feed.yml@main
+    uses: ./rss-feed.yml@main
     with:
       feed_name: 'Harvard Law Review'
       feed_url: 'https://harvardlawreview.org/feed/'
