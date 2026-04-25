@@ -8,7 +8,7 @@ on:
 
 jobs:
   process:
-    uses: ./.github/workflows/templates/rss-feed.yml
+    uses: ./templates/rss-feed.yml
     with:
       feed_name: "Reader's Digest"
       feed_url: "https://www.rd.com/feed/"
