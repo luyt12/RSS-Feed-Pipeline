@@ -140,7 +140,7 @@ def translate_with_kimi(text, max_retries=5):
 
 
 def build_html(feed_name, articles, is_translated, is_today):
-    """构建精美 HTML 邮件（与 daily_task.py 相同风格）"""
+    """构建精美 HTML 邮件"""
     hdr_bg = '#1b4332' if not is_translated else '#1a237e'
     badge_bg = '#40916c' if not is_translated else '#1565c0'
     badge_txt = '🌐 原文' if not is_translated else '🔄 中文翻译'
@@ -158,10 +158,10 @@ def build_html(feed_name, articles, is_translated, is_today):
   .bar{{background:#f8f9fa;padding:14px 32px;font-size:13px;color:#555;border-bottom:1px solid #eee}}
   .art{{padding:22px 32px;border-bottom:1px solid #f0f0f0}}
   .art:last-child{{border-bottom:none}}
-  .art h2{{font-size:16px;font-weight:600;color:#1a1a1a;margin:0 0 8px 0;line-height:1.4}}
+  .art h2{{font-size:18px;font-weight:700;color:#1a1a1a;margin:0 0 12px 0;line-height:1.4;border-left:4px solid #40916c;padding-left:12px}}
   .art h2 a{{color:inherit;text-decoration:none}}
   .meta{{font-size:11px;color:#aaa;margin-bottom:12px}}
-  .txt{{font-size:14px;line-height:1.85;color:#333}}
+  .txt{{font-size:14px;line-height:1.85;color:#333;background:#f9f9f9;padding:16px;border-radius:6px}}
   .txt p{{margin:0 0 10px 0}}
   .ft{{padding:14px 32px;background:#f8f9fa;text-align:center;font-size:11px;color:#bbb}}
 </style>
@@ -181,13 +181,14 @@ def build_html(feed_name, articles, is_translated, is_today):
         pub = art.get('published', '')
         content = art.get('content') or art.get('summary', '（无内容）')
         # HTML 转义
+        title_esc = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         content = content.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         content = content.replace('\n\n', '</p><p>').replace('\n', '<br>')
         body += f"""
   <div class="art">
-    <h2><a href="{link}">{i}. {title}</a></h2>
+    <h2><a href="{link}">{title_esc}</a></h2>
     <div class="meta">📅 {pub}</div>
-    <div class="txt">{content}</div>
+    <div class="txt"><p>{content}</p></div>
   </div>
 """
 
@@ -208,9 +209,12 @@ def send_email(articles, feed_name, is_translated, is_today):
     subject = f"{prefix} [{feed_name}] {date_label}更新 · {len(articles)} 篇"
 
     # 纯文本版本
-    text_content = f"{feed_name} - {date_label}更新\n共 {len(articles)} 篇文章\n\n" + \
-                   '\n\n'.join([f"{i}. {a['title']}\n{a['link']}\n{(a.get('content') or a.get('summary',''))[:500]}"
-                                for i, a in enumerate(articles, 1)])
+    text_content = f"{feed_name} - {date_label}更新\n共 {len(articles)} 篇文章\n\n"
+    for i, a in enumerate(articles, 1):
+        title = a.get('title', '无标题')
+        link = a.get('link', '#')
+        content = a.get('content') or a.get('summary', '')
+        text_content += f"\n{'='*60}\n{i}. {title}\n{link}\n\n{content[:1000]}\n"
 
     # HTML 版本
     html_content = build_html(feed_name, articles, is_translated, is_today)
@@ -303,7 +307,7 @@ def main():
 
     print(f"[{FEED_NAME}] RSS 共 {len(all_articles)} 篇文章，今日 {len(today_articles)} 篇")
 
-    # 优先使用今日文章，无则回退到历史未处理文章（对齐 daily_task.py）
+    # 优先使用今日文章，无则回退到历史未处理文章
     if today_articles:
         candidates = today_articles
         is_today = True
@@ -357,7 +361,6 @@ def main():
                 print(f"    ✓ 翻译完成")
             else:
                 print(f"    ✗ 翻译失败，使用原文")
-        # 中文 feed 不翻译
 
         new_articles.append({
             'title': title,
