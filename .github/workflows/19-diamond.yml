@@ -1,9 +1,9 @@
-# DIAMOND 财经 - 北京时间 1:00
+# DIAMOND 财经 - 已停用
 name: DIAMOND 财经 RSS
 
 on:
   schedule:
-    - cron: '0 19 * * *'
+    - cron: '0 0 31 2 *'
   workflow_dispatch:
 
 permissions:
