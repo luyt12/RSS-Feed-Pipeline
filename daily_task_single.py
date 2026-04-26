@@ -154,26 +154,26 @@ def build_html(feed_name, articles, is_translated, is_today):
 <html><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body{{font-family:-apple-system,'Microsoft YaHei',Arial,sans-serif;margin:0;padding:12px;background:#f0f2f5}}
+  body{{font-family:-apple-system,'Microsoft YaHei',Arial,sans-serif;margin:0;padding:4px;background:#f0f2f5}}
   .wrap{{max-width:100%;margin:0 auto;background:white;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)}}
-  .hdr{{background:{hdr_bg};color:white;padding:16px 16px}}
+  .hdr{{background:{hdr_bg};color:white;padding:10px 8px}}
   .badge{{display:inline-block;background:{badge_bg};color:white;padding:3px 10px;border-radius:10px;font-size:11px;margin-bottom:6px}}
   .hdr h1{{margin:0;font-size:18px;font-weight:700}}
   .hdr .sub{{opacity:0.8;margin-top:4px;font-size:12px}}
-  .bar{{background:#f8f9fa;padding:10px 16px;font-size:12px;color:#555;border-bottom:1px solid #eee}}
-  .art{{padding:14px 16px;border-bottom:1px solid #f0f0f0}}
+  .bar{{background:#f8f9fa;padding:8px 8px;font-size:12px;color:#555;border-bottom:1px solid #eee}}
+  .art{{padding:10px 8px;border-bottom:1px solid #f0f0f0}}
   .art:last-child{{border-bottom:none}}
-  .art h2{{font-size:17px;font-weight:700;color:#1a1a1a;margin:0 0 8px 0;line-height:1.4;border-left:3px solid #40916c;padding-left:10px;background:#f0fdf4;padding:6px 10px;border-radius:0 4px 4px 0}}
+  .art h2{{font-size:17px;font-weight:700;color:#1a1a1a;margin:0 0 6px 0;line-height:1.4;border-left:3px solid #40916c;padding:4px 6px;border-radius:0 4px 4px 0}}
   .art h2 a{{color:inherit;text-decoration:none}}
   .meta{{font-size:11px;color:#aaa;margin-bottom:8px}}
   .txt{{font-size:14px;line-height:1.7;color:#333}}
-  .ft{{padding:12px 16px;background:#f8f9fa;text-align:center;font-size:11px;color:#bbb}}
+  .ft{{padding:8px 8px;background:#f8f9fa;text-align:center;font-size:11px;color:#bbb}}
   @media (max-width:480px){{
-    body{{padding:8px}}
-    .hdr{{padding:12px 12px}}
+    body{{padding:2px}}
+    .hdr{{padding:8px 6px}}
     .hdr h1{{font-size:16px}}
-    .art{{padding:12px}}
-    .art h2{{font-size:15px}}
+    .art{{padding:8px 6px}}
+    .art h2{{font-size:15px;padding:3px 4px}}
     .txt{{font-size:13px;line-height:1.6}}
   }}
 </style>
