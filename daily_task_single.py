@@ -359,6 +359,10 @@ def main():
         # 翻译（仅非中文 feed，只翻译正文，不翻译标题）
         if FEED_LANG != 'zh' and content:
             print(f"  翻译正文: {title[:50]}...")
+            # 截断过长内容，避免 API 超时
+            if len(content) > 40000:
+                content = content[:40000]
+                print(f"    ⚠ 原文过长，截取前40000字符")
             translated = translate_with_kimi(content)
             if translated and translated != content:
                 content = translated
