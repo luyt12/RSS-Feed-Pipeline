@@ -152,22 +152,30 @@ def build_html(feed_name, articles, is_translated, is_today):
 
     body = f"""<!DOCTYPE html>
 <html><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body{{font-family:-apple-system,'Microsoft YaHei',Arial,sans-serif;margin:0;padding:20px;background:#f0f2f5}}
-  .wrap{{max-width:720px;margin:0 auto;background:white;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08)}}
-  .hdr{{background:{hdr_bg};color:white;padding:28px 32px}}
-  .badge{{display:inline-block;background:{badge_bg};color:white;padding:4px 12px;border-radius:12px;font-size:11px;margin-bottom:8px}}
-  .hdr h1{{margin:0;font-size:22px;font-weight:700}}
-  .hdr .sub{{opacity:0.8;margin-top:6px;font-size:13px}}
-  .bar{{background:#f8f9fa;padding:14px 32px;font-size:13px;color:#555;border-bottom:1px solid #eee}}
-  .art{{padding:22px 32px;border-bottom:1px solid #f0f0f0}}
+  body{{font-family:-apple-system,'Microsoft YaHei',Arial,sans-serif;margin:0;padding:12px;background:#f0f2f5}}
+  .wrap{{max-width:100%;margin:0 auto;background:white;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)}}
+  .hdr{{background:{hdr_bg};color:white;padding:16px 16px}}
+  .badge{{display:inline-block;background:{badge_bg};color:white;padding:3px 10px;border-radius:10px;font-size:11px;margin-bottom:6px}}
+  .hdr h1{{margin:0;font-size:18px;font-weight:700}}
+  .hdr .sub{{opacity:0.8;margin-top:4px;font-size:12px}}
+  .bar{{background:#f8f9fa;padding:10px 16px;font-size:12px;color:#555;border-bottom:1px solid #eee}}
+  .art{{padding:14px 16px;border-bottom:1px solid #f0f0f0}}
   .art:last-child{{border-bottom:none}}
-  .art h2{{font-size:18px;font-weight:700;color:#1a1a1a;margin:0 0 12px 0;line-height:1.4;border-left:4px solid #40916c;padding-left:12px}}
+  .art h2{{font-size:15px;font-weight:600;color:#1a1a1a;margin:0 0 8px 0;line-height:1.4;border-left:3px solid #40916c;padding-left:10px}}
   .art h2 a{{color:inherit;text-decoration:none}}
-  .meta{{font-size:11px;color:#aaa;margin-bottom:12px}}
-  .txt{{font-size:14px;line-height:1.85;color:#333;background:#f9f9f9;padding:16px;border-radius:6px}}
-  .txt p{{margin:0 0 10px 0}}
-  .ft{{padding:14px 32px;background:#f8f9fa;text-align:center;font-size:11px;color:#bbb}}
+  .meta{{font-size:11px;color:#aaa;margin-bottom:8px}}
+  .txt{{font-size:14px;line-height:1.7;color:#333}}
+  .ft{{padding:12px 16px;background:#f8f9fa;text-align:center;font-size:11px;color:#bbb}}
+  @media (max-width:480px){{
+    body{{padding:8px}}
+    .hdr{{padding:12px 12px}}
+    .hdr h1{{font-size:16px}}
+    .art{{padding:12px}}
+    .art h2{{font-size:14px}}
+    .txt{{font-size:13px;line-height:1.6}}
+  }}
 </style>
 </head><body>
 <div class="wrap">
