@@ -163,7 +163,7 @@ def build_html(feed_name, articles, is_translated, is_today):
   .bar{{background:#f8f9fa;padding:10px 16px;font-size:12px;color:#555;border-bottom:1px solid #eee}}
   .art{{padding:14px 16px;border-bottom:1px solid #f0f0f0}}
   .art:last-child{{border-bottom:none}}
-  .art h2{{font-size:15px;font-weight:600;color:#1a1a1a;margin:0 0 8px 0;line-height:1.4;border-left:3px solid #40916c;padding-left:10px}}
+  .art h2{{font-size:17px;font-weight:700;color:#1a1a1a;margin:0 0 8px 0;line-height:1.4;border-left:3px solid #40916c;padding-left:10px;background:#f0fdf4;padding:6px 10px;border-radius:0 4px 4px 0}}
   .art h2 a{{color:inherit;text-decoration:none}}
   .meta{{font-size:11px;color:#aaa;margin-bottom:8px}}
   .txt{{font-size:14px;line-height:1.7;color:#333}}
@@ -173,7 +173,7 @@ def build_html(feed_name, articles, is_translated, is_today):
     .hdr{{padding:12px 12px}}
     .hdr h1{{font-size:16px}}
     .art{{padding:12px}}
-    .art h2{{font-size:14px}}
+    .art h2{{font-size:15px}}
     .txt{{font-size:13px;line-height:1.6}}
   }}
 </style>
@@ -198,7 +198,7 @@ def build_html(feed_name, articles, is_translated, is_today):
         content = content.replace('\n\n', '</p><p>').replace('\n', '<br>')
         body += f"""
   <div class="art">
-    <h2><a href="{link}">{title_esc}</a></h2>
+    <h2><span style="color:#40916c;margin-right:6px">{i}.</span><a href="{link}">{title_esc}</a></h2>
     <div class="meta">📅 {pub}</div>
     <div class="txt"><p>{content}</p></div>
   </div>
@@ -218,7 +218,10 @@ def send_email(articles, feed_name, is_translated, is_today):
 
     prefix = '🔄' if is_translated else '🌐'
     date_label = '今日' if is_today else '历史'
-    subject = f"{prefix} [{feed_name}] {date_label}更新 · {len(articles)} 篇"
+    # 邮件主题包含首篇文章标题
+    first_title = articles[0].get('title', '')[:50] if articles else ''
+    title_suffix = f" · {first_title}..." if len(articles) > 1 else (f" · {first_title}" if first_title else "")
+    subject = f"{prefix} [{feed_name}] {date_label}更新{title_suffix} · {len(articles)} 篇"
 
     # 纯文本版本
     text_content = f"{feed_name} - {date_label}更新\n共 {len(articles)} 篇文章\n\n"
@@ -226,7 +229,7 @@ def send_email(articles, feed_name, is_translated, is_today):
         title = a.get('title', '无标题')
         link = a.get('link', '#')
         content = a.get('content') or a.get('summary', '')
-        text_content += f"\n{'='*60}\n{i}. {title}\n{link}\n\n{content[:1000]}\n"
+        text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n"
 
     # HTML 版本
     html_content = build_html(feed_name, articles, is_translated, is_today)
