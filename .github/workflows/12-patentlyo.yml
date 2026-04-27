@@ -49,3 +49,5 @@ jobs:
           git diff --quiet && git diff --staged --quiet || git commit -m "Update processed URLs [skip ci]"
           git pull --rebase || true
           git push || true
+
+# schedule refresh ping 2026-04-27 18:22 UTC
