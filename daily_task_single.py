@@ -1,4 +1,3 @@
-TRANSLATION_FAILED = False
 #!/usr/bin/env python3
 """
 单源 RSS 处理脚本 - 从环境变量读取 feed 配置
@@ -89,9 +88,10 @@ def fetch_feed(url):
 def extract_content(url):
     """使用 trafilatura 提取全文"""
     try:
-        response = requests.get(url, timeout=30, headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'})
-        response.raise_for_status()
-        text = trafilatura.extract(response.content,
+        downloaded = trafilatura.fetch_url(url)
+        if not downloaded:
+            return ''
+        text = trafilatura.extract(downloaded,
                                    include_comments=False,
                                    include_tables=True,
                                    output_format='markdown',
@@ -322,12 +322,27 @@ def main():
 
     print(f"[{FEED_NAME}] RSS 共 {len(all_articles)} 篇文章，今日 {len(today_articles)} 篇")
 
-    # 优先使用今日文章，无则回退到历史未处理文章
+    # 逻辑：优先用今日文章，不够5个则补充历史未处理文章
+    candidates = []
+    is_today = False
+
     if today_articles:
-        candidates = today_articles
+        candidates = list(today_articles[:MAX_DAILY])
         is_today = True
-        print(f"  → 使用今日文章: {len(candidates)} 篇")
+        remaining = MAX_DAILY - len(candidates)
+        if remaining > 0:
+            # 今日文章不足5个，补充历史未处理文章
+            history_candidates = [a for a in all_articles if a['link'] not in feed_processed and a not in today_articles]
+            history_candidates = history_candidates[:remaining]
+            candidates.extend(history_candidates)
+            if history_candidates:
+                print(f"  → 今日文章 {len(today_articles)} 篇（不足 {MAX_DAILY}），补充历史未处理 {len(history_candidates)} 篇")
+            else:
+                print(f"  → 使用今日文章: {len(candidates)} 篇")
+        else:
+            print(f"  → 使用今日文章: {len(candidates)} 篇")
     else:
+        # 今日无文章，全部从历史未处理中取
         candidates = [a for a in all_articles if a['link'] not in feed_processed]
         is_today = False
         if candidates:
@@ -336,7 +351,7 @@ def main():
             print(f"  → 无新文章")
             return
 
-    # 限制数量
+    # 最终限制数量
     candidates = candidates[:MAX_DAILY]
 
     # 处理每篇文章
@@ -371,16 +386,15 @@ def main():
         if FEED_LANG != 'zh' and content:
             print(f"  翻译正文: {title[:50]}...")
             # 截断过长内容，避免 API 超时
-            if len(content) > 30000:
-                content = content[:30000]
-                print(f"    ⚠ 原文过长，截取前30000字符")
+            if len(content) > 40000:
+                content = content[:40000]
+                print(f"    ⚠ 原文过长，截取前40000字符")
             translated = translate_with_kimi(content)
             if translated and translated != content:
                 content = translated
                 print(f"    ✓ 翻译完成")
             else:
                 print(f"    ✗ 翻译失败，使用原文")
-            global TRANSLATION_FAILED; TRANSLATION_FAILED = True
 
         new_articles.append({
             'title': title,
