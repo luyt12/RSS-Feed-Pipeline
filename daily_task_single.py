@@ -374,6 +374,10 @@ def main():
             print(f"  提取全文: {title[:50]}... (RSS 仅 {rss_len} 字符)")
             full_content = extract_content(link)
             if full_content and len(full_content) > rss_len:
+                # 抓取后立即判断长度并截断
+                if len(full_content) > 15000:
+                    full_content = full_content[:15000]
+                    print(f"    ⚠ 全文过长，截取前15000字符")
                 content = full_content
                 print(f"    ✓ 抓取成功: {len(full_content)} 字符")
             else:
