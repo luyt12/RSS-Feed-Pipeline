@@ -1,552 +1,6 @@
-{
-  "https://www.chinesepen.org/feed": [
-    "https://www.chinesepen.org/blog/archives/191428",
-    "https://www.chinesepen.org/blog/archives/31235",
-    "https://www.chinesepen.org/blog/archives/209059",
-    "https://www.chinesepen.org/blog/archives/209068",
-    "https://www.chinesepen.org/blog/archives/209056",
-    "https://www.chinesepen.org/blog/archives/209076",
-    "https://www.chinesepen.org/blog/archives/209072",
-    "https://www.chinesepen.org/blog/archives/209093",
-    "https://www.chinesepen.org/blog/archives/209040",
-    "https://www.chinesepen.org/blog/archives/209037",
-    "https://www.chinesepen.org/blog/archives/209095"
-  ],
-  "https://www.scotusblog.com/feed/": [
-    "https://www.scotusblog.com/2026/04/opinions-on-the-way/",
-    "https://www.scotusblog.com/2026/04/just-who-are-the-people/",
-    "https://www.scotusblog.com/2026/04/universal-pre-k-causes-court-to-re-re-reconsider-major-religious-precedent/",
-    "https://www.scotusblog.com/2026/04/last-arguments-of-the-term-huge-cases-for-the-fourth-amendment-and-immigration/",
-    "https://www.scotusblog.com/2026/04/justice-sotomayor-apologizes-for-inappropriate-remarks-about-justice-kavanaugh/",
-    "https://www.scotusblog.com/2026/04/justices-to-hear-argument-on-right-to-jury-trial-in-fcc-proceedings/",
-    "https://www.scotusblog.com/2026/04/a-big-day-for-scotusblog/",
-    "https://www.scotusblog.com/2026/04/scotusblogs-new-look/",
-    "https://www.scotusblog.com/2026/04/the-sports-stars-hip-hop-artists-and-celebrity-magicians-playing-a-role-in-pending-supreme-court-petitions/",
-    "https://www.scotusblog.com/2026/04/legislative-history-lives-on-in-secret/",
-    "https://www.scotusblog.com/2026/04/court-appears-skeptical-of-right-to-jury-trial-in-fcc-proceedings/",
-    "https://www.scotusblog.com/2026/04/how-the-justices-decide-which-cases-to-decide-an-explainer/",
-    "https://www.scotusblog.com/2026/04/justices-to-consider-secs-use-of-disgorgement-in-securities-enforcement/",
-    "https://www.scotusblog.com/2026/04/digital-location-data-heads-back-to-the-supreme-court-/",
-    "https://www.scotusblog.com/2026/04/justices-to-consider-thorny-dispute-between-manufacturers-of-medication-and-its-generic-substitu/",
-    "https://www.scotusblog.com/2026/04/justices-seem-receptive-to-secs-use-of-disgorgement-in-securities-enforcement/",
-    "https://www.scotusblog.com/2026/04/scotustoday-for-wednesday-april-15/",
-    "https://www.scotusblog.com/2026/04/sotomayor-vs-kavanaugh/",
-    "https://www.scotusblog.com/2026/04/law-memoir-and-the-mystery-of-justice-anthony-kennedys-writing/",
-    "https://www.scotusblog.com/2026/04/the-non-partisan-puzzle-in-the-conversion-therapy-case/",
-    "https://www.scotusblog.com/2026/04/justices-to-consider-relationship-between-federal-and-state-rules-for-cancer-warnings-on-pestici/",
-    "https://www.scotusblog.com/2026/04/why-does-the-government-keep-showing-up-at-the-supreme-court-uninvited/",
-    "https://www.scotusblog.com/2026/04/justices-debate-rights-of-lawful-permanent-residents-against-backdrop-of-trumps-immigration-crac/",
-    "https://www.scotusblog.com/2026/04/scotustoday-for-monday-april-13/",
-    "https://www.scotusblog.com/2026/04/birthright-citizenship-oral-argument-highlights/",
-    "https://www.scotusblog.com/2026/04/a-leak-from-the-interim-docket/",
-    "https://www.scotusblog.com/2026/04/the-emergency-dockets-mistaken-birthday/",
-    "https://www.scotusblog.com/2026/04/scotustoday-for-friday-april-10/",
-    "https://www.scotusblog.com/2026/04/justices-reject-certain-protections-for-contractors-in-war-zones/",
-    "https://www.scotusblog.com/2026/04/court-adds-two-cases-to-2026-27-docket/",
-    "https://www.scotusblog.com/2026/04/why-the-supreme-courts-birthright-citizenship-decision-may-depend-on-the-meaning-of-domicile/",
-    "https://www.scotusblog.com/2026/04/scotustoday-for-tuesday-april-14/",
-    "https://www.scotusblog.com/2026/04/court-unanimously-sides-with-oil-and-gas-companies-in-suit-over-damage-to-louisiana-coast/",
-    "https://www.scotusblog.com/2026/04/announcement-of-opinions-for-friday-april-17/",
-    "https://www.scotusblog.com/2026/04/the-brazilian-federal-supreme-court/",
-    "https://www.scotusblog.com/2026/04/how-to-restore-the-supreme-courts-legitimacy/",
-    "https://www.scotusblog.com/2026/04/justices-to-consider-when-federal-courts-may-review-state-court-decisions/",
-    "https://www.scotusblog.com/2026/04/what-the-new-york-times-got-wrong-and-right-about-the-emergency-docket/",
-    "https://www.scotusblog.com/2026/04/scotustoday-for-thursday-april-16/",
-    "https://www.scotusblog.com/2026/04/what-cases-might-the-court-grant-next/",
-    "https://www.scotusblog.com/2026/04/justice-thomas-wrong-headed-attack-on-progressivism/",
-    "https://www.scotusblog.com/2026/04/court-holds-that-30-day-deadline-for-removing-cases-to-federal-court-is-mandatory/",
-    "https://www.scotusblog.com/2026/04/seven-relists-walk-into-a-bar/",
-    "https://www.scotusblog.com/2026/04/court-to-hear-argument-on-law-enforcements-use-of-geofence-warrants/",
-    "https://www.scotusblog.com/2026/04/court-will-consider-whether-trump-administration-properly-revoked-protected-status-for-syrians-a/",
-    "https://www.scotusblog.com/2026/04/court-to-consider-rights-of-lawful-permanent-residents-accused-of-committing-a-crime/",
-    "https://www.scotusblog.com/2026/04/two-new-opinions/",
-    "https://www.scotusblog.com/2026/04/justices-debate-the-relationship-between-state-and-federal-courts/",
-    "https://www.scotusblog.com/2026/04/supreme-court-will-hear-religious-liberty-case-on-catholic-preschools-and-lgbtq-families/",
-    "https://www.scotusblog.com/2026/04/the-week-in-review-2/"
-  ],
-  "https://foreignpolicy.com/tag/geopolitics/feed/": [
-    "https://foreignpolicy.com/2026/04/21/iran-war-china-us-competition-geopolitics/",
-    "https://foreignpolicy.com/2026/03/30/trump-war-iran-israel-lebanon-gulf-winner-loser/",
-    "https://foreignpolicy.com/2026/04/08/xi-jinping-cheng-li-wun-taiwan-trump-strait/",
-    "https://foreignpolicy.com/2026/03/25/china-us-russia-sphere-influence-geopolitics-competition/",
-    "https://foreignpolicy.com/2026/04/06/sudan-war-diplomacy-west-burhan-hemeti/",
-    "https://foreignpolicy.com/2026/04/06/iran-war-china-geopolitics-trump-superpower-rivalry-strategy-united-states/",
-    "https://foreignpolicy.com/2026/04/23/trump-quad-india-japan-australia-modi-china-summit-diplomacy-geopolitics/",
-    "https://foreignpolicy.com/2026/03/24/hal-brands-world-after-trump-three-scenarios/",
-    "https://foreignpolicy.com/2026/03/27/knight-seven-kingdoms-game-thrones-westeros-targaryen-dunk-trump/",
-    "https://foreignpolicy.com/2026/04/22/karim-sadjadpour-iran-regime-future-war-gulf-energy-hormuz-cease-fire/",
-    "https://foreignpolicy.com/2026/04/10/iran-war-cease-fire-john-bolton/",
-    "https://foreignpolicy.com/2026/04/09/brett-mcgurk-middle-east-israel-gaza-iran/",
-    "https://foreignpolicy.com/2026/04/07/iraq-iran-war-militias/",
-    "https://foreignpolicy.com/2026/04/08/xi-jinping-cheng-li-wun-china-taiwan-meeting-invasion/",
-    "https://foreignpolicy.com/2026/04/02/south-korea-iran-trump-war-james-laney-thaad/",
-    "https://foreignpolicy.com/2026/03/27/iran-war-economic-effects-gulf-oil-gas/",
-    "https://foreignpolicy.com/2026/04/03/pakistan-iran-diplomacy-mediation-munir-india/",
-    "https://foreignpolicy.com/2026/04/07/osullivan-iran-war-energy-weapon-oil-gas-prices/",
-    "https://foreignpolicy.com/2026/04/13/international-aid-food-humanitarian-crisis-usaid-development/",
-    "https://foreignpolicy.com/2026/04/14/china-iran-us-blockade-xi-jinping-diplomacy/",
-    "https://foreignpolicy.com/2026/04/01/afghanistan-pakistan-war-airstrikes-kabul-taliban/",
-    "https://foreignpolicy.com/2026/04/21/trump-iran-us-negotiations-diplomacy/",
-    "https://foreignpolicy.com/2026/03/26/asia-pacific-trump-pivot-japan-china-defense/",
-    "https://foreignpolicy.com/2026/03/24/singapore-malacca-hormuz-strait-war-china-iran-uae-trade-shipping-tankers/",
-    "https://foreignpolicy.com/2026/04/14/stephen-walt-iran-war-united-states-rogue-state/"
-  ],
-  "https://abovethelaw.com/feed/": [
-    "https://abovethelaw.com/2026/04/glassdoor-for-judges-celebrates-its-second-birthday/",
-    "https://abovethelaw.com/2026/04/the-best-law-schools-for-real-estate-law-2026/",
-    "https://abovethelaw.com/2026/04/dla-piper-drops-its-swiss-verein-like-a-bad-habit/",
-    "https://abovethelaw.com/2026/04/law-student-finds-himself-in-the-best-jeopardy-possible/",
-    "https://abovethelaw.com/2026/04/us-going-deeper-into-the-red-now-that-the-irs-is-sharing-tax-data-with-ice/",
-    "https://abovethelaw.com/2026/04/joe-exotics-lawyer-runs-afoul-of-ai-hallucinations/",
-    "https://abovethelaw.com/2026/04/attorneys-often-clog-efiling-systems-with-unnecessary-filings/",
-    "https://abovethelaw.com/2026/04/morning-docket-04-24-26/",
-    "https://abovethelaw.com/2026/04/biglaw-partnership-isnt-always-the-financial-windfall-you-may-think-it-is/",
-    "https://abovethelaw.com/2026/04/companies-are-quietly-killing-their-law-firm-diversity-mandates/",
-    "https://abovethelaw.com/2026/04/pirro-taps-out-on-powell/",
-    "https://abovethelaw.com/2026/04/sex-drugs-and-social-media-addiction/",
-    "https://abovethelaw.com/2026/04/elite-biglaw-firm-learns-the-real-cost-of-ai-hallucinations-the-firms-reputation/",
-    "https://abovethelaw.com/2026/04/justice-departments-splc-indictment-just-got-dumber-which-seemed-impossible/",
-    "https://abovethelaw.com/2026/04/the-biglaw-firm-rising-through-the-rankings/",
-    "https://abovethelaw.com/2026/04/prominent-appellate-partner-joins-paul-weiss-litigation-exodus-for-davis-polk/",
-    "https://abovethelaw.com/2026/04/fedsoc-event-meant-to-sanewash-dhs-abducting-people-made-harder-by-protesters-making-a-big-fuss-about-racial-profiling/",
-    "https://abovethelaw.com/2026/04/its-time-to-submit-your-entries-for-above-the-laws-17th-annual-law-revue-video-contest/",
-    "https://abovethelaw.com/2026/04/the-most-prestigious-biglaw-firms-in-boston-2027/",
-    "https://abovethelaw.com/2026/04/the-biglaw-eo-cases-head-to-the-d-c-circuit-with-a-hall-of-fame-advocate-and-one-very-thirsty-judge/",
-    "https://abovethelaw.com/2026/04/morning-docket-04-23-26/",
-    "https://abovethelaw.com/2026/04/no-facts-no-problem-see-also/",
-    "https://medcitynews.com/2026/04/how-the-doj-is-tackling-fraud-in-the-aca-marketplace/",
-    "https://www.myshingle.com/2026/04/ai-for-lawyer-moms-replay-now-available/",
-    "https://abovethelaw.com/2026/04/new-age-and-traditional-law-firms-the-need-to-take-a-long-view/",
-    "https://abovethelaw.com/2026/04/how-appealing-weekly-roundup-167/",
-    "https://www.lawnext.com/2026/04/clio-work-clios-ai-workspace-is-now-available-to-solo-and-smaller-law-firms-as-a-standalone-product.html",
-    "https://abovethelaw.com/2026/04/big-names-polking-around-see-also/",
-    "https://abovethelaw.com/2026/04/the-line-we-cannot-cross-where-ai-in-law-is-headed-and-why-judgment-still-must-lead-2/",
-    "https://abovethelaw.com/2026/04/ten-commandments-in-schools-law-upheld-as-fifth-circuit-declares-thou-shalt-not-confuse-us-with-facts/"
-  ],
-  "https://legalinsurrection.com/feed/": [
-    "https://legalinsurrection.com/2026/04/california-swapped-gold-for-grift-how-affordable-housing-and-green-energy-became-ngo-slush-funds/?utm_source=rss&utm_medium=rss&utm_campaign=california-swapped-gold-for-grift-how-affordable-housing-and-green-energy-became-ngo-slush-funds",
-    "https://legalinsurrection.com/2026/04/blanche-evidence-shows-whca-suspect-targeted-officials/?utm_source=rss&utm_medium=rss&utm_campaign=blanche-evidence-shows-whca-suspect-targeted-officials",
-    "https://legalinsurrection.com/2026/04/anti-israel-activists-target-jewish-students-at-u-minnesota/?utm_source=rss&utm_medium=rss&utm_campaign=anti-israel-activists-target-jewish-students-at-u-minnesota",
-    "https://legalinsurrection.com/2026/04/who-is-cole-allen-the-suspect-accused-of-opening-fire-at-the-whcd/?utm_source=rss&utm_medium=rss&utm_campaign=who-is-cole-allen-the-suspect-accused-of-opening-fire-at-the-whcd",
-    "https://legalinsurrection.com/2026/04/trump-presser-gunman-stopped-before-reaching-whca-dinner/?utm_source=rss&utm_medium=rss&utm_campaign=trump-presser-gunman-stopped-before-reaching-whca-dinner",
-    "https://legalinsurrection.com/2026/04/microlooting-encouraged-in-ny-times-podcast-with-hasan-piker-new-yorker-writer/?utm_source=rss&utm_medium=rss&utm_campaign=microlooting-encouraged-in-ny-times-podcast-with-hasan-piker-new-yorker-writer",
-    "https://legalinsurrection.com/2026/04/missing-u-south-florida-students-were-allegedly-murdered-by-roommate/?utm_source=rss&utm_medium=rss&utm_campaign=missing-u-south-florida-students-were-allegedly-murdered-by-roommate",
-    "https://legalinsurrection.com/2026/04/washington-u-student-columnist-upset-new-campus-convenience-store-uses-term-bodega/?utm_source=rss&utm_medium=rss&utm_campaign=washington-u-student-columnist-upset-new-campus-convenience-store-uses-term-bodega",
-    "https://legalinsurrection.com/2026/04/dei-industrial-complex-survival-guide-hide-it-and-conceal-it-and-mask-it/?utm_source=rss&utm_medium=rss&utm_campaign=dei-industrial-complex-survival-guide-hide-it-and-conceal-it-and-mask-it",
-    "https://legalinsurrection.com/2026/04/six-discriminatory-scholarships-at-viterbo-university-challenged-by-equal-protection-project/?utm_source=rss&utm_medium=rss&utm_campaign=six-discriminatory-scholarships-at-viterbo-university-challenged-by-equal-protection-project",
-    "https://legalinsurrection.com/2026/04/iran-talks-president-trump-calls-off-witkoff-kushner-islamabad-trip/?utm_source=rss&utm_medium=rss&utm_campaign=iran-talks-president-trump-calls-off-witkoff-kushner-islamabad-trip",
-    "https://legalinsurrection.com/2026/04/bernie-sanders-allies-launch-group-for-outreach-to-leftist-students-on-campus/?utm_source=rss&utm_medium=rss&utm_campaign=bernie-sanders-allies-launch-group-for-outreach-to-leftist-students-on-campus",
-    "https://legalinsurrection.com/2026/04/breaking-shots-allegedly-fired-at-white-house-correspondence-association-dinner/?utm_source=rss&utm_medium=rss&utm_campaign=breaking-shots-allegedly-fired-at-white-house-correspondence-association-dinner",
-    "https://legalinsurrection.com/2026/04/the-luxury-beliefs-of-the-globalist-left/?utm_source=rss&utm_medium=rss&utm_campaign=the-luxury-beliefs-of-the-globalist-left",
-    "https://legalinsurrection.com/2026/04/psychology-chair-at-unc-asheville-says-dei-was-rebranded-in-department/?utm_source=rss&utm_medium=rss&utm_campaign=psychology-chair-at-unc-asheville-says-dei-was-rebranded-in-department",
-    "https://legalinsurrection.com/2026/04/whcd-dinner-shooting-occurred-as-dhs-and-secret-service-have-been-unfunded-for-more-than-70-days/?utm_source=rss&utm_medium=rss&utm_campaign=whcd-dinner-shooting-occurred-as-dhs-and-secret-service-have-been-unfunded-for-more-than-70-days",
-    "https://legalinsurrection.com/2026/04/splc-the-racial-arsonist-fundraised-off-the-fire/?utm_source=rss&utm_medium=rss&utm_campaign=splc-the-racial-arsonist-fundraised-off-the-fire",
-    "https://legalinsurrection.com/2026/04/schumer-jeffries-ripped-after-tone-deaf-statements-on-whcd-shooting/?utm_source=rss&utm_medium=rss&utm_campaign=schumer-jeffries-ripped-after-tone-deaf-statements-on-whcd-shooting",
-    "https://legalinsurrection.com/2026/04/report-house-dems-already-pushing-for-day-one-impeachment-of-trump/?utm_source=rss&utm_medium=rss&utm_campaign=report-house-dems-already-pushing-for-day-one-impeachment-of-trump",
-    "https://legalinsurrection.com/2026/04/splc-false-flag-operations-reminiscent-of-tactics-used-against-tea-party/?utm_source=rss&utm_medium=rss&utm_campaign=splc-false-flag-operations-reminiscent-of-tactics-used-against-tea-party",
-    "https://legalinsurrection.com/2026/04/50-years-ago-today-cubs-outfielder-rick-monday-saved-an-american-flag/?utm_source=rss&utm_medium=rss&utm_campaign=50-years-ago-today-cubs-outfielder-rick-monday-saved-an-american-flag",
-    "https://legalinsurrection.com/2026/04/israel-eliminates-hamas-terror-cell-commander-who-participated-in-october-7-massacre/?utm_source=rss&utm_medium=rss&utm_campaign=israel-eliminates-hamas-terror-cell-commander-who-participated-in-october-7-massacre",
-    "https://legalinsurrection.com/2026/04/trump-tells-fox-news-whcd-shooting-wont-change-course/?utm_source=rss&utm_medium=rss&utm_campaign=trump-tells-fox-news-whcd-shooting-wont-change-course"
-  ],
-  "https://reason.com/volokh/feed/": [
-    "https://reason.com/volokh/2026/04/23/so-there-was-more-to-the-story/",
-    "https://reason.com/volokh/2026/04/25/the-hinkley-hilton/",
-    "https://reason.com/volokh/2026/04/23/california-law-generally-requiring-federal-law-enforcement-officers-to-display-id-violates-supremacy-clause/",
-    "https://reason.com/volokh/2026/04/23/do-the-supreme-court-shadow-papers-reveal-supreme-court-hypocrisy/",
-    "https://reason.com/volokh/2026/04/25/links-to-my-posts-on-chatrie-v-united-states-the-geofence-warrant-case/",
-    "https://reason.com/volokh/2026/04/26/justice-clarence-thomas-on-the-declaration-of-independence/",
-    "https://reason.com/volokh/2026/04/26/today-in-supreme-court-history-april-26-1995-7/",
-    "https://reason.com/volokh/2026/04/23/spotting-scammers-with-verified-dating-app-profiles/",
-    "https://reason.com/volokh/2026/04/25/eighth-circuit-upholds-ban-on-trespassing-for-surveillance-purposes/",
-    "https://reason.com/volokh/2026/04/26/open-thread-186/",
-    "https://reason.com/volokh/2026/04/23/two-cheers-for-abundance-liberalism/",
-    "https://reason.com/volokh/2026/04/25/open-thread-185/",
-    "https://reason.com/volokh/2026/04/24/today-in-supreme-court-history-april-24-1963-7/",
-    "https://reason.com/volokh/2026/04/24/short-circuit-an-inexhaustive-weekly-compendium-of-rulings-from-the-federal-courts-of-appeal-56/",
-    "https://reason.com/volokh/2026/04/25/judge-finds-epstein-related-plaintiff-lies-spoliation-and-lawyer-misconduct-in-rape-lawsuit-against-investor-leon-black/",
-    "https://reason.com/volokh/2026/04/24/eleventh-circuit-rejects-roy-moores-libel-suit-over-banned-from-mall-for-soliciting-sex-from-young-girls-one-he-approached-was-14-ad/",
-    "https://reason.com/volokh/2026/04/25/plaintiffs-cant-sue-the-chinese-government-with-largely-sealed-complaint/",
-    "https://reason.com/volokh/2026/04/25/today-in-supreme-court-history-april-25-1938-7/",
-    "https://reason.com/volokh/2026/04/24/open-thread-184/",
-    "https://reason.com/volokh/2026/04/25/thought-experiment-its-2030-and-the-newsom-justice-department-indicts-a-conservative-group-for-paying-antifa-leaders/",
-    "https://reason.com/volokh/2026/04/24/the-difficulty-of-the-search-question-more-thoughts-on-chatrie/",
-    "https://reason.com/volokh/2026/04/26/what-do-you-do-with-ai-generated-legal-scholarship-an-april-2026-question/"
-  ],
-  "https://harvardlawreview.org/feed/": [
-    "https://harvardlawreview.org/print/vol-139/state-ex-rel-d-d/",
-    "https://harvardlawreview.org/print/vol-139/alas/",
-    "https://harvardlawreview.org/print/vol-139/home-rule-reinforcement-constitutional-local-autonomy-guarantees/",
-    "https://harvardlawreview.org/print/vol-139/white-house-secures-corporate-governance-interest-in-the-united-states-steel-corporation/",
-    "https://harvardlawreview.org/print/vol-139/lange-v-houston-county/",
-    "https://harvardlawreview.org/print/vol-139/indigenous-constitutionalism/",
-    "https://harvardlawreview.org/print/vol-139/enforcing-state-constitutions-through-constitutional-torts/",
-    "https://harvardlawreview.org/print/vol-139/introduction-11/",
-    "https://harvardlawreview.org/print/vol-139/the-history-and-tradition-of-substantive-due-process-in-state-constitutions/",
-    "https://harvardlawreview.org/print/vol-139/the-decline-and-fall-of-the-state-executive-council/"
-  ],
-  "https://www.foreignaffairs.com/united-states/america-should-be-israels-partner-not-its-patron": {
-    "title": "America Should Be Israelâ€™s Partner, Not Its Patron",
-    "sent": true,
-    "date": "2026-04-21"
-  },
-  "https://www.foreignaffairs.com/israel/gaza-gazans": {
-    "title": "A Gaza for Gazans",
-    "sent": true,
-    "date": "2026-04-23"
-  },
-  "https://www.foreignaffairs.com/united-states/how-china-and-russia-can-exploit-iran-war": {
-    "title": "How China and Russia Can Exploit the Iran War",
-    "sent": true,
-    "date": "2026-04-23"
-  },
-  "https://www.foreignaffairs.com/united-states/other-china-flash-point": {
-    "title": "The Other China Flash Point",
-    "sent": true,
-    "date": "2026-04-24"
-  },
-  "https://patentlyo.com/feed": [
-    "https://patentlyo.com/patent/2026/04/the-dtsas-missing-preemption-does-%c2%a7-1835b-bind-state-courts.html",
-    "https://patentlyo.com/patent/2026/04/same-problem-same-solution-reading-trade-secrets-across-fields.html",
-    "https://patentlyo.com/patent/2026/04/extra-credit-not-required-teva-v-lilly-and-the-limits-of-amgens-reach.html",
-    "https://patentlyo.com/patent/2026/04/still-climbing-pta-hits-318-days-back-to-2015-levels.html",
-    "https://patentlyo.com/patent/2026/04/the-cox-shadow-over-hikma-four-questions-for-wednesdays-argument.html",
-    "https://patentlyo.com/patent/2026/04/ptab-inventory-drops-below-2000-for-the-first-time-in-20-years.html",
-    "https://patentlyo.com/patent/2026/04/mind-the-gap-the-middle-layer-of-obviousness-doctrine.html",
-    "https://patentlyo.com/patent/2026/04/recalibration-seven-months-of-ptab-%c2%a7-101-data.html",
-    "https://patentlyo.com/patent/2026/04/barry-v-depuy-returns-en-banc-petition-tests-ecofactors-reach-on-rule-702-gatekeeping.html",
-    "https://patentlyo.com/patent/2026/04/fun-while-it-lasted-judge-albright-to-leave-the-bench.html",
-    "https://patentlyo.com/patent/2026/04/extraordinary-by-design-how-the-uspto-is-bypassing-its-own-reexamination-rules.html"
-  ],
-  "https://www.notboring.co/feed": [
-    "https://www.notboring.co/p/weekly-dose-of-optimism-179",
-    "https://www.notboring.co/p/the-great-blue-frontier",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-190",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-184",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-188",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-185",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-186",
-    "https://www.notboring.co/p/power-in-the-age-of-intelligence",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-180",
-    "https://www.notboring.co/p/raising-a-special-little-ai",
-    "https://www.notboring.co/p/electromagnetism-secretly-runs-the",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-178",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-181",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-187",
-    "https://www.notboring.co/p/bad-analogies",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-183",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-182",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-189",
-    "https://www.notboring.co/p/world-models",
-    "https://www.notboring.co/p/costless-sacrifice"
-  ],
-  "https://plink.anyfeeder.com/time": [
-    "https://time.com/article/2026/04/24/arbor-day-is-really-about-infrastructure/",
-    "https://time.com/article/2026/04/23/cortisol-myths-debunked-stress-hormone-facts/",
-    "https://time.com/article/2026/04/25/trump-rushed-off-stage-after-shots-fired-at-white-house-correspondents-dinner/",
-    "https://time.com/article/2026/04/24/uk-lawmakers-king-charles-us-visit-canceled-calls-trump-iran-war/",
-    "https://time.com/article/2026/04/24/netanyahu-prostate-cancer-treatment-israel/",
-    "https://time.com/article/2026/04/26/why-we-should-agree-to-agree/",
-    "https://time.com/article/2026/04/24/soldier-charged-insider-trading-polymarket-van-dyke-maduro-capture-trump/",
-    "https://time.com/article/2026/04/23/republicans-who-broke-ranks-as-gop-clears-path-for-ice-funding/",
-    "https://time.com/article/2026/04/24/a-new-generation-of-climate-leaders-are-our-last-hope/",
-    "https://time.com/article/2026/04/24/why-countries-are-attending-fossil-fuel-transition-summit/",
-    "https://time.com/article/2026/04/25/falkland-islands-javier-milei-trump/",
-    "https://time.com/article/2026/04/25/trump-iran-peace-talks-canceled/",
-    "https://time.com/article/2026/04/23/apex-review-charlize-theron/",
-    "https://time.com/article/2026/04/24/if-wishes-could-kill-ending/",
-    "https://time.com/article/2026/04/23/trump-orders-us-navy-shoot-kill-boats-strait-hormuz-iran-war/",
-    "https://time.com/article/2026/04/26/cole-tomas-allen-whca-shooting/",
-    "https://time.com/article/2026/04/26/the-cost-of-being-different/",
-    "https://time.com/article/2026/04/24/trump-reclassification-medical-marijuana/",
-    "https://time.com/article/2026/04/24/trump-threatens-uk-with-big-tariff-iran-war-relationship-fractured/",
-    "https://time.com/article/2026/04/24/united-states-spain-nato-suspension-efforts-pentagon-email/",
-    "https://time.com/article/2026/04/24/geopolitics-energy-time100-summit/",
-    "https://time.com/article/2026/04/24/cuba-trump-castro-regime/",
-    "https://time.com/article/2026/04/23/trump-administration-spirit-airlines-bailout-republicans-react-against/",
-    "https://time.com/article/2026/04/23/reconsidering-michael-jackson/",
-    "https://time.com/article/2026/04/23/michael-jackson-biopic/",
-    "https://time.com/article/2026/04/24/claude-mythos-chatgpt-rosalind-release-dangerous/",
-    "https://time.com/article/2026/04/23/time-to-bring-time100-next-to-india-for-the-first-time-in-partnership-with-reliance/"
-  ],
-  "https://www.rd.com/feed/": [
-    "https://www.rd.com/list/earth-day-memes/",
-    "https://www.rd.com/article/origin-bull-bear-markets/",
-    "https://www.rd.com/article/artemis-ii/",
-    "https://www.rd.com/article/book-based-travel/",
-    "https://www.rd.com/article/earth-day-jokes/",
-    "https://www.rd.com/article/what-is-ube/",
-    "https://www.rd.com/article/trick-to-never-forget-belongings/",
-    "https://www.rd.com/article/ai-environmental-impact/",
-    "https://www.rd.com/article/germy-airport-security-bins/",
-    "https://www.rd.com/article/queen-elizabeth-philip-hold-hands/",
-    "https://www.rd.com/article/quietest-hotel-room/",
-    "https://www.rd.com/article/amazon-not-supporting-old-kindles/",
-    "https://www.rd.com/article/why-princess-diana-wouldnt-date-tom-cruise/",
-    "https://www.rd.com/article/solo-travel-by-generation/",
-    "https://www.rd.com/article/ditch-digital-clutter/",
-    "https://www.rd.com/article/surprising-new-earth-facts/",
-    "https://www.rd.com/article/typos-status-symbol/",
-    "https://www.rd.com/article/cruise-contract-fine-print/",
-    "https://www.rd.com/article/ai-jokes/",
-    "https://www.rd.com/article/mcdonalds-new-drinks-2026/",
-    "https://www.rd.com/article/etiquette-pass-someone-on-escalator/",
-    "https://www.rd.com/article/what-royals-do-with-unwanted-items/",
-    "https://www.rd.com/article/gas-price-apps/",
-    "https://www.rd.com/article/how-to-clean-a-suitcase/",
-    "https://www.rd.com/article/how-to-help-the-planet/",
-    "https://www.rd.com/article/online-friendships/",
-    "https://www.rd.com/article/joy-of-getting-lost/",
-    "https://www.rd.com/article/april-showers-more-severe/",
-    "https://www.rd.com/article/sneak-peek-margos-got-money-troubles/",
-    "https://www.rd.com/article/how-to-clean-books/"
-  ],
-  "http://ftr.fivefilters.org/makefulltextfeed.php?url=http://www.foreignaffairs.com/rss.xml&max=3": [
-    "https://www.foreignaffairs.com/israel/gaza-gazans",
-    "https://www.foreignaffairs.com/united-states/other-china-flash-point",
-    "https://www.foreignaffairs.com/united-states/how-china-and-russia-can-exploit-iran-war"
-  ],
-  "https://feedx.net/rss/newyorker.xml": [
-    "https://www.newyorker.com/podcast/the-new-yorker-radio-hour/why-senator-rand-paul-voted-to-limit-donald-trumps-war-powers",
-    "https://www.newyorker.com/culture/on-television/the-new-masculinity-of-dtf-st-louis",
-    "https://www.newyorker.com/news/the-lede/how-big-a-threat-are-iranian-backed-cyberattacks",
-    "https://www.newyorker.com/cartoons/blitts-kvetchbook/happy-earth-day",
-    "https://www.newyorker.com/podcast/critics-at-large/why-earnestness-is-everywhere",
-    "https://www.newyorker.com/culture/the-front-row/michael-reviewed-a-sanitized-bio-pic-thats-all-business",
-    "https://www.newyorker.com/news/the-lede/how-big-a-threat-are-iranian-backed-cyber-attacks",
-    "https://www.newyorker.com/podcast/political-scene/what-pro-wrestling-taught-linda-mcmahon-about-politics",
-    "https://www.newyorker.com/news/the-political-scene/the-rise-of-the-epstein-democrat",
-    "https://www.newyorker.com/news/the-lede/liv-golf-is-dying-of-boredom",
-    "https://www.newyorker.com/culture/goings-on/oneohtrix-point-nevers-sense-of-the-uncanny",
-    "https://www.newyorker.com/books/page-turner/a-wunderkinds-best-selling-nostalgia",
-    "https://www.newyorker.com/humor/shouts-murmurs/what-jesus-meant",
-    "https://www.newyorker.com/magazine/2026/05/04/half-man-tv-review-hbo",
-    "https://www.newyorker.com/culture/progress-report/what-will-it-take-to-get-ai-out-of-schools",
-    "https://www.newyorker.com/cartoons/daily-cartoon/friday-april-24th-the-end-is-near",
-    "https://www.newyorker.com/news/q-and-a/how-beijing-views-the-war-in-iran",
-    "https://www.newyorker.com/podcast/the-new-yorker-radio-hour/fat-swim-and-literatures-fatphobia-problem",
-    "https://www.newyorker.com/news/letter-from-trumps-washington/trump-and-the-iran-deal-that-wasnt",
-    "https://www.newyorker.com/cartoons/daily-cartoon/thursday-april-23rd-crossword-puzzle-slang"
-  ],
-  "https://news.yahoo.co.jp/rss/media/diamond/all.xml": [
-    "https://news.yahoo.co.jp/articles/74ee4f10ed1ab9dfa18eadd720bbe4d3efee1ede?source=rss",
-    "https://news.yahoo.co.jp/articles/bdfffac084f6453cb5ba7fbfdb453056d020df8c?source=rss",
-    "https://news.yahoo.co.jp/articles/6bc4fe297e76140376aa471f59e3bf0c50f56575?source=rss",
-    "https://news.yahoo.co.jp/articles/a24714d81b3b55a50924c6d7d02110eda0cfcb44?source=rss",
-    "https://news.yahoo.co.jp/articles/6cc2ecdc3c6f14c7d688ce6a3ce0cfbcebd51a4b?source=rss",
-    "https://news.yahoo.co.jp/articles/64c2142c5b934f9bd17beafeb86c99623c7ea7ad?source=rss",
-    "https://news.yahoo.co.jp/articles/321300d25e8fd82d24859d34efd35fed03b4cc8b?source=rss",
-    "https://news.yahoo.co.jp/articles/f0c6d49bb5aad75976f352bdc1627fd41b26c651?source=rss",
-    "https://news.yahoo.co.jp/articles/45e33918cd40193b9803c7497471ff4eaabb3d50?source=rss",
-    "https://news.yahoo.co.jp/articles/a0af6713314110a8e145b8f40d9d75c445ad7236?source=rss",
-    "https://news.yahoo.co.jp/articles/b9c53136d146f8bbc6ff4e7187f13f18052fa876?source=rss",
-    "https://news.yahoo.co.jp/articles/2390bd02723baca50894151a6dc8534d3f5d5c5f?source=rss",
-    "https://news.yahoo.co.jp/articles/04ff81aeaa687def2a24cfbf75910355c829a584?source=rss",
-    "https://news.yahoo.co.jp/articles/9439433fa948a73403c5e748fcc3c77fe007f533?source=rss",
-    "https://news.yahoo.co.jp/articles/28dbd8ea0ebf833da942f3280ca6f095ddf17423?source=rss",
-    "https://news.yahoo.co.jp/articles/00306b62d127c5697d12584c224fe5e59019b2f0?source=rss",
-    "https://news.yahoo.co.jp/articles/4ca8f071cc85bbdee3e19513bd677d611ca166fe?source=rss",
-    "https://news.yahoo.co.jp/articles/958c1d8d6053aaf3125ae30570a788ee574401af?source=rss",
-    "https://news.yahoo.co.jp/articles/c6201534da019cf0e718a1e2c5a537c08ad606a8?source=rss",
-    "https://news.yahoo.co.jp/articles/00e758161c7f7449632ec4f7745c340710bd5ae4?source=rss",
-    "https://news.yahoo.co.jp/articles/74eeefe47962c1134a7b8732478e20fb01d45b7b?source=rss",
-    "https://news.yahoo.co.jp/articles/855c9e81e9fbbe477eaa534e90b3493d7cddc775?source=rss",
-    "https://news.yahoo.co.jp/articles/e0deeb5d90c27b7b8dc7537248ee18cda7a716f0?source=rss",
-    "https://news.yahoo.co.jp/articles/8d2ea0142db2c1c63307ce8a828c18f3438410c6?source=rss",
-    "https://news.yahoo.co.jp/articles/f7696add88aec2633b61160deb2371a2e92f6fb9?source=rss",
-    "https://news.yahoo.co.jp/articles/133fe1c11d17bbb1824fc4929b4f1d4860c0354c?source=rss",
-    "https://news.yahoo.co.jp/articles/2b835ec50fb65878598d17665d0476e8f7f18b0d?source=rss",
-    "https://news.yahoo.co.jp/articles/92903b3e22262cd0d5f9c79e134a97bfd1b3104f?source=rss",
-    "https://news.yahoo.co.jp/articles/5fb3a6ac4f09e4f8af86b4ca001c9e9bf8c6bee9?source=rss",
-    "https://news.yahoo.co.jp/articles/761a3e17545ececd5aacf303177a92c1b7704927?source=rss",
-    "https://news.yahoo.co.jp/articles/613ddb215d48e3db03470b60de2337083bb8e78e?source=rss",
-    "https://news.yahoo.co.jp/articles/b995b4fad3d28f7e1faa39f04a53b7477d54c2a4?source=rss",
-    "https://news.yahoo.co.jp/articles/a8488ce772fb179507e5be8c898a79cb378d05e7?source=rss",
-    "https://news.yahoo.co.jp/articles/1a6c30a8f1fb4a5a5ccc2a63df77df89d194fe16?source=rss",
-    "https://news.yahoo.co.jp/articles/fd299e4f582a7f9693e22b6d61a3283279ff8477?source=rss",
-    "https://news.yahoo.co.jp/articles/d6fb319fed2a41deb415f1a43e52551e265328c0?source=rss",
-    "https://news.yahoo.co.jp/articles/8e25d7424011131851cb1652e07f9bd63957cd59?source=rss",
-    "https://news.yahoo.co.jp/articles/3699fc911189a529cdcdeef1e71176ca2fe065dd?source=rss",
-    "https://news.yahoo.co.jp/articles/d2a7e77d2839ac62601414a72c39e91544a83ae8?source=rss",
-    "https://news.yahoo.co.jp/articles/8bbe293eab05f2dcb861ca810e7767f1f7b3acd7?source=rss",
-    "https://news.yahoo.co.jp/articles/d07552f3682d949fbbe1a93a4119769b0f007bdb?source=rss",
-    "https://news.yahoo.co.jp/articles/783eb72c45a33865add768ccaa781b903916569b?source=rss",
-    "https://news.yahoo.co.jp/articles/5861d8fd58b944db5bbffe2032d4e7a7aff2f23b?source=rss",
-    "https://news.yahoo.co.jp/articles/866f0cd2eccbfae3b5b5c89471809a154b145a67?source=rss",
-    "https://news.yahoo.co.jp/articles/e69cdca83ff6ba866d5eef2f74c8ea3fa5dfa3f1?source=rss",
-    "https://news.yahoo.co.jp/articles/9ff2c917fcf4ab39328b7d4524690923c52cc62a?source=rss",
-    "https://news.yahoo.co.jp/articles/4e8b67c8734d963c74d2d24cbce854b29de3d5af?source=rss",
-    "https://news.yahoo.co.jp/articles/711c6cd85d11e72bd9f61068ec8ef2c4082f4530?source=rss",
-    "https://news.yahoo.co.jp/articles/9f3c518c9bb1b9c45d7c7a6152ac8b451559b216?source=rss",
-    "https://news.yahoo.co.jp/articles/aaaae71f3957a1626da5c5caf056ba31dc0ed497?source=rss",
-    "https://news.yahoo.co.jp/articles/10e46daedb940bd2e22438a3b8cc1c17a9d72dc6?source=rss",
-    "https://news.yahoo.co.jp/articles/62a59de7811930b68c01e5452b3c52eb88fa1ca6?source=rss",
-    "https://news.yahoo.co.jp/articles/8babe1a93c71c809a18a9b608a411f2af82eb00e?source=rss",
-    "https://news.yahoo.co.jp/articles/247c1e42986c06116d78b7931f0a67f4be4f3edb?source=rss",
-    "https://news.yahoo.co.jp/articles/c062448bed7c46a4eb583ca76fd24e8c5b4b2559?source=rss",
-    "https://news.yahoo.co.jp/articles/f6c57e565c54a892c4d0de89a0084c367f28f636?source=rss",
-    "https://news.yahoo.co.jp/articles/0885443948bff0dd372e874de39c21e5e01a1092?source=rss"
-  ],
-  "TIME Magazine": [
-    "https://time.com/article/2026/04/26/cole-tomas-allen-whca-shooting/",
-    "https://time.com/article/2026/04/25/trump-iran-peace-talks-canceled/",
-    "https://time.com/article/2026/04/24/a-new-generation-of-climate-leaders-are-our-last-hope/",
-    "https://time.com/article/2026/04/25/trump-rushed-off-stage-after-shots-fired-at-white-house-correspondents-dinner/",
-    "https://time.com/article/2026/04/23/cortisol-myths-debunked-stress-hormone-facts/",
-    "https://time.com/article/2026/04/24/trump-reclassification-medical-marijuana/",
-    "https://time.com/article/2026/04/26/the-cost-of-being-different/",
-    "https://time.com/article/2026/04/24/uk-lawmakers-king-charles-us-visit-canceled-calls-trump-iran-war/",
-    "https://time.com/article/2026/04/24/if-wishes-could-kill-ending/",
-    "https://time.com/article/2026/04/23/reconsidering-michael-jackson/",
-    "https://time.com/article/2026/04/24/united-states-spain-nato-suspension-efforts-pentagon-email/",
-    "https://time.com/article/2026/04/24/cuba-trump-castro-regime/",
-    "https://time.com/article/2026/04/23/time-to-bring-time100-next-to-india-for-the-first-time-in-partnership-with-reliance/",
-    "https://time.com/article/2026/04/26/why-we-should-agree-to-agree/",
-    "https://time.com/article/2026/04/23/apex-review-charlize-theron/",
-    "https://time.com/article/2026/04/24/why-countries-are-attending-fossil-fuel-transition-summit/",
-    "https://time.com/article/2026/04/24/netanyahu-prostate-cancer-treatment-israel/",
-    "https://time.com/article/2026/04/24/geopolitics-energy-time100-summit/",
-    "https://time.com/article/2026/04/23/michael-jackson-biopic/",
-    "https://time.com/article/2026/04/24/claude-mythos-chatgpt-rosalind-release-dangerous/",
-    "https://time.com/article/2026/04/24/soldier-charged-insider-trading-polymarket-van-dyke-maduro-capture-trump/",
-    "https://time.com/article/2026/04/25/falkland-islands-javier-milei-trump/",
-    "https://time.com/article/2026/04/24/trump-threatens-uk-with-big-tariff-iran-war-relationship-fractured/",
-    "https://time.com/article/2026/04/23/trump-orders-us-navy-shoot-kill-boats-strait-hormuz-iran-war/",
-    "https://time.com/article/2026/04/24/arbor-day-is-really-about-infrastructure/"
-  ],
-  "DIAMOND è´¢ç»": [
-    "https://news.yahoo.co.jp/articles/33e88996510e9a23ee91f7f06482088d5a4033e1?source=rss",
-    "https://news.yahoo.co.jp/articles/00306b62d127c5697d12584c224fe5e59019b2f0?source=rss",
-    "https://news.yahoo.co.jp/articles/74ee4f10ed1ab9dfa18eadd720bbe4d3efee1ede?source=rss",
-    "https://news.yahoo.co.jp/articles/2b835ec50fb65878598d17665d0476e8f7f18b0d?source=rss",
-    "https://news.yahoo.co.jp/articles/133fe1c11d17bbb1824fc4929b4f1d4860c0354c?source=rss",
-    "https://news.yahoo.co.jp/articles/11cc3fe14befadf3fad4830a38a4c3d4dd72669f?source=rss",
-    "https://news.yahoo.co.jp/articles/855c9e81e9fbbe477eaa534e90b3493d7cddc775?source=rss",
-    "https://news.yahoo.co.jp/articles/d6fb319fed2a41deb415f1a43e52551e265328c0?source=rss",
-    "https://news.yahoo.co.jp/articles/8bbe293eab05f2dcb861ca810e7767f1f7b3acd7?source=rss",
-    "https://news.yahoo.co.jp/articles/247c1e42986c06116d78b7931f0a67f4be4f3edb?source=rss",
-    "https://news.yahoo.co.jp/articles/1d58a1db7f18f52a5fe49dcd26e0ef1003a5fbc7?source=rss",
-    "https://news.yahoo.co.jp/articles/10e46daedb940bd2e22438a3b8cc1c17a9d72dc6?source=rss",
-    "https://news.yahoo.co.jp/articles/04ff81aeaa687def2a24cfbf75910355c829a584?source=rss",
-    "https://news.yahoo.co.jp/articles/d2a7e77d2839ac62601414a72c39e91544a83ae8?source=rss",
-    "https://news.yahoo.co.jp/articles/a0af6713314110a8e145b8f40d9d75c445ad7236?source=rss",
-    "https://news.yahoo.co.jp/articles/64c2142c5b934f9bd17beafeb86c99623c7ea7ad?source=rss",
-    "https://news.yahoo.co.jp/articles/bdfffac084f6453cb5ba7fbfdb453056d020df8c?source=rss",
-    "https://news.yahoo.co.jp/articles/fd299e4f582a7f9693e22b6d61a3283279ff8477?source=rss",
-    "https://news.yahoo.co.jp/articles/45e33918cd40193b9803c7497471ff4eaabb3d50?source=rss",
-    "https://news.yahoo.co.jp/articles/e69cdca83ff6ba866d5eef2f74c8ea3fa5dfa3f1?source=rss",
-    "https://news.yahoo.co.jp/articles/c062448bed7c46a4eb583ca76fd24e8c5b4b2559?source=rss",
-    "https://news.yahoo.co.jp/articles/6bc4fe297e76140376aa471f59e3bf0c50f56575?source=rss",
-    "https://news.yahoo.co.jp/articles/a8488ce772fb179507e5be8c898a79cb378d05e7?source=rss",
-    "https://news.yahoo.co.jp/articles/b995b4fad3d28f7e1faa39f04a53b7477d54c2a4?source=rss",
-    "https://news.yahoo.co.jp/articles/28dbd8ea0ebf833da942f3280ca6f095ddf17423?source=rss",
-    "https://news.yahoo.co.jp/articles/1a6c30a8f1fb4a5a5ccc2a63df77df89d194fe16?source=rss",
-    "https://news.yahoo.co.jp/articles/613ddb215d48e3db03470b60de2337083bb8e78e?source=rss",
-    "https://news.yahoo.co.jp/articles/4ca8f071cc85bbdee3e19513bd677d611ca166fe?source=rss",
-    "https://news.yahoo.co.jp/articles/33ad833dcfce9348d4a388a53fc1fc8004b2c154?source=rss",
-    "https://news.yahoo.co.jp/articles/9439433fa948a73403c5e748fcc3c77fe007f533?source=rss"
-  ],
-  "ä¸­å›½ç¬”ä¼š": [
-    "https://www.chinesepen.org/blog/archives/209076",
-    "https://www.chinesepen.org/blog/archives/209059",
-    "https://www.chinesepen.org/blog/archives/209072",
-    "https://www.chinesepen.org/blog/archives/209102",
-    "https://www.chinesepen.org/blog/archives/209093",
-    "https://www.chinesepen.org/blog/archives/209037",
-    "https://www.chinesepen.org/blog/archives/31235",
-    "https://www.chinesepen.org/blog/archives/209056",
-    "https://www.chinesepen.org/blog/archives/209040",
-    "https://www.chinesepen.org/blog/archives/209095",
-    "https://www.chinesepen.org/blog/archives/209068"
-  ],
-  "The Volokh Conspiracy": [
-    "https://reason.com/volokh/2026/04/26/bill-otis-ringside-at-the-reckoning-on-the-splc-indictment/",
-    "https://reason.com/volokh/2026/04/25/the-hinkley-hilton/"
-  ],
-  "Above the Law": [
-    "https://abovethelaw.com/2026/04/new-age-and-traditional-law-firms-the-need-to-take-a-long-view/",
-    "https://abovethelaw.com/2026/04/us-going-deeper-into-the-red-now-that-the-irs-is-sharing-tax-data-with-ice/",
-    "https://abovethelaw.com/2026/04/the-biglaw-eo-cases-head-to-the-d-c-circuit-with-a-hall-of-fame-advocate-and-one-very-thirsty-judge/",
-    "https://abovethelaw.com/2026/04/prominent-appellate-partner-joins-paul-weiss-litigation-exodus-for-davis-polk/",
-    "https://abovethelaw.com/2026/04/the-biglaw-firm-rising-through-the-rankings/",
-    "https://abovethelaw.com/2026/04/the-most-prestigious-biglaw-firms-in-boston-2027/",
-    "https://abovethelaw.com/2026/04/attorneys-often-clog-efiling-systems-with-unnecessary-filings/",
-    "https://abovethelaw.com/2026/04/pirro-taps-out-on-powell/",
-    "https://abovethelaw.com/2026/04/the-dojs-week-of-disaster-see-generally/",
-    "https://abovethelaw.com/2026/04/glassdoor-for-judges-celebrates-its-second-birthday/",
-    "https://abovethelaw.com/2026/04/its-time-to-submit-your-entries-for-above-the-laws-17th-annual-law-revue-video-contest/",
-    "https://abovethelaw.com/2026/04/big-names-polking-around-see-also/",
-    "https://abovethelaw.com/2026/04/justice-departments-splc-indictment-just-got-dumber-which-seemed-impossible/",
-    "https://abovethelaw.com/2026/04/fedsoc-event-meant-to-sanewash-dhs-abducting-people-made-harder-by-protesters-making-a-big-fuss-about-racial-profiling/",
-    "https://abovethelaw.com/2026/04/dla-piper-drops-its-swiss-verein-like-a-bad-habit/"
-  ],
-  "Patently-O": [
-    "https://patentlyo.com/patent/2026/04/recalibration-seven-months-of-ptab-%c2%a7-101-data.html",
-    "https://patentlyo.com/patent/2026/04/fun-while-it-lasted-judge-albright-to-leave-the-bench.html",
-    "https://patentlyo.com/patent/2026/04/the-cox-shadow-over-hikma-four-questions-for-wednesdays-argument.html",
-    "https://patentlyo.com/patent/2026/04/barry-v-depuy-returns-en-banc-petition-tests-ecofactors-reach-on-rule-702-gatekeeping.html",
-    "https://patentlyo.com/patent/2026/04/the-dtsas-missing-preemption-does-%c2%a7-1835b-bind-state-courts.html",
-    "https://patentlyo.com/patent/2026/04/still-climbing-pta-hits-318-days-back-to-2015-levels.html"
-  ],
-  "Foreign Affairs": [
-    "https://www.foreignaffairs.com/united-states/how-china-and-russia-can-exploit-iran-war",
-    "https://www.foreignaffairs.com/united-states/other-china-flash-point",
-    "https://www.foreignaffairs.com/israel/gaza-gazans"
-  ],
-  "SCOTUSblog": [
-    "https://www.scotusblog.com/2026/04/justices-debate-rights-of-lawful-permanent-residents-against-backdrop-of-trumps-immigration-crac/",
-    "https://www.scotusblog.com/2026/04/the-week-in-review-2/",
-    "https://www.scotusblog.com/2026/04/justices-to-consider-thorny-dispute-between-manufacturers-of-medication-and-its-generic-substitu/",
-    "https://www.scotusblog.com/2026/04/digital-location-data-heads-back-to-the-supreme-court-/",
-    "https://www.scotusblog.com/2026/04/court-will-consider-whether-trump-administration-properly-revoked-protected-status-for-syrians-a/"
-  ],
-  "Not Boring": [
-    "https://www.notboring.co/p/weekly-dose-of-optimism-190",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-189",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-183",
-    "https://www.notboring.co/p/the-great-blue-frontier",
-    "https://www.notboring.co/p/world-models",
-    "https://www.notboring.co/p/bad-analogies",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-185",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-184",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-188",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-186",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-182",
-    "https://www.notboring.co/p/costless-sacrifice",
-    "https://www.notboring.co/p/electromagnetism-secretly-runs-the",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-181",
-    "https://www.notboring.co/p/weekly-dose-of-optimism-187"
-  ],
-  "China IPR": [
-    "https://chinaipr.com/2026/03/12/new-trade-secret-protection-rules-in-china/",
-    "https://chinaipr.com/2026/04/15/analyzing-trade-secret-protections-2025-civil-trends-in-china/",
-    "https://chinaipr.com/2026/03/19/comparing-the-metrics-on-china-and-intellectual-property/",
-    "https://chinaipr.com/2026/03/20/reading-the-spc-ip-courts-2025-annual-report-data-composition-and-reporting-structure/",
-    "https://chinaipr.com/2026/04/03/chinas-asi-strategic-retreat-and-wto-compliance/",
-    "https://chinaipr.com/2026/04/16/upcoming-senate-judiciary-hearing/",
-    "https://chinaipr.com/2026/04/02/regifting-signaling-and-implementation-comparing-chinas-ip-commitments-across-the-2026-nte-phase-one-and-the-2016-jcct/"
-  ],
-  "NPC Observer": [
-    "https://newsletter.npcobserver.com/p/november-2025-what-the-controversy",
-    "https://newsletter.npcobserver.com/p/npc-2026-collecting-documents-votes",
-    "https://newsletter.npcobserver.com/p/translation-state-councils-june-2025",
-    "https://newsletter.npcobserver.com/p/updates-on-npc-delegates-2025-legislative",
-    "https://newsletter.npcobserver.com/p/september-2025-chinas-new-national",
-    "https://newsletter.npcobserver.com/p/translation-state-councils-2025-report",
-    "https://newsletter.npcobserver.com/p/china-npc-2025-review",
-    "https://newsletter.npcobserver.com/p/npc-2026-agenda-and-daily-schedule",
-    "https://newsletter.npcobserver.com/p/juneaugust-2025-recording-and-review",
-    "https://newsletter.npcobserver.com/p/october-2025-neighborhood-party"
-  ],
-  "SPC Monitor": [
-    "https://supremepeoplescourtmonitor.com/2026/03/29/remarks-on-the-amended-arbitration-law-at-the-hong-kong-international-arbitration-centre/",
-    "https://supremepeoplescourtmonitor.com/2026/02/20/decoding-chinas-sixth-five-year-judicial-reform-plan/",
-    "https://supremepeoplescourtmonitor.com/2026/01/24/mediation-and-other-policy-signaling-in-the-china-international-commercial-court/",
-    "https://supremepeoplescourtmonitor.com/2025/11/15/the-amended-arbitration-law-and-the-supreme-peoples-court/",
-    "https://supremepeoplescourtmonitor.com/2025/12/24/supreme-peoples-courts-2022-2024-maritime-litigation-report/",
-    "https://supremepeoplescourtmonitor.com/2026/02/04/__trashed/",
-    "https://supremepeoplescourtmonitor.com/2025/09/25/professor-jerome-cohen/",
-    "https://supremepeoplescourtmonitor.com/2025/10/03/supreme-peoples-court-biweekly-developments-september-2025/",
-    "https://supremepeoplescourtmonitor.com/2026/01/01/2025-year-end-supreme-peoples-court-typical-cases/",
-    "https://supremepeoplescourtmonitor.com/2025/12/29/supreme-peoples-courts-2024-judicial-review-of-arbitration-annual-report/"
-  ]
-}
+†Ûi³ÿğÃ!Šw¬z—§¢¸?}ç†Ûi³ÿğÃ!Šw¬z—§¢¸?nZ ıªÜ†+Ş³ı}×¼†Ûi³ÿğÃ!Šw¬z—§¢¸?nZ ıªÜ†+Ş³ıõÛ~a¶Úlÿü0ÁÈbë¥éè®Û–ˆ?j·!Š÷¬ÿm=ÓŸa¶Úlÿü0ÁÈbë¥éè®Û–ˆ?j·!Š÷¬ÿm=Ó¯!¶Úlÿü0ÁÈbë¥éè®Û–ˆ?j·!Š÷¬ÿm=Ó¡¶Úlÿü0ÁÈbë¥éè®Û–ˆ?j·!Š÷¬ÿm=Ó¾¡¶Úlÿü0ÁÈbë¥éè®Û–ˆ?j·!Š÷¬ÿm=Ó½¡¶Úlÿü0ÁÈbë¥éè®Û–ˆ?j·!Š÷¬ÿm=Óİá¶Úlÿü0ÁÈbë¥éè®Û–ˆ?j·!Š÷¬ÿm=Ó!¶Úlÿü0ÁÈbë¥éè®Û–ˆ?j·!Š÷¬ÿm=Ó~á¶Úlÿü0ÁÈbë¥éè®Û–ˆ?j·!Š÷¬ÿm=ÓŞa¶Úlÿü0ÂÇ(¶ë–ˆ¢oßyç†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?¢˜§Š‰ì¢{a{²şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8ş;¬·hj·­…ê^¢™^şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8şéâ½êìjZkzGºÇ¬r‹«¶Ú+z·«yÊ'²'^®f£¢ºŞ–("¢ë)­çuéíşm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8şV¬µªàºg§¶Ê¶­z¹¡ºœjÇ¬~Ší…çèº»ajg§vg§µ©İŠi¢‚¶­Š‰ÿ†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?ë-‰Ç¬¢Ú&k*+jš%¢³zÇè®)Ú¦šè¦¸šµêŞ™ªä±¦èºØî²ØœzF¯jv®‚á¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿ÓãºËbqë-¢š­ªàºg§¶‰ëŠm¶ˆî¯+k‰©b÷¦ºyçb?†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?i¸ u¬Ÿ¢»¢Û¬nZ şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8şÇ(¶ë–ˆ,ì%¢‰?†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?¶¬¦Ší²ËZ®Èb¦)j»b²Û×•æëŠÜ¦jœ‰©ì¦V²Šx®‰^Šz^Ø§‚Ë©­ér‹«¶—­ŠØ¨Ïá¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿Óåz¬•«b½èb²Ú+ÊX¯zÊ'Š{r·­şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8ıÊ.®Ö©¥æ«²É¦ØœjZ®(!¶Ú#º¼­®&¥ŠwÜršèqçŠx,şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8ş0¶£ºËbqëyÈ{br±ë-¡×œ‰×šìi•¨§z¿á¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿ÓãºËbqë-¡Ê'²'^®Çœ²ë¡÷b²
++éØ§±ç.®+bzÇ§~ŠÜzg§·øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôã÷b‚+Z–ZjØ¨Ö­jšvÆÚrKh¶¬ºšŞ™ç(º»†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?ë-‰Ç¬¶‡(Èz»a¢¹òv+)º×›zÜzyšçÚrÛ«z»(~g‰Æ­Š‰ÚØ­²§z¸œ²æì¶+nşm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8ş;¬¶'²Çš·œz›b½ëh±ç,ºÇ¨}Ø¬‚Šàzg§¶)ìyË«ŠØ±éß¢·™éíşm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8şÇ(¶ë-¡Ö²~ŠğyÙŞ±Ö²jšâ—^†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?²‹h™¬¨®û$jö§jè!şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8şV°™é¨Š¶§vØ^›+-z¼¨~;¬¶'j{a¢|¤zyŞw+0®+bá¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿Óí…éè–«¶+›³ÎW¢Ø^r‰ïz»"¢{az¶©ÉÆ¬{øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãøî²ØœzËhr‰ì‰×«­éZ¶*'²©mëpyéßy×«jV§vËZµêî•ë¢·Ç«ÁªçŠx,¢z^²Øœ‹øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãü!ÉÚ²Ø^‚‹Ş®yÙz›!£§‚êZ¶Ø^²êkzgœ¢êíºx§¾+^wøm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãøî²ØœzÇ^m«^®(!¶Ê•¬ºZ^®f§z{kzÈz{lj¢Ë[iÉ®Šh~Úîš›"šh ­«b¢w+iÏá¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿Óìr‹n²Úk'è®j'u¬š¦¸¥×á¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿ÓÛŠ»a®(!µÈ­‹7§²©¢¶¥j¸.™éí†(!–(!¶Ïá¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿ÓÚ•æ¤~º&¶¢×«ŠghrG­şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8şØ^zg«éÜÉÚ‘ëlš+-jG§n*í…Ö²şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8şÇ(¶ë-¡Ö²~Šß®'ZÉªkŠ]tşm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8ş;¬¶'²·£yË\z»ZŠzk¢×œ¶*'±ú+r‰í­§-¢»"Ÿ«Î‰Ş³øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôã÷(º»ZuÛ-Â‡±ë-£m6ënİ¡É·øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãü!ÊØ^²êkzgœ¢êí±¸«¶â‚\ŠØ³z{!Š—^r+"¢yšÉ×©zwhØ^™æ§Šx(}Ú&‰È¥{øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãû¢Û¬¶‡ZÉú+¶ç¬u¬š¦¸¥×á¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿ÓÜ¢êíºv§Šj.²\¬‰×¬Â+a¢)ZØ±Ê&¥©âzÈ§²è­¢÷«u©šëh–‹¢²&§iÊ²ßá¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿ÓÚz.Ç¦z{h~Šb*'±ú+~¸k&©®)uïøm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãûayºÚÎ)bjwŞuêÚ–Ë©­ér‹«·øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãøhÂÚ+zËh­ëazË©­ér‹«¶É^‚+b™§2şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8ş;¬¶'²Ú¢{"uêğ…éßy×«jW(º»l™¬«zøÂËZµç(º»]yÈ¬Š‰ìşm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8ÿZ¶Ø^ì2¢¹-Šg¬‚‹p®‰àjwkŠmiº.¶Ø^zg«éÜÉÚ‘ë†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?±Ê-ºËhu¬Ÿ¢»aº»k&©®)uëøm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãü!j×±ë&Šm¶œ¢êí‚¶§¶w±·øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãøî²ØœzØh™«0®‰à…æyÖ­µ§$¢zk¢
+Ş²È¯ŠÉ¿†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?r‹«¶%vËajİôu¬y§eŠwŸ¢ºŞš‹â±ë-¡÷z¶¥r‹«¶+&jwZ¶Šòşm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8şÇ¯zzŞ–+-³¥’)í¡¦Ú¯øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôã÷(º»m¢š­ªàºg§¶‰åk§~ŠÜzg§¶Ë¬z‡àz‡ŞÇ°jºÚÛ?†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?r‹«·¥•Ê'²'^¯^¶«¶»¦¥§fŠx¬¶¶­Š‰é®Š^®\«zú$yÚk¢×œµçlµ«n±ú+³*âj{şm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8ıÊ.®Ûhr‰ì‰×«®(!¶Ê•¬ºZ^®f§z{kzÈz{liÇ.±çh}Ê&š+mŠxr¸¦{øm¶›?ÿ0±Ê-ºÆå¢(›ı´Û¯ôãûp¢w°¢˜§Š‰ìşm¦ÏÿÃ,r‹n±¹hÊ&ÿm6ëı8ş;¬¶'±×›j×­…êŞ•«b¢{!Š–Ş·ËZµæ§u÷z¶¥r‹«¶Ïá¶Úlÿü0ÂÇ(¶ë–ˆ¢oöÓn¿ÓìºšŞ™ç(º»pŠYayªëzX Š‹¬–&Ş®ÜœjÇ¨Æ­†‰bršŞ±Èh¢[Ù`nÚŸjh¥‰ë?†Ûi³ÿğÃ¢Û¬nZ r‰¿ÛMºÿN?¶°yé"·¯‰ì6şm¦Ïÿ~ŠŞŠ	é¢XœÉÊ&şÖ ş¨¦‰b¶',ı÷wøm¶›?ıú+z('¦‰bs'(›ı´Û¯ôãıµş*ÚŸ«r§jë¢j^¶+b¢x¢š%ŠØœ³øm¶›?ıú+z('¦‰bs'(›ı´Û¯ôßıôşÚîšœ®*Ú++iéey¶§¢x.•ü"w«–‹¯øm¶›?ıú+z('¦‰bs'(›ı´Û¯ôãı<ÿ£Šzb!zx%‹§µ¨°j{kºjl¶¶¢·øm¶›?ıú+z('¦‰bs'(›ı´Û¯ôßı¹ıÈb«¬®ë,‰«)…êŞŠwå¹éÜz¨¦‰b¶',r‰©zØ­Š‰ÿ†Ûi³ÿß¢·¢‚zh–'2r‰¿ÛMºÿN?Ó¯ì¹Ö§ÁªİŠ™h™§2Áë-nêájx^™ëbşm¦Ïÿ~ŠŞŠ	é¢XœÉÊ&ÿm6ëı8ÿN¿Š¶§ÁªÜ†)Úê)¢X­‰Ë-®é©²ê^®š0zºâ½©kÊËkj× Êéâµçlµ«^³øm¶›?ıú+z('¦‰bs'(›ı´Û¯ôãı·şÚîšš®iØ§v&£j–§jë-­©bjj‰Èb«.šh­v*e¢fœÊ¨¦‰b¶',şm¦Ïÿ~ŠŞŠ	é¢XœÉÊ&ÿm6ëı7ÿn?…©[­©İ³
++•ÖŸµêí®é©¶ŞzÇªâ¢Ïá¶Úlÿ÷è­è š%‰Ìœ¢oöÓn¿Óöïù'Šm±ëŞH§Ú&²¦zØk¢w¬Áë-zº,µªàj¼Û§’ÚîšŸá¶Úlÿ÷è­è š%‰Ìœ¢oöÓn¿ÓöÛù®)¬iØÚvš.®*Ú· ŠgŸºÛ«{«‚é_zw«ƒ(h®k³qæ¬yø«{øm¶›?ıú+z('¦‰bs'(›ı´Û¯ôãıtş*ÚŸ«qæ¬yø«z:!º%¶‰ÿ†Ûi³ÿß¢·¢‚zh–'2r‰¿ÛMºÿN?ÓßÛ­ëm™È.®I¢uÙ^y«-ŠÊÚzXÍ¨«já¶Úlÿ÷è­è š%‰Ìœ¢oöÓn¿Óôïø«j¨«j|®h¥ŠØš³øm¶›?ıú+z('¦‰bs'(›ı´Û¯ôãı<ÿ£Šzb!zx%‹§r§jÖ¢Á©æyëb§½«"¢á¶Úlÿ÷è­è š%‰Ìœ¢oöÓn¿ÓôÛû(ºØd¢·šŠ¶§¶»¦§«©²V§{+ai§†Ûi³ÿß¢·¢‚zh–'2r‰¿ÛMºÿMÿÛ¿â­©ğj·œ¢z&‰ÇŸ}ç-²¥~ˆ¥«?†Ûi³ÿß¢·¢‚zh–'2r‰¿ÛMºÿN?ÓéjH¬µ©â­©İŠ™h™§2™çbjØ¨k§Š¸§v&¿†Ûi³ÿß¢·¢‚zh–'2r‰¿ÛMºÿN?Ó¿è²éeŠö§Š¶§ÁªŞêàËš¦‰èŠX²šâqë?†Ûi³ÿß¢·¢‚zh–'2r‰¿ÛMºÿN?×â×««b¢v¥j'_¢‡aºf§ŠÖ«‰©Ü®+"²ë‰×^½éh¦g§·øm¶›?ıú+z('¦‰bs'(›ı´Û¯ôãıxıÈb¨«j{¬nZ‘§^Æ(â˜§Ø©–‰šs/á¶Úlÿ÷è­è š%‰Ìœ¢oöÓn¿Óô×öŸ‚§ŠËZ–¤ŠËZŸ«j*ì¶¸¤zÉnémjX›já¶Úlÿ÷è­è š%‰Ìœ¢oöÓn¿Óö×ûkºjb­©î²w ¢Øš¶*'±Ø©–‰šs/á¶Úlÿ÷è­è š%‰Ìœ¢oöÓn¿Óöëö¬‰ªZr'ârÚîššb¾‹cj–§r§i×Ÿz{şm¦Ïÿ~ŠŞŠ	é¢XœÉÊ&ÿm6ëı7ÿn?²)àjš+zf¥iÇ†Šæ»;-­¨­ÁªÜ†)ÚŠ¶§¹§­­§^²©¦)àµ©äz»?†Ûi³ÿß¢·¢‚zh–'2r‰¿ÛMºÿN?×ìµêaz|–Ø«j|®éâµçlµ«^²º ¹ë-j×¿†Ûi³ÿÚn‹Ş¶¥k(›÷Şyßá¶Úlÿö›¢÷­…éZÁÊ&ÿm6ëı8ş	Z²Çh¢·è®;ëzW›­«^²+l±ç(Öâ®Ø]k/á¶Úlÿö›¢÷­…éZÁÊ&ÿm6ëı8şØ^më-•¬,r(–Çè®·š•ë-j×¥k´Û¯á¶Úlÿö›¢÷­…éZÁÊ&ÿm6ëı8ıÙZ¦*^­Úè¦È­²Ì"²ËŞ­è§–)i¶…¦â·øm¶›?ı¦è½ëazV°r‰¿ÛMºÿN?•¬,¶ç^×âÛ!Šk•ø§¶›zËczŠZ­Ü©¢Ë"nW¿†Ûi³ÿÚn‹Ş¶¥k(›ı´Û¯ôãû¬‚ˆ§×¥êâÚ-…êŞvz0¶­¶¢®È¬²«Šx-kZµ¬"¶œ{øm¶›?ı¦è½ëazV°r‰¿ÛMºÿN?‡Æ‹brÉZÃ'«®éìiú.–‡ÚŠ¥–ç"«b¢{?†Ûi³ÿÚn‹Ş¶¥k(›ı´Û¯ôãö­¶Šç{+(~×§rZ yø¥Šx,ÊË^šÌ"¶§ç²Æ«Éø¥Šx,şm¦Ïÿiº/zØ^•¬¢oöÓn¿Óæ¢¹âhrG­Ó¸Û¯á¶Úlÿö›¢÷­…éZÁÊ&ÿm6ëı8ı¸ •¬)j»gz»!Š˜¬Ö¥Á¬¬¶ŸŠv§r&¥Â)İ}©eÊ‹¦k+aŠy"¶+?†Ûi³ÿÚn‹Ş¶¥k(›ı´Û¯ôã÷(š–§‰ë­ê®‰ëeÊH¥–)à¶¢®V°~*æv+Ş®È­Êf§u«^³øm¶›?ı¦è½ëazV°r‰¿ÛMºÿN?¦*ë¢Ö©²‹­¢zhÁéeşm¦Ïÿiº/zØ^•¬¢oöÓn¿Óì{kºÛ(r&¥™çbi§]‰Ëb¢á¶Úlÿö›¢÷­…éZÁÊ&ÿm6ëı8ıébµæâ‚V°~*æ•æ«Ëaz·š•Ê,¶‡ÚŠ¥–ç"«b¢{-…çâ®k+z›­jØ¨Ÿøm¶›?ı¦è½ëazV°r‰¿ÛMºÿN?ë-‰Çz–«¶g§¶Ë)•È§v'-™éíë-‚‹]ºfŞ¯brzgŠjh²È›•ïá¶Úlÿö›¢÷­…éZÁÊ&ÿm6ëı8şØ^n(%kâ®jâ²)à¶èºm…êÚH§‚Ïá¶Úlÿö›¢÷­…éZÁÊ&ÿm6ëı8şšèš)ŞÖ©¥éej×©j»gz¸èŠ{)jépz+,–+b«b¢w±¡Û¬~Šİjø¬¦‰dşm¦Ïÿiº/zØ^•¬¢oöÓn¿ÓßyÛ(qëŞÙj{m¢Æ§{¬…Øli·nrØ§‚—¨¦W¦i×¡j·^­¼©®‹^²×«²f¤Šxn(ºËn‹­­§"jZk¡ø¥Šx?†Ûi³ÿÚn‹Ş¶¥k(›ı´Û¯ôãø­²Ø¦zÚ,¹¹¢·*.­éí®'¬~ŠÚn‹Ş¶¥k5îØZ{š–V°­ëîzøz‡(×¬·øm¶›?ı¦è½ëazV°r‰¿ÛMºÿN?¶¦¢Ëi­ë-Š¨ºÆâ‚V°~*æ²)Û¢ËhŸm6ïøm¶›?ı¦è½ëazV°r‰¿ÛMºÿN?¶›Š	ZÁêjÇ¬…æ¶‹ay×Š·.ŠÜ"¶¡jYh}ö¦y§o¡Æ­y©İ¢w¯z¼­†*ì·(îv¿†Ûi³ÿÚn‹Ş¶¥k(›ı´Û¯ôãù¨®x§Ú‘ëtãmöëøm¶›?ı¦è½ëazV°r‰¿ÛMºÿN?‡ÚrÛ'¢šènW¦±çš–Ê?†Ûi³ÿæy×"·)ŞÂÇ(›ı´Û¯ôãøhÂØ^vˆâ²Öœ’X§úÚ¹Ø§¶šq©š®G­¦Vœ{øm¶›?ÿ0›+!Šx%yÊ&ÿm6ëı8ı¨Ÿ¢¹ZÃ'«š‰¬­êek)èÁ«ÚŠV›•ïá¶Úlÿö›¢÷­…éZÁÊ&ÿm6ëı8şw°jšÛkiØ­Š‰Ú–V°~*æ²Ø^ç¶‹Z‘æ¥¢x/‰ì?†Ûi³ÿÚn‹Ş¶¥k(›ı´Û¯ôãøhÁªiy©bzIr®‹§vêuë¿á¶Úlÿü0ÂV°ìmr‰¿ÛMºÿN?rX¨ÂŠärX¨±¨°¢¹,¥§ŠÉèÁ«ÚŠV›•ëh²‰hjwl™©ez¹ZÁø«šÆ¬jËZÖ¥¢w©®‡nrØmšXm¶›?ı¦è½ëazV°r‰¿ÛMºÿN?n('jg¬¦‰dŠx®‹§vÇj[(şm¦Ïÿiº/zØ^•¬¢oöÓn¿Óí…ébìq©ç¢×+¢Ë0…êŞj(§•¬"²šuçZÜ!Ê;‚g§¶Ëb–Y®²Ù^iİ¿†Ûi³ÿÚn‹Ş¶¥k(›ı´Û¯ôãû^Ê&™©İ™éí²)ìr(–ÉZÂêazWZ±øŸ¶"­Ë¢µ×œ•ªŞ²ØhºÈZ–ÙèµÊ'~ëºÌ"¶ÚrÛ?†Ûi³ÿåz¥Š{.®·œ¶*'r‰¿}çşm¦Ïÿ•è–)ìººŞrØ¨Ê&ÿm6ëı8ıÆ¥‰ú+&¬ÁªiyØ(•×è®
+â~ØhÁ§ß¢·ZnW¡¢ë"§v
+Şzw§z¸2mç™éà¢Én²îÛ?ºÙ¬¢êÜz»,ºÙ¦yØ®š»,ºÙœjjZŠ	
