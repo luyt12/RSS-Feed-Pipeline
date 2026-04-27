@@ -132,5 +132,19 @@
     "lang": "ja",
     "max_daily": 5,
     "enabled": true
+  },
+  {
+    "name": "AI Made Simple",
+    "url": "https://www.artificialintelligencemadesimple.com/feed",
+    "lang": "en",
+    "max_daily": 5,
+    "enabled": true
+  },
+  {
+    "name": "AI Supremacy",
+    "url": "https://www.ai-supremacy.com/feed",
+    "lang": "en",
+    "max_daily": 5,
+    "enabled": true
   }
 ]
