@@ -38,8 +38,7 @@ jobs:
           FEED_URL: 'https://patentlyo.com/feed/'
           FEED_LANG: 'en'
           MAX_DAILY: 5
-          SKIP_TRAFILATURA: true
-        run: python daily_task_single.py
+                  run: python daily_task_single.py
 
       - name: Commit processed URLs
         run: |
@@ -49,5 +48,3 @@ jobs:
           git diff --quiet && git diff --staged --quiet || git commit -m "Update processed URLs [skip ci]"
           git pull --rebase || true
           git push || true
-
-# schedule refresh ping 2026-04-27 18:22 UTC
