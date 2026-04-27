@@ -386,7 +386,13 @@
     "https://news.yahoo.co.jp/articles/f6c57e565c54a892c4d0de89a0084c367f28f636?source=rss",
     "https://news.yahoo.co.jp/articles/0885443948bff0dd372e874de39c21e5e01a1092?source=rss"
   ],
-  "TIME Magazine": [],
+  "TIME Magazine": [
+    "https://time.com/article/2026/04/26/cole-tomas-allen-whca-shooting/",
+    "https://time.com/article/2026/04/25/trump-rushed-off-stage-after-shots-fired-at-white-house-correspondents-dinner/",
+    "https://time.com/article/2026/04/26/the-cost-of-being-different/",
+    "https://time.com/article/2026/04/25/falkland-islands-javier-milei-trump/",
+    "https://time.com/article/2026/04/25/trump-iran-peace-talks-canceled/"
+  ],
   "DIAMOND 财经": [
     "https://news.yahoo.co.jp/articles/33e88996510e9a23ee91f7f06482088d5a4033e1?source=rss",
     "https://news.yahoo.co.jp/articles/00306b62d127c5697d12584c224fe5e59019b2f0?source=rss",
