@@ -1,3 +1,4 @@
+TRANSLATION_FAILED = False
 #!/usr/bin/env python3
 """
 单源 RSS 处理脚本 - 从环境变量读取 feed 配置
@@ -371,15 +372,16 @@ def main():
         if FEED_LANG != 'zh' and content:
             print(f"  翻译正文: {title[:50]}...")
             # 截断过长内容，避免 API 超时
-            if len(content) > 40000:
-                content = content[:40000]
-                print(f"    ⚠ 原文过长，截取前40000字符")
+            if len(content) > 30000:
+                content = content[:30000]
+                print(f"    ⚠ 原文过长，截取前30000字符")
             translated = translate_with_kimi(content)
             if translated and translated != content:
                 content = translated
                 print(f"    ✓ 翻译完成")
             else:
                 print(f"    ✗ 翻译失败，使用原文")
+            global TRANSLATION_FAILED; TRANSLATION_FAILED = True
 
         new_articles.append({
             'title': title,
