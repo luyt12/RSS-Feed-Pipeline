@@ -89,10 +89,9 @@ def fetch_feed(url):
 def extract_content(url):
     """使用 trafilatura 提取全文"""
     try:
-        downloaded = trafilatura.fetch_url(url)
-        if not downloaded:
-            return ''
-        text = trafilatura.extract(downloaded,
+        response = requests.get(url, timeout=30, headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'})
+        response.raise_for_status()
+        text = trafilatura.extract(response.content,
                                    include_comments=False,
                                    include_tables=True,
                                    output_format='markdown',
