@@ -38,7 +38,7 @@ jobs:
           FEED_URL: 'https://patentlyo.com/feed/'
           FEED_LANG: 'en'
           MAX_DAILY: 5
-                  run: python daily_task_single.py
+        run: python daily_task_single.py
 
       - name: Commit processed URLs
         run: |
