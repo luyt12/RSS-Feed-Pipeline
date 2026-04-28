@@ -3,7 +3,7 @@ name: ABA Journal RSS
 
 on:
   schedule:
-      - cron: '1 9 * * *'
+      - cron: '3 01 * * *'
   workflow_dispatch:
 
 permissions:
