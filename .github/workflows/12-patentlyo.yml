@@ -3,7 +3,7 @@ name: Patently-O RSS
 
 on:
   schedule:
-      - cron: '03 43 * * *'
+      - cron: '40 05 * * *'
   workflow_dispatch:
 
 permissions:
