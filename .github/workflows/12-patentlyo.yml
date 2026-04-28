@@ -3,7 +3,7 @@ name: Patently-O RSS
 
 on:
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '40 3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -48,4 +48,5 @@ jobs:
           git diff --quiet && git diff --staged --quiet || git commit -m "Update processed URLs [skip ci]"
           git pull --rebase || true
           git push || true
+
 
