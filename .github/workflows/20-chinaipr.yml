@@ -3,7 +3,7 @@ name: China IPR RSS
 
 on:
   schedule:
-      - cron: '0 15 * * *'
+      - cron: '23 06 * * *'
   workflow_dispatch:
 
 permissions:
