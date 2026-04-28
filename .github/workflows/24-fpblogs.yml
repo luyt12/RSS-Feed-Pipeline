@@ -3,7 +3,7 @@ name: FP Blogs RSS
 
 on:
   schedule:
-      - cron: '0 33 * * *'
+      - cron: '43 07 * * *'
   workflow_dispatch:
 
 permissions:
