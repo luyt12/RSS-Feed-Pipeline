@@ -3,7 +3,7 @@ name: SPC Monitor RSS
 
 on:
   schedule:
-      - cron: '23 07 * * *'
+      - cron: '07 03 * * *'
   workflow_dispatch:
 
 permissions:
