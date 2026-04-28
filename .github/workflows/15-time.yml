@@ -3,7 +3,7 @@ name: TIME Magazine RSS
 
 on:
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '40 3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -52,3 +52,4 @@ jobs:
           git push || true
 
 # Schedule refresh ping - 2026-04-27T10:18:20.088Z
+
