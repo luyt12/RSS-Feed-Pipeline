@@ -3,7 +3,7 @@ name: FP Geopolitics RSS
 
 on:
   schedule:
-      - cron: '43 00 * * *'
+      - cron: '00 43 * * *'
   workflow_dispatch:
 
 permissions:
