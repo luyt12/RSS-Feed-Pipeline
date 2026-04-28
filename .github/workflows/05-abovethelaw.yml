@@ -3,7 +3,7 @@ name: Above the Law RSS
 
 on:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '40 2 * * *'
   workflow_dispatch:
 
 permissions:
@@ -50,3 +50,4 @@ jobs:
           git diff --quiet && git diff --staged --quiet || git commit -m "Update processed URLs [skip ci]"
           git pull --rebase || true
           git push || true
+
