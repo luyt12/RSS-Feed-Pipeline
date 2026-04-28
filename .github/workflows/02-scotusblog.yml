@@ -3,7 +3,7 @@ name: SCOTUSblog RSS
 
 on:
   schedule:
-      - cron: '23 00 * * *'
+      - cron: '00 23 * * *'
   workflow_dispatch:
 
 permissions:
