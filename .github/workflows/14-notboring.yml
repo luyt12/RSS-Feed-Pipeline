@@ -3,7 +3,7 @@ name: Not Boring RSS
 
 on:
   schedule:
-      - cron: '23 04 * * *'
+      - cron: '04 23 * * *'
   workflow_dispatch:
 
 permissions:
