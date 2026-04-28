@@ -1,7 +1,7 @@
 name: AI Made Simple RSS
 on:
   schedule:
-    - cron: '55 23 * * *'  # 北京时间 04:00
+      - cron: '2 9 * * *'  # 北京时间 04:00
   workflow_dispatch:
 jobs:
   build:
