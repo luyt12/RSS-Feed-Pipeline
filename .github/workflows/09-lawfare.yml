@@ -3,7 +3,7 @@ name: Lawfare RSS
 
 on:
   schedule:
-      - cron: '1 18 * * *'
+      - cron: '43 02 * * *'
   workflow_dispatch:
 
 permissions:
