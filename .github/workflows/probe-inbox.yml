@@ -1,0 +1,23 @@
+name: Probe Inbox ID
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Inboxes
+        run: |
+          echo "=== List Inboxes ==="
+          curl -s -X GET "https://api.agentmail.to/v0/inboxes" \
+            -H "Authorization: Bearer $AGENTMAIL_API_KEY" \
+            -H "Content-Type: application/json"
+          echo ""
+      - name: Get Inbox Info
+        run: |
+          echo "=== Get inbox_c375b352db9cb9af ==="
+          curl -s -X GET "https://api.agentmail.to/v0/inboxes/inbox_c375b352db9cb9af" \
+            -H "Authorization: Bearer $AGENTMAIL_API_KEY"
+          echo ""
+          echo "=== Get c375b352db9cb9af ==="
+          curl -s -X GET "https://api.agentmail.to/v0/inboxes/c375b352db9cb9af" \
+            -H "Authorization: Bearer $AGENTMAIL_API_KEY"
+          echo ""
