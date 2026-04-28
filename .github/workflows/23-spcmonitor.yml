@@ -3,7 +3,7 @@ name: SPC Monitor RSS
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '40 23 * * *'
   workflow_dispatch:
 
 permissions:
@@ -51,4 +51,5 @@ jobs:
           git pull --rebase || true
           git push || true
 # schedule refresh ping 2026-04-27 18:22 UTC
+
 
