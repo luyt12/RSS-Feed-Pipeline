@@ -3,7 +3,7 @@ name: Simplicius RSS
 
 on:
   schedule:
-    - cron: '0 17 * * *'
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 permissions:
@@ -52,3 +52,4 @@ jobs:
           git push || true
 
 # schedule refresh ping 2026-04-27 18:22 UTC
+
