@@ -3,7 +3,7 @@ name: 中国笔会 RSS
 
 on:
   schedule:
-      - cron: '3 00 * * *'
+      - cron: '00 03 * * *'
   workflow_dispatch:
 
 permissions:
