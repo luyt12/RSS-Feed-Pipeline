@@ -3,7 +3,7 @@ name: The New Yorker RSS
 
 on:
   schedule:
-      - cron: '0 45 * * *'
+      - cron: '43 05 * * *'
   workflow_dispatch:
 
 permissions:
