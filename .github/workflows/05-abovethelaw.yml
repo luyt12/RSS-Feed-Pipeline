@@ -3,7 +3,7 @@ name: Above the Law RSS
 
 on:
   schedule:
-    - cron: '40 2 * * *'
+      - cron: '1 12 * * *'
   workflow_dispatch:
 
 permissions:
