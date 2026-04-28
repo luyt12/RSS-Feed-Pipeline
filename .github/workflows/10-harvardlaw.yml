@@ -3,7 +3,7 @@ name: Harvard Law RSS
 
 on:
   schedule:
-    - cron: '40 2 * * *'
+      - cron: '1 24 * * *'
   workflow_dispatch:
 
 permissions:
