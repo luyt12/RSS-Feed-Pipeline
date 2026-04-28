@@ -3,7 +3,7 @@ name: Harvard Law RSS
 
 on:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '40 2 * * *'
   workflow_dispatch:
 
 permissions:
@@ -52,4 +52,5 @@ jobs:
           git push || true
 
 # schedule refresh ping 2026-04-27 18:22 UTC
+
 
