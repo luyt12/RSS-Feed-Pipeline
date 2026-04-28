@@ -3,7 +3,7 @@ name: Law.com RSS
 
 on:
   schedule:
-      - cron: '43 01 * * *'
+      - cron: '01 43 * * *'
   workflow_dispatch:
 
 permissions:
