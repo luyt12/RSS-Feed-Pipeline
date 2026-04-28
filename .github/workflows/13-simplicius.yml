@@ -3,7 +3,7 @@ name: Simplicius RSS
 
 on:
   schedule:
-    - cron: '40 23 * * *'
+      - cron: '0 24 * * *'
   workflow_dispatch:
 
 permissions:
