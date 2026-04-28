@@ -3,7 +3,7 @@ name: NPC Observer RSS
 
 on:
   schedule:
-      - cron: '0 9 * * *'
+      - cron: '3 07 * * *'
   workflow_dispatch:
 
 permissions:
