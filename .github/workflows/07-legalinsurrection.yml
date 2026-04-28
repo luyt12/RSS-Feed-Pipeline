@@ -3,7 +3,7 @@ name: Legal Insurrection RSS
 
 on:
   schedule:
-      - cron: '1 30 * * *'
+      - cron: '3 02 * * *'
   workflow_dispatch:
 
 permissions:
