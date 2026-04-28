@@ -3,7 +3,7 @@ name: Yale Law RSS
 
 on:
   schedule:
-      - cron: '03 23 * * *'
+      - cron: '25 05 * * *'
   workflow_dispatch:
 
 permissions:
