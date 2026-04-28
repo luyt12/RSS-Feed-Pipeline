@@ -1,7 +1,7 @@
 name: AI Made Simple RSS
 on:
   schedule:
-    - cron: '0 20 * * *'  # 北京时间 04:00
+    - cron: '55 23 * * *'  # 北京时间 04:00
   workflow_dispatch:
 jobs:
   build:
@@ -34,3 +34,4 @@ jobs:
           git add data/processed_urls.json
           git commit -m "chore: update processed URLs for AI Made Simple" || true
           git push || true
+
