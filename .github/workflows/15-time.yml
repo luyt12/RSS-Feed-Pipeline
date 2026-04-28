@@ -3,7 +3,7 @@ name: TIME Magazine RSS
 
 on:
   schedule:
-      - cron: '2 3 * * *'
+      - cron: '43 04 * * *'
   workflow_dispatch:
 
 permissions:
