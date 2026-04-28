@@ -208,8 +208,8 @@ def build_html(feed_name, articles, is_translated, is_today):
     return body
 
 
-def send_email(articles, feed_name, is_translated, is_today):
-    """发送邮件"""
+def send_email_with_retry(articles, feed_name, is_translated, is_today, max_retries=5):
+    """发送邮件（带重试机制）"""
     if not articles:
         print(f"[{feed_name}] 无新文章，不发送邮件")
         return False
@@ -240,23 +240,38 @@ def send_email(articles, feed_name, is_translated, is_today):
     msg.attach(MIMEText(text_content, 'plain', 'utf-8'))
     msg.attach(MIMEText(html_content, 'html', 'utf-8'))
 
-    # 发送邮件（自动判断 SSL/STARTTLS）
-    try:
-        ctx = ssl.create_default_context()
-        if SMTP_PORT == 465:
-            with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=ctx) as server:
-                server.login(SMTP_USER, SMTP_PASS)
-                server.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
-        else:
-            with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-                server.starttls(context=ctx)
-                server.login(SMTP_USER, SMTP_PASS)
-                server.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
-        print(f"[{feed_name}] 邮件发送成功: {subject}")
-        return True
-    except Exception as e:
-        print(f"[{feed_name}] 邮件发送失败: {e}")
-        return False
+    # 发送邮件（带重试机制）
+    for attempt in range(max_retries):
+        try:
+            print(f"[{feed_name}] 发送邮件 (attempt {attempt + 1}/{max_retries})...")
+            ctx = ssl.create_default_context()
+            
+            if SMTP_PORT == 465:
+                # SSL 连接
+                with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=ctx, timeout=30) as server:
+                    server.login(SMTP_USER, SMTP_PASS)
+                    server.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
+            else:
+                # STARTTLS 连接
+                with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=30) as server:
+                    server.starttls(context=ctx)
+                    server.login(SMTP_USER, SMTP_PASS)
+                    server.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
+            
+            print(f"[{feed_name}] 邮件发送成功: {subject}")
+            return True
+            
+        except Exception as e:
+            print(f"[{feed_name}] 邮件发送失败 (attempt {attempt + 1}): {e}")
+            if attempt < max_retries - 1:
+                wait_time = min(30 * (2 ** attempt), 300)  # 最大等待5分钟
+                print(f"[{feed_name}] 等待 {wait_time}s 后重试...")
+                time.sleep(wait_time)
+            else:
+                print(f"[{feed_name}] 邮件发送最终失败，已重试 {max_retries} 次")
+                return False
+    
+    return False
 
 
 def main():
@@ -410,10 +425,10 @@ def main():
 
     print(f"[{FEED_NAME}] 新文章: {len(new_articles)} 篇")
 
-    # 发送邮件
+    # 发送邮件（使用带重试的版本）
     is_translated = FEED_LANG != 'zh'
     if new_articles:
-        send_email(new_articles, FEED_NAME, is_translated, is_today)
+        send_email_with_retry(new_articles, FEED_NAME, is_translated, is_today)
 
     # 保存已处理的 URL
     processed_urls[FEED_NAME] = list(feed_processed)
