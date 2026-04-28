@@ -3,7 +3,7 @@ name: 中国笔会 RSS
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '40 23 * * *'
   workflow_dispatch:
 
 permissions:
@@ -48,3 +48,4 @@ jobs:
           git diff --quiet && git diff --staged --quiet || git commit -m "Update processed URLs [skip ci]"
           git pull --rebase || true
           git push || true
+
