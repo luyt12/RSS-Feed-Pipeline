@@ -3,7 +3,7 @@ name: Law.com RSS
 
 on:
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '40 3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -52,4 +52,5 @@ jobs:
           git push || true
 
 # schedule refresh ping 2026-04-27 18:22 UTC
+
 
