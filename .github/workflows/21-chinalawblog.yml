@@ -3,7 +3,7 @@ name: China Law Blog RSS
 
 on:
   schedule:
-      - cron: '06 23 * * *'
+      - cron: '40 01 * * *'
   workflow_dispatch:
 
 permissions:
