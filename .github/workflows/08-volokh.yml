@@ -3,7 +3,7 @@ name: Volokh RSS
 
 on:
   schedule:
-      - cron: '23 02 * * *'
+      - cron: '02 23 * * *'
   workflow_dispatch:
 
 permissions:
