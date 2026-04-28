@@ -1,0 +1,42 @@
+name: Test AgentMail API
+
+on:
+  workflow_dispatch:
+    inputs:
+      feed:
+        description: 'Feed name'
+        required: true
+        default: 'Foreign Affairs'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Test AgentMail API
+        env:
+          FEED_NAME: ${{ inputs.feed }}
+          FEED_URL: ${{ vars.FEED_URL_FOREIGNAFFAIRS }}
+          FEED_LANG: en
+          MAX_DAILY: 2
+          SKIP_TRAFILATURA: 'true'
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          AGENTMAIL_API_KEY: ${{ secrets.AGENTMAIL_API_KEY }}
+          AGENTMAIL_INBOX_ID: ${{ secrets.AGENTMAIL_INBOX_ID }}
+          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+        run: python daily_task_single.py
