@@ -3,7 +3,7 @@ name: Reader's Digest RSS
 
 on:
   schedule:
-      - cron: '0 48 * * *'
+      - cron: '3 05 * * *'
   workflow_dispatch:
 
 permissions:
