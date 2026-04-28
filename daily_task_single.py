@@ -2,6 +2,7 @@
 """
 单源 RSS 处理脚本 - 从环境变量读取 feed 配置
 对齐 daily_task.py 逻辑：历史文章回退、精美邮件格式、翻译优化
+增加：SMTP失败后使用AgentMail HTTP API发送
 """
 import os
 import json
@@ -10,6 +11,7 @@ import requests
 import time
 import trafilatura
 import re
+import base64
 from datetime import datetime, timezone
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -30,6 +32,10 @@ SMTP_USER = os.environ.get('SMTP_USER', '')
 SMTP_PASS = os.environ.get('SMTP_PASS', '')
 EMAIL_FROM = os.environ.get('EMAIL_FROM', '')
 EMAIL_TO = os.environ.get('EMAIL_TO', '')
+
+# AgentMail HTTP API 配置（作为SMTP失败后的fallback）
+AGENTMAIL_API_KEY = os.environ.get('AGENTMAIL_API_KEY', '')
+AGENTMAIL_INBOX_ID = os.environ.get('AGENTMAIL_INBOX_ID', '')
 
 # Kimi API 配置
 KIMI_API_KEY = os.environ.get('KIMI_API_KEY', '')
@@ -208,11 +214,11 @@ def build_html(feed_name, articles, is_translated, is_today):
     return body
 
 
-def send_email_with_retry(articles, feed_name, is_translated, is_today, max_retries=5):
-    """发送邮件（带重试机制）"""
+def send_email_via_smtp(articles, feed_name, is_translated, is_today, max_retries=5):
+    """通过SMTP发送邮件（带重试机制）"""
     if not articles:
         print(f"[{feed_name}] 无新文章，不发送邮件")
-        return False
+        return False, "无新文章"
 
     prefix = '🔄' if is_translated else '🌐'
     date_label = '今日' if is_today else '历史'
@@ -240,10 +246,12 @@ def send_email_with_retry(articles, feed_name, is_translated, is_today, max_retr
     msg.attach(MIMEText(text_content, 'plain', 'utf-8'))
     msg.attach(MIMEText(html_content, 'html', 'utf-8'))
 
+    last_error = None
+    
     # 发送邮件（带重试机制）
     for attempt in range(max_retries):
         try:
-            print(f"[{feed_name}] 发送邮件 (attempt {attempt + 1}/{max_retries})...")
+            print(f"[{feed_name}] SMTP发送 (attempt {attempt + 1}/{max_retries})...")
             ctx = ssl.create_default_context()
             
             if SMTP_PORT == 465:
@@ -258,19 +266,96 @@ def send_email_with_retry(articles, feed_name, is_translated, is_today, max_retr
                     server.login(SMTP_USER, SMTP_PASS)
                     server.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
             
-            print(f"[{feed_name}] 邮件发送成功: {subject}")
-            return True
+            print(f"[{feed_name}] SMTP邮件发送成功: {subject}")
+            return True, None
             
         except Exception as e:
-            print(f"[{feed_name}] 邮件发送失败 (attempt {attempt + 1}): {e}")
+            last_error = str(e)
+            print(f"[{feed_name}] SMTP发送失败 (attempt {attempt + 1}): {e}")
             if attempt < max_retries - 1:
                 wait_time = min(30 * (2 ** attempt), 300)  # 最大等待5分钟
                 print(f"[{feed_name}] 等待 {wait_time}s 后重试...")
                 time.sleep(wait_time)
-            else:
-                print(f"[{feed_name}] 邮件发送最终失败，已重试 {max_retries} 次")
-                return False
     
+    return False, last_error
+
+
+def send_email_via_http_api(articles, feed_name, is_translated, is_today):
+    """通过AgentMail HTTP API发送邮件（作为SMTP失败后的fallback）"""
+    if not AGENTMAIL_API_KEY or not AGENTMAIL_INBOX_ID:
+        print(f"[{feed_name}] AgentMail API配置缺失，跳过HTTP API发送")
+        return False, "AgentMail API配置缺失"
+    
+    if not articles:
+        print(f"[{feed_name}] 无新文章，不发送邮件")
+        return False, "无新文章"
+
+    prefix = '🔄' if is_translated else '🌐'
+    date_label = '今日' if is_today else '历史'
+    # 邮件主题包含首篇文章标题
+    first_title = articles[0].get('title', '')[:50] if articles else ''
+    title_suffix = f" · {first_title}..." if len(articles) > 1 else (f" · {first_title}" if first_title else "")
+    subject = f"{prefix} [{feed_name}] {date_label}更新{title_suffix} · {len(articles)} 篇"
+
+    # 纯文本版本
+    text_content = f"{feed_name} - {date_label}更新\n共 {len(articles)} 篇文章\n\n"
+    for i, a in enumerate(articles, 1):
+        title = a.get('title', '无标题')
+        link = a.get('link', '#')
+        content = a.get('content') or a.get('summary', '')
+        text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n"
+
+    # HTML 版本
+    html_content = build_html(feed_name, articles, is_translated, is_today)
+
+    try:
+        print(f"[{feed_name}] 尝试通过AgentMail HTTP API发送...")
+        
+        # AgentMail HTTP API endpoint
+        api_url = f"https://api.agentmail.to/v0/inboxes/{AGENTMAIL_INBOX_ID}/messages/send"
+        
+        headers = {
+            'Authorization': f'Bearer {AGENTMAIL_API_KEY}',
+            'Content-Type': 'application/json'
+        }
+        
+        payload = {
+            'to': EMAIL_TO,
+            'subject': subject,
+            'text': text_content,
+            'html': html_content
+        }
+        
+        response = requests.post(api_url, headers=headers, json=payload, timeout=60)
+        response.raise_for_status()
+        
+        result = response.json()
+        print(f"[{feed_name}] HTTP API邮件发送成功: {subject}")
+        print(f"[{feed_name}] 响应: {result}")
+        return True, None
+        
+    except Exception as e:
+        error_msg = str(e)
+        print(f"[{feed_name}] HTTP API发送失败: {error_msg}")
+        return False, error_msg
+
+
+def send_email_with_fallback(articles, feed_name, is_translated, is_today):
+    """发送邮件，SMTP失败后尝试HTTP API"""
+    # 首先尝试SMTP
+    success, error = send_email_via_smtp(articles, feed_name, is_translated, is_today)
+    
+    if success:
+        return True
+    
+    # SMTP失败，尝试HTTP API
+    print(f"[{feed_name}] SMTP发送失败，尝试HTTP API...")
+    success, error = send_email_via_http_api(articles, feed_name, is_translated, is_today)
+    
+    if success:
+        return True
+    
+    print(f"[{feed_name}] 所有发送方式均失败")
     return False
 
 
@@ -280,6 +365,7 @@ def main():
     print(f"语言: {FEED_LANG}")
     print(f"每日上限: {MAX_DAILY}")
     print(f"跳过全文提取: {SKIP_TRAFILATURA}")
+    print(f"AgentMail HTTP API可用: {bool(AGENTMAIL_API_KEY and AGENTMAIL_INBOX_ID)}")
 
     # 加载已处理的 URL
     processed_urls = load_processed_urls()
@@ -425,10 +511,10 @@ def main():
 
     print(f"[{FEED_NAME}] 新文章: {len(new_articles)} 篇")
 
-    # 发送邮件（使用带重试的版本）
+    # 发送邮件（使用带fallback的版本）
     is_translated = FEED_LANG != 'zh'
     if new_articles:
-        send_email_with_retry(new_articles, FEED_NAME, is_translated, is_today)
+        send_email_with_fallback(new_articles, FEED_NAME, is_translated, is_today)
 
     # 保存已处理的 URL
     processed_urls[FEED_NAME] = list(feed_processed)
