@@ -338,7 +338,8 @@ def build_html(feed_name, articles, is_translated, is_today):
   .art h2 a{{color:inherit;text-decoration:none}}
   .meta{{font-size:11px;color:#aaa;margin-bottom:8px}}
   .txt{{font-size:14px;line-height:1.7;color:#333}}
-  .fail-tag{font-size:11px;color:#c0392b;font-style:italic;margin-top:8px;padding-top:8px;border-top:1px dashed #e0e0e0}
+  .fail-tag{{font-size:11px;color:#c0392b;font-style:italic;margin-top:8px;padding-top:8px;border-top:1px dashed #e0e0e0}}
+  .model-tag{{font-size:11px;color:#1565c0;font-style:italic;margin-top:8px;padding-top:8px;border-top:1px dashed #e0e0e0}}
   .ft{{padding:8px 8px;background:#f8f9fa;text-align:center;font-size:11px;color:#bbb}}
   @media (max-width:480px){{
     body{{padding:2px}}
