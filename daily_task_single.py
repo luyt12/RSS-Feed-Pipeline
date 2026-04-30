@@ -265,7 +265,7 @@ def translate_article(text):
         
         # 所有模型都失败
         print(f"    所有模型均失败，使用原文")
-        return text, None
+        return text, 'failed'
     
     # 长文：分段翻译
     print(f"    长文分段处理...")
@@ -307,7 +307,11 @@ def translate_article(text):
     
     # 拼接所有部分
     final_text = '\n\n'.join(translated_parts)
-    return final_text, successful_model
+    # 只要有一段成功翻译，就不算完全失败
+    if successful_model:
+        return final_text, successful_model
+    else:
+        return text, 'failed'
 
 
 def build_html(feed_name, articles, is_translated, is_today):
@@ -334,7 +338,7 @@ def build_html(feed_name, articles, is_translated, is_today):
   .art h2 a{{color:inherit;text-decoration:none}}
   .meta{{font-size:11px;color:#aaa;margin-bottom:8px}}
   .txt{{font-size:14px;line-height:1.7;color:#333}}
-  .model-tag{{font-size:11px;color:#888;font-style:italic;margin-top:8px;padding-top:8px;border-top:1px dashed #e0e0e0}}
+  .fail-tag{font-size:11px;color:#c0392b;font-style:italic;margin-top:8px;padding-top:8px;border-top:1px dashed #e0e0e0}
   .ft{{padding:8px 8px;background:#f8f9fa;text-align:center;font-size:11px;color:#bbb}}
   @media (max-width:480px){{
     body{{padding:2px}}
@@ -369,7 +373,9 @@ def build_html(feed_name, articles, is_translated, is_today):
         
         # 模型标注
         model_tag = ''
-        if model_used:
+        if model_used == 'failed':
+            model_tag = '<div class="fail-tag">⚠️ 大模型翻译失败，保留原文</div>'
+        elif model_used:
             model_display = model_used.split('/')[-1] if '/' in model_used else model_used
             model_tag = f'<div class="model-tag">🤖 翻译模型: {model_display}</div>'
         
@@ -408,7 +414,7 @@ def send_email_via_smtp(articles, feed_name, is_translated, is_today, max_retrie
         link = a.get('link', '#')
         content = a.get('content') or a.get('summary', '')
         model_used = a.get('model_used', None)
-        model_tag = f"\n[翻译模型: {model_used}]" if model_used else ""
+        model_tag = f"\n[⚠️ 大模型翻译失败，保留原文]" if model_used == "failed" else (f"\n[翻译模型: {model_used}]" if model_used else "")
         text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
     # HTML 版本
@@ -480,7 +486,7 @@ def send_email_via_http_api(articles, feed_name, is_translated, is_today):
         link = a.get('link', '#')
         content = a.get('content') or a.get('summary', '')
         model_used = a.get('model_used', None)
-        model_tag = f"\n[翻译模型: {model_used}]" if model_used else ""
+        model_tag = f"\n[⚠️ 大模型翻译失败，保留原文]" if model_used == "failed" else (f"\n[翻译模型: {model_used}]" if model_used else "")
         text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
     # HTML 版本
