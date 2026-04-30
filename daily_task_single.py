@@ -701,7 +701,9 @@ def main():
             'was_split': was_split
         })
 
-        feed_processed.add(link)
+        # 只在翻译成功时标记为已处理，失败则下次重试
+        if model_used != 'failed':
+            feed_processed.add(link)
 
     print(f"[{FEED_NAME}] 新文章: {len(new_articles)} 篇")
 
