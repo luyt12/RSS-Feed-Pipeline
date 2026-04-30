@@ -3,6 +3,7 @@
 单源 RSS 处理脚本 - 从环境变量读取 feed 配置
 对齐 daily_task.py 逻辑：历史文章回退、精美邮件格式、翻译优化
 增加：SMTP失败后使用AgentMail HTTP API发送
+更新：多模型 fallback + 长文分段翻译 + 模型标注
 """
 import os
 import json
@@ -37,16 +38,25 @@ EMAIL_TO = os.environ.get('EMAIL_TO', '')
 AGENTMAIL_API_KEY = os.environ.get('AGENTMAIL_API_KEY', '')
 AGENTMAIL_INBOX_ID = os.environ.get('AGENTMAIL_INBOX_ID', '')
 
-# Kimi API 配置
+# API 配置
 KIMI_API_KEY = os.environ.get('KIMI_API_KEY', '')
 KIMI_API_URL = os.environ.get('KIMI_API_URL', 'https://integrate.api.nvidia.com/v1/chat/completions')
+
+# 模型列表（按优先级排列）
+MODEL_LIST = [
+    'minimaxai/minimax-m2.7',
+    'qwen/qwen3-coder-480b-a35b-instruct',
+    'stepfun-ai/step-3.5-flash',
+    'google/gemma-3n-e2b-it',
+    'mistralai/mistral-nemotron'
+]
 
 # 路径配置
 DATA_DIR = 'data'
 PROCESSED_URLS_FILE = os.path.join(DATA_DIR, 'processed_urls.json')
 
-# Kimi 翻译 Prompt（与 daily_task.py 相同）
-KIMI_PROMPT = """You are a professional translator and editor. Please complete the following task on the article below:
+# 翻译 Prompt
+TRANSLATE_PROMPT = """You are a professional translator and editor. Please complete the following task on the article below:
 
 ## Task: Extract and Summarize
 Extract key points from the English article and write a Chinese summary with these requirements:
@@ -109,10 +119,92 @@ def extract_content(url):
         return ''
 
 
-def translate_with_kimi(text, max_retries=5):
-    """使用 Kimi API 翻译+摘要"""
+def count_words(text):
+    """计算英文单词数"""
+    # 简单按空格分割计算单词数
+    words = text.split()
+    return len(words)
+
+
+def split_by_paragraphs(text, max_words=2000):
+    """
+    按自然段落分割文章，每部分不超过 max_words 词
+    
+    返回: [(part_text, word_count), ...]
+    """
+    # 按双换行分割段落
+    paragraphs = re.split(r'\n\n+', text)
+    
+    parts = []
+    current_part = []
+    current_words = 0
+    
+    for para in paragraphs:
+        para = para.strip()
+        if not para:
+            continue
+        
+        para_words = count_words(para)
+        
+        # 如果当前段落本身就超过 max_words，需要进一步分割
+        if para_words > max_words:
+            # 先保存当前部分
+            if current_part:
+                part_text = '\n\n'.join(current_part)
+                parts.append((part_text, current_words))
+                current_part = []
+                current_words = 0
+            
+            # 按句子分割长段落
+            sentences = re.split(r'(?<=[.!?])\s+', para)
+            sub_part = []
+            sub_words = 0
+            
+            for sent in sentences:
+                sent_words = count_words(sent)
+                
+                if sub_words + sent_words <= max_words:
+                    sub_part.append(sent)
+                    sub_words += sent_words
+                else:
+                    # 保存当前子部分
+                    if sub_part:
+                        parts.append((' '.join(sub_part), sub_words))
+                    sub_part = [sent]
+                    sub_words = sent_words
+            
+            # 保存最后的子部分
+            if sub_part:
+                parts.append((' '.join(sub_part), sub_words))
+        
+        elif current_words + para_words <= max_words:
+            # 当前段落可以加入当前部分
+            current_part.append(para)
+            current_words += para_words
+        else:
+            # 当前部分已满，保存并开始新部分
+            if current_part:
+                part_text = '\n\n'.join(current_part)
+                parts.append((part_text, current_words))
+            current_part = [para]
+            current_words = para_words
+    
+    # 保存最后的部分
+    if current_part:
+        part_text = '\n\n'.join(current_part)
+        parts.append((part_text, current_words))
+    
+    return parts
+
+
+def translate_with_model(text, model_name, max_retries=3):
+    """
+    使用指定模型翻译
+    
+    返回: (translated_text, success)
+    """
     if not text or not KIMI_API_KEY:
-        return text
+        return text, False
 
     headers = {
         'Authorization': f'Bearer {KIMI_API_KEY}',
@@ -120,9 +212,9 @@ def translate_with_kimi(text, max_retries=5):
     }
 
     payload = {
-        'model': 'moonshotai/kimi-k2.5',
+        'model': model_name,
         'messages': [
-            {'role': 'system', 'content': KIMI_PROMPT},
+            {'role': 'system', 'content': TRANSLATE_PROMPT},
             {'role': 'user', 'content': text}
         ],
         'temperature': 0.7,
@@ -131,23 +223,93 @@ def translate_with_kimi(text, max_retries=5):
 
     for attempt in range(max_retries):
         try:
-            print(f"Kimi 翻译请求 (attempt {attempt + 1}/{max_retries})...")
+            print(f"    {model_name} 翻译请求 (attempt {attempt + 1}/{max_retries})...")
             response = requests.post(KIMI_API_URL, headers=headers, json=payload, timeout=300)
             response.raise_for_status()
             result = response.json()
             if result.get('choices') and result['choices'][0]:
-                return result['choices'][0]['message']['content']
+                translated = result['choices'][0]['message']['content']
+                if translated and len(translated) > 50:  # 确保有实质性输出
+                    return translated, True
+                else:
+                    print(f"    {model_name} 返回内容过短，可能失败")
             else:
-                print(f"API 响应错误: {result}")
-                if attempt < max_retries - 1:
-                    wait = 30 * (2 ** attempt)
-                    print(f"等待 {wait}s 后重试...")
-                    time.sleep(wait)
+                print(f"    API 响应异常: {result.get('error', result)}")
         except Exception as e:
-            print(f"翻译失败 (attempt {attempt + 1}): {e}")
+            print(f"    {model_name} 翻译失败 (attempt {attempt + 1}): {e}")
             if attempt < max_retries - 1:
-                time.sleep(30 * (2 ** attempt))
-    return text
+                wait = 10 * (2 ** attempt)
+                print(f"    等待 {wait}s 后重试...")
+                time.sleep(wait)
+    
+    return text, False
+
+
+def translate_article(text):
+    """
+    翻译文章，支持长文分段和多模型 fallback
+    
+    返回: (translated_text, model_used)
+    """
+    if not text:
+        return text, None
+    
+    word_count = count_words(text)
+    print(f"    原文 {word_count} 词")
+    
+    # 短文直接翻译
+    if word_count <= 2000:
+        for model in MODEL_LIST:
+            translated, success = translate_with_model(text, model)
+            if success:
+                return translated, model
+            print(f"    {model} 失败，尝试下一个模型...")
+        
+        # 所有模型都失败
+        print(f"    所有模型均失败，使用原文")
+        return text, None
+    
+    # 长文：分段翻译
+    print(f"    长文分段处理...")
+    parts = split_by_paragraphs(text, max_words=2000)
+    print(f"    分为 {len(parts)} 部分: {[p[1] for p in parts]} 词")
+    
+    translated_parts = []
+    successful_model = None
+    
+    for i, (part_text, part_words) in enumerate(parts):
+        print(f"    翻译第 {i+1}/{len(parts)} 部分 ({part_words} 词)...")
+        
+        # 如果已有成功模型，优先使用
+        if successful_model:
+            translated, success = translate_with_model(part_text, successful_model)
+            if success:
+                translated_parts.append(translated)
+                continue
+            else:
+                print(f"    {successful_model} 在第 {i+1} 部分失败，尝试其他模型...")
+        
+        # 尝试所有模型
+        part_translated = False
+        for model in MODEL_LIST:
+            if model == successful_model:
+                continue  # 已经试过了
+            translated, success = translate_with_model(part_text, model)
+            if success:
+                translated_parts.append(translated)
+                successful_model = model
+                part_translated = True
+                break
+            print(f"    {model} 失败，尝试下一个模型...")
+        
+        if not part_translated:
+            # 这部分所有模型都失败，使用原文
+            print(f"    第 {i+1} 部分翻译失败，保留原文")
+            translated_parts.append(part_text)
+    
+    # 拼接所有部分
+    final_text = '\n\n'.join(translated_parts)
+    return final_text, successful_model
 
 
 def build_html(feed_name, articles, is_translated, is_today):
@@ -174,6 +336,7 @@ def build_html(feed_name, articles, is_translated, is_today):
   .art h2 a{{color:inherit;text-decoration:none}}
   .meta{{font-size:11px;color:#aaa;margin-bottom:8px}}
   .txt{{font-size:14px;line-height:1.7;color:#333}}
+  .model-tag{{font-size:11px;color:#888;font-style:italic;margin-top:8px;padding-top:8px;border-top:1px dashed #e0e0e0}}
   .ft{{padding:8px 8px;background:#f8f9fa;text-align:center;font-size:11px;color:#bbb}}
   @media (max-width:480px){{
     body{{padding:2px}}
@@ -199,15 +362,25 @@ def build_html(feed_name, articles, is_translated, is_today):
         link = art.get('link', '#')
         pub = art.get('published', '')
         content = art.get('content') or art.get('summary', '（无内容）')
+        model_used = art.get('model_used', None)
+        
         # HTML 转义
         title_esc = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         content = content.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         content = content.replace('\n\n', '</p><p>').replace('\n', '<br>')
+        
+        # 模型标注
+        model_tag = ''
+        if model_used:
+            model_display = model_used.split('/')[-1] if '/' in model_used else model_used
+            model_tag = f'<div class="model-tag">🤖 翻译模型: {model_display}</div>'
+        
         body += f"""
   <div class="art">
     <h2><span style="color:#40916c;margin-right:6px">{i}.</span><a href="{link}">{title_esc}</a></h2>
     <div class="meta">📅 {pub}</div>
     <div class="txt"><p>{content}</p></div>
+    {model_tag}
   </div>
 """
 
@@ -236,7 +409,9 @@ def send_email_via_smtp(articles, feed_name, is_translated, is_today, max_retrie
         title = a.get('title', '无标题')
         link = a.get('link', '#')
         content = a.get('content') or a.get('summary', '')
-        text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n"
+        model_used = a.get('model_used', None)
+        model_tag = f"\n[翻译模型: {model_used}]" if model_used else ""
+        text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
     # HTML 版本
     html_content = build_html(feed_name, articles, is_translated, is_today)
@@ -306,7 +481,9 @@ def send_email_via_http_api(articles, feed_name, is_translated, is_today):
         title = a.get('title', '无标题')
         link = a.get('link', '#')
         content = a.get('content') or a.get('summary', '')
-        text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n"
+        model_used = a.get('model_used', None)
+        model_tag = f"\n[翻译模型: {model_used}]" if model_used else ""
+        text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
     # HTML 版本
     html_content = build_html(feed_name, articles, is_translated, is_today)
@@ -369,6 +546,7 @@ def main():
     print(f"每日上限: {MAX_DAILY}")
     print(f"跳过全文提取: {SKIP_TRAFILATURA}")
     print(f"AgentMail HTTP API可用: {bool(AGENTMAIL_API_KEY and AGENTMAIL_INBOX_ID)}")
+    print(f"模型列表: {MODEL_LIST}")
 
     # 加载已处理的 URL
     processed_urls = load_processed_urls()
@@ -478,10 +656,6 @@ def main():
             print(f"  提取全文: {title[:50]}... (RSS 仅 {rss_len} 字符)")
             full_content = extract_content(link)
             if full_content and len(full_content) > rss_len:
-                # 抓取后立即判断长度并截断
-                if len(full_content) > 15000:
-                    full_content = full_content[:15000]
-                    print(f"    ⚠ 全文过长，截取前15000字符")
                 content = full_content
                 print(f"    ✓ 抓取成功: {len(full_content)} 字符")
             else:
@@ -489,16 +663,13 @@ def main():
                 print(f"    ✗ 全文提取失败，使用 RSS 摘要")
 
         # 翻译（仅非中文 feed，只翻译正文，不翻译标题）
+        model_used = None
         if FEED_LANG != 'zh' and content:
             print(f"  翻译正文: {title[:50]}...")
-            # 截断过长内容，避免 API 超时
-            if len(content) > 15000:
-                content = content[:15000]
-                print(f"    ⚠ 原文过长，截取前15000字符")
-            translated = translate_with_kimi(content)
+            translated, model_used = translate_article(content)
             if translated and translated != content:
                 content = translated
-                print(f"    ✓ 翻译完成")
+                print(f"    ✓ 翻译完成 (模型: {model_used})")
             else:
                 print(f"    ✗ 翻译失败，使用原文")
 
@@ -507,7 +678,8 @@ def main():
             'link': link,
             'published': art.get('published', ''),
             'content': content,
-            'summary': art.get('summary', '')
+            'summary': art.get('summary', ''),
+            'model_used': model_used
         })
 
         feed_processed.add(link)
