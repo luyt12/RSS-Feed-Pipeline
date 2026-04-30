@@ -63,9 +63,7 @@ Extract key points from the English article and write a Chinese summary with the
 1. No need to translate the full text - extract key points directly
 2. High information density - cover main points, background, and significance  
 3. Keep key details (names, institutions, data)
-4. Word count rules (based on original English word count):
-   - > 2000 words: Chinese summary ~1500 characters
-   - ≤ 2000 words: Chinese summary ~80% of original word count in characters
+4. **Word count rule**: The Chinese summary should have approximately 80% of the English word count in Chinese characters. Example: 1000 English words → ~800 Chinese characters
 5. Concise style, avoid "This article discusses..." filler
 6. Stay neutral on controversial topics
 
