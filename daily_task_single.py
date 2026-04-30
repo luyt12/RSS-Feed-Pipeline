@@ -247,10 +247,10 @@ def translate_article(text):
     """
     翻译文章，支持长文分段和多模型 fallback
     
-    返回: (translated_text, model_used)
+    返回: (translated_text, model_used, was_split)
     """
     if not text:
-        return text, None
+        return text, None, False
     
     word_count = count_words(text)
     print(f"    原文 {word_count} 词")
@@ -260,12 +260,12 @@ def translate_article(text):
         for model in MODEL_LIST:
             translated, success = translate_with_model(text, model)
             if success:
-                return translated, model
+                return translated, model, False
             print(f"    {model} 失败，尝试下一个模型...")
         
         # 所有模型都失败
         print(f"    所有模型均失败，使用原文")
-        return text, 'failed'
+        return text, 'failed', False
     
     # 长文：分段翻译
     print(f"    长文分段处理...")
@@ -309,9 +309,9 @@ def translate_article(text):
     final_text = '\n\n'.join(translated_parts)
     # 只要有一段成功翻译，就不算完全失败
     if successful_model:
-        return final_text, successful_model
+        return final_text, successful_model, True
     else:
-        return text, 'failed'
+        return text, 'failed', False
 
 
 def build_html(feed_name, articles, is_translated, is_today):
@@ -371,13 +371,16 @@ def build_html(feed_name, articles, is_translated, is_today):
         content = content.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         content = content.replace('\n\n', '</p><p>').replace('\n', '<br>')
         
+        was_split = art.get('was_split', False)
+        
         # 模型标注
         model_tag = ''
         if model_used == 'failed':
             model_tag = '<div class="fail-tag">⚠️ 大模型翻译失败，保留原文</div>'
         elif model_used:
             model_display = model_used.split('/')[-1] if '/' in model_used else model_used
-            model_tag = f'<div class="model-tag">🤖 翻译模型: {model_display}</div>'
+            split_note = '（经分段处理）' if was_split else ''
+            model_tag = f'<div class="model-tag">🤖 翻译模型: {model_display}{split_note}</div>'
         
         body += f"""
   <div class="art">
@@ -414,7 +417,12 @@ def send_email_via_smtp(articles, feed_name, is_translated, is_today, max_retrie
         link = a.get('link', '#')
         content = a.get('content') or a.get('summary', '')
         model_used = a.get('model_used', None)
-        model_tag = f"\n[⚠️ 大模型翻译失败，保留原文]" if model_used == "failed" else (f"\n[翻译模型: {model_used}]" if model_used else "")
+        was_split = a.get('was_split', False)
+        if model_used == "failed":
+            model_tag = "\n[⚠️ 大模型翻译失败，保留原文]"
+        elif model_used:
+            split_note = "（经分段处理）" if was_split else ""
+            model_tag = f"\n[翻译模型: {model_used}{split_note}]"
         text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
     # HTML 版本
@@ -486,7 +494,12 @@ def send_email_via_http_api(articles, feed_name, is_translated, is_today):
         link = a.get('link', '#')
         content = a.get('content') or a.get('summary', '')
         model_used = a.get('model_used', None)
-        model_tag = f"\n[⚠️ 大模型翻译失败，保留原文]" if model_used == "failed" else (f"\n[翻译模型: {model_used}]" if model_used else "")
+        was_split = a.get('was_split', False)
+        if model_used == "failed":
+            model_tag = "\n[⚠️ 大模型翻译失败，保留原文]"
+        elif model_used:
+            split_note = "（经分段处理）" if was_split else ""
+            model_tag = f"\n[翻译模型: {model_used}{split_note}]"
         text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
     # HTML 版本
@@ -670,7 +683,7 @@ def main():
         model_used = None
         if FEED_LANG != 'zh' and content:
             print(f"  翻译正文: {title[:50]}...")
-            translated, model_used = translate_article(content)
+            translated, model_used, was_split = translate_article(content)
             if translated and translated != content:
                 content = translated
                 print(f"    ✓ 翻译完成 (模型: {model_used})")
@@ -683,7 +696,8 @@ def main():
             'published': art.get('published', ''),
             'content': content,
             'summary': art.get('summary', ''),
-            'model_used': model_used
+            'model_used': model_used,
+            'was_split': was_split
         })
 
         feed_processed.add(link)
