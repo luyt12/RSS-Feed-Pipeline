@@ -3,7 +3,7 @@
 单源 RSS 处理脚本 - 从环境变量读取 feed 配置
 对齐 daily_task.py 逻辑：历史文章回退、精美邮件格式、翻译优化
 增加：SMTP失败后使用AgentMail HTTP API发送
-更新：多模型 fallback + 长文分段翻译 + 模型标注
+更新：多模型 fallback + 长文分段翻译 + 模型标注 + 词数/字数标注
 """
 import os
 import json
@@ -119,9 +119,13 @@ def extract_content(url):
 
 def count_words(text):
     """计算英文单词数"""
-    # 简单按空格分割计算单词数
     words = text.split()
     return len(words)
+
+
+def count_chinese_chars(text):
+    """计算中文汉字数量（仅统计 CJK 统一汉字）"""
+    return len(re.findall(r'[\u4e00-\u9fff]', text))
 
 
 def split_by_paragraphs(text, max_words=2000):
@@ -314,6 +318,17 @@ def translate_article(text):
         return text, 'failed', False
 
 
+def format_count(en_words, zh_chars, model_used):
+    """格式化词数/字数标注"""
+    en_str = f"{en_words:,}" if en_words >= 1000 else str(en_words)
+    if model_used == 'failed':
+        # 翻译失败，只显示英文词数
+        return f"({en_str}英词)"
+    else:
+        zh_str = f"{zh_chars:,}" if zh_chars >= 1000 else str(zh_chars)
+        return f"({en_str}英词 | 摘要{zh_str}汉字)"
+
+
 def build_html(feed_name, articles, is_translated, is_today):
     """构建精美 HTML 邮件"""
     hdr_bg = '#1b4332' if not is_translated else '#1a237e'
@@ -336,6 +351,7 @@ def build_html(feed_name, articles, is_translated, is_today):
   .art:last-child{{border-bottom:none}}
   .art h2{{font-size:17px;font-weight:700;color:#1a1a1a;margin:0 0 6px 0;line-height:1.4;border-left:3px solid #40916c;padding:4px 6px;border-radius:0 4px 4px 0}}
   .art h2 a{{color:inherit;text-decoration:none}}
+  .wc{{font-size:11px;color:#888;font-weight:400;margin-left:6px}}
   .meta{{font-size:11px;color:#aaa;margin-bottom:8px}}
   .txt{{font-size:14px;line-height:1.7;color:#333}}
   .fail-tag{{font-size:11px;color:#c0392b;font-style:italic;margin-top:8px;padding-top:8px;border-top:1px dashed #e0e0e0}}
@@ -366,6 +382,8 @@ def build_html(feed_name, articles, is_translated, is_today):
         pub = art.get('published', '')
         content = art.get('content') or art.get('summary', '（无内容）')
         model_used = art.get('model_used', None)
+        en_word_count = art.get('en_word_count', 0)
+        zh_char_count = art.get('zh_char_count', 0)
         
         # HTML 转义
         title_esc = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
@@ -373,6 +391,9 @@ def build_html(feed_name, articles, is_translated, is_today):
         content = content.replace('\n\n', '</p><p>').replace('\n', '<br>')
         
         was_split = art.get('was_split', False)
+        
+        # 词数/字数标注
+        count_tag = format_count(en_word_count, zh_char_count, model_used)
         
         # 模型标注
         model_tag = ''
@@ -385,7 +406,7 @@ def build_html(feed_name, articles, is_translated, is_today):
         
         body += f"""
   <div class="art">
-    <h2><span style="color:#40916c;margin-right:6px">{i}.</span><a href="{link}">{title_esc}</a></h2>
+    <h2><span style="color:#40916c;margin-right:6px">{i}.</span><a href="{link}">{title_esc}</a> <span class="wc">{count_tag}</span></h2>
     <div class="meta">📅 {pub}</div>
     <div class="txt"><p>{content}</p></div>
     {model_tag}
@@ -419,12 +440,15 @@ def send_email_via_smtp(articles, feed_name, is_translated, is_today, max_retrie
         content = a.get('content') or a.get('summary', '')
         model_used = a.get('model_used', None)
         was_split = a.get('was_split', False)
+        en_word_count = a.get('en_word_count', 0)
+        zh_char_count = a.get('zh_char_count', 0)
+        count_tag = format_count(en_word_count, zh_char_count, model_used)
         if model_used == "failed":
             model_tag = "\n[⚠️ 大模型翻译失败，保留原文]"
         elif model_used:
             split_note = "（经分段处理）" if was_split else ""
             model_tag = f"\n[翻译模型: {model_used}{split_note}]"
-        text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
+        text_content += f"\n{'='*60}\n📰 {i}. {title} {count_tag}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
     # HTML 版本
     html_content = build_html(feed_name, articles, is_translated, is_today)
@@ -496,12 +520,15 @@ def send_email_via_http_api(articles, feed_name, is_translated, is_today):
         content = a.get('content') or a.get('summary', '')
         model_used = a.get('model_used', None)
         was_split = a.get('was_split', False)
+        en_word_count = a.get('en_word_count', 0)
+        zh_char_count = a.get('zh_char_count', 0)
+        count_tag = format_count(en_word_count, zh_char_count, model_used)
         if model_used == "failed":
             model_tag = "\n[⚠️ 大模型翻译失败，保留原文]"
         elif model_used:
             split_note = "（经分段处理）" if was_split else ""
             model_tag = f"\n[翻译模型: {model_used}{split_note}]"
-        text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
+        text_content += f"\n{'='*60}\n📰 {i}. {title} {count_tag}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
     # HTML 版本
     html_content = build_html(feed_name, articles, is_translated, is_today)
@@ -680,16 +707,23 @@ def main():
                 content = rss_content
                 print(f"    ✗ 全文提取失败，使用 RSS 摘要")
 
+        # 记录英文词数（翻译前）
+        en_word_count = count_words(content) if FEED_LANG != 'zh' else 0
+
         # 翻译（仅非中文 feed，只翻译正文，不翻译标题）
         model_used = None
+        was_split = False
         if FEED_LANG != 'zh' and content:
-            print(f"  翻译正文: {title[:50]}...")
+            print(f"  翻译正文: {title[:50]}... ({en_word_count}英词)")
             translated, model_used, was_split = translate_article(content)
             if translated and translated != content:
                 content = translated
                 print(f"    ✓ 翻译完成 (模型: {model_used})")
             else:
                 print(f"    ✗ 翻译失败，使用原文")
+
+        # 计算中文汉字数（翻译后）
+        zh_char_count = count_chinese_chars(content) if model_used and model_used != 'failed' else 0
 
         new_articles.append({
             'title': title,
@@ -698,7 +732,9 @@ def main():
             'content': content,
             'summary': art.get('summary', ''),
             'model_used': model_used,
-            'was_split': was_split
+            'was_split': was_split,
+            'en_word_count': en_word_count,
+            'zh_char_count': zh_char_count
         })
 
         # 只在翻译成功时标记为已处理，失败则下次重试
