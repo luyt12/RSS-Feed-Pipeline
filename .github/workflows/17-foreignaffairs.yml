@@ -37,9 +37,9 @@ jobs:
           BAIDU_API_KEY: ${{ secrets.BAIDU_API_KEY }}
           KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
           FEED_NAME: 'Foreign Affairs'
-          FEED_URL: 'http://ftr.fivefilters.org/makefulltextfeed.php?url=http://www.foreignaffairs.com/rss.xml&max=3'
+          FEED_URL: 'http://ftr.fivefilters.org/makefulltextfeed.php?url=http://www.foreignaffairs.com/rss.xml&max=6'
           FEED_LANG: 'en'
-          MAX_DAILY: 5
+          MAX_DAILY: 6
         run: python daily_task_single.py
 
       - name: Commit processed URLs
