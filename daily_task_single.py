@@ -448,6 +448,8 @@ def send_email_via_smtp(articles, feed_name, is_translated, is_today, max_retrie
         elif model_used:
             split_note = "（经分段处理）" if was_split else ""
             model_tag = f"\n[翻译模型: {model_used}{split_note}]"
+        else:
+            model_tag = ""
         text_content += f"\n{'='*60}\n📰 {i}. {title} {count_tag}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
     # HTML 版本
