@@ -648,12 +648,19 @@ def main():
     print(f"[{FEED_NAME}] RSS 共 {len(all_articles)} 篇文章，今日 {len(today_articles)} 篇")
 
     # 逻辑：优先用今日文章，不够5个则补充历史未处理文章
+    # 关键修复：选取今日文章时就过滤掉已处理的 URL，避免重复发送
     candidates = []
     is_today = False
 
     if today_articles:
-        candidates = list(today_articles[:MAX_DAILY])
+        # 过滤掉已处理的今日文章
+        unprocessed_today = [a for a in today_articles if a['link'] not in feed_processed]
+        candidates = list(unprocessed_today[:MAX_DAILY])
         is_today = True
+        
+        if candidates:
+            print(f"  → 今日文章 {len(today_articles)} 篇，未处理 {len(unprocessed_today)} 篇，选取 {len(candidates)} 篇")
+        
         remaining = MAX_DAILY - len(candidates)
         if remaining > 0:
             # 今日文章不足5个，补充历史未处理文章
@@ -661,11 +668,7 @@ def main():
             history_candidates = history_candidates[:remaining]
             candidates.extend(history_candidates)
             if history_candidates:
-                print(f"  → 今日文章 {len(today_articles)} 篇（不足 {MAX_DAILY}），补充历史未处理 {len(history_candidates)} 篇")
-            else:
-                print(f"  → 使用今日文章: {len(candidates)} 篇")
-        else:
-            print(f"  → 使用今日文章: {len(candidates)} 篇")
+                print(f"  → 补充历史未处理 {len(history_candidates)} 篇")
     else:
         # 今日无文章，全部从历史未处理中取
         candidates = [a for a in all_articles if a['link'] not in feed_processed]
