@@ -619,14 +619,14 @@ def main():
         elif entry.get('description'):
             content = entry.description
 
-        # 清理 HTML 标签
-        content = re.sub(r'<[^>]+>', '', content).strip()
+        # 不清理 HTML 标签（保留原始 content，与 TimeEmail 保持一致）
+        # 不截断长度（保留完整内容）
 
         article = {
             'title': entry.get('title', '无标题'),
             'link': link,
             'published': published,
-            'summary': content[:500] if content else ''
+            'summary': content if content else ''
         }
 
         all_articles.append(article)
