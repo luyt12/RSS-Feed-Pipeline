@@ -39,7 +39,7 @@ jobs:
           FEED_NAME: 'TIME Magazine'
           FEED_URL: 'https://plink.anyfeeder.com/time'
           FEED_LANG: 'en'
-          MAX_DAILY: 5
+          MAX_DAILY: 100
         run: python daily_task_single.py
 
       - name: Commit processed URLs
