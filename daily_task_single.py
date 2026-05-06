@@ -381,13 +381,24 @@ def build_html(feed_name, articles, is_translated, is_today):
         pub = art.get('published', '')
         content = art.get('content') or art.get('summary', '（无内容）')
         model_used = art.get('model_used', None)
-        
+        en_words = art.get('en_words', 0)
+        zh_chars = art.get('zh_chars', 0)
+
         # HTML 转义
         title_esc = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         content = content.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         content = content.replace('\n\n', '</p><p>').replace('\n', '<br>')
-        
+
         was_split = art.get('was_split', False)
+
+        # 词数/字数标注
+        count_tag = ''
+        if en_words > 0 and zh_chars > 0:
+            count_tag = f'<div style="font-size:11px;color:#888;margin-bottom:6px">📊 英文约 {en_words} 词 → 中文约 {zh_chars} 字</div>'
+        elif en_words > 0:
+            count_tag = f'<div style="font-size:11px;color:#888;margin-bottom:6px">📊 英文约 {en_words} 词</div>'
+        elif zh_chars > 0:
+            count_tag = f'<div style="font-size:11px;color:#888;margin-bottom:6px">📊 中文约 {zh_chars} 字</div>'
         
         # 模型标注
         model_tag = ''
@@ -403,6 +414,7 @@ def build_html(feed_name, articles, is_translated, is_today):
     <h2><span style="color:#40916c;margin-right:6px">{i}.</span><a href="{link}">{title_esc}</a></h2>
     <div class="meta">📅 {pub}</div>
     <div class="txt"><p>{content}</p></div>
+    {count_tag}
     {model_tag}
   </div>
 """
@@ -707,16 +719,24 @@ def main():
                 content = rss_content
                 print(f"    ✗ 全文提取失败，使用 RSS 摘要")
 
-        # 翻译（仅非中文 feed，只翻译正文，不翻译标题）
+                # 翻译（仅非中文 feed，只翻译正文，不翻译标题）
         model_used = None
+        en_words = 0
+        zh_chars = 0
         if FEED_LANG != 'zh' and content:
-            print(f"  翻译正文: {title[:50]}...")
+            # 翻译前：统计英文原文词数
+            en_words = count_en_words(title) + count_en_words(content)
+            print(f"  翻译正文: {title[:50]}... (英文约 {en_words} 词)")
             translated, model_used, was_split = translate_article(content)
             if translated and translated != content:
                 content = translated
-                print(f"    ✓ 翻译完成 (模型: {model_used})")
+                zh_chars = count_zh_chars(content)
+                print(f"    ✓ 翻译完成 (模型: {model_used}, 中文约 {zh_chars} 字)")
             else:
                 print(f"    ✗ 翻译失败，使用原文")
+        else:
+            # 中文 feed：统计中文字数
+            zh_chars = count_zh_chars(title) + count_zh_chars(content)
 
         new_articles.append({
             'title': title,
@@ -725,7 +745,9 @@ def main():
             'content': content,
             'summary': art.get('summary', ''),
             'model_used': model_used,
-            'was_split': was_split
+            'was_split': was_split,
+            'en_words': en_words,
+            'zh_chars': zh_chars
         })
 
         # 只在翻译成功时标记为已处理，失败则下次重试
