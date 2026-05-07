@@ -133,10 +133,24 @@ def extract_content(url):
 
 
 def count_words(text):
-    """计算英文单词数"""
-    # 简单按空格分割计算单词数
+    """计算英文单词数（按空格分割）"""
+    if not text:
+        return 0
     words = text.split()
     return len(words)
+
+
+def count_en_words(text):
+    """计算英文单词数（别名，兼容旧代码）"""
+    return count_words(text)
+
+
+def count_zh_chars(text):
+    """计算中文字符数（去除空格和换行）"""
+    if not text:
+        return 0
+    # 统计非空白字符的中文字符
+    return len([c for c in text if c.strip() and '\u4e00' <= c <= '\u9fff'])
 
 
 def split_by_paragraphs(text, max_words=2000):
