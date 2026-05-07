@@ -16,6 +16,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+      - name: Fetch latest processed URLs
+        run: |
+          git fetch origin
+          git checkout origin/main -- data/processed_urls.json 2>/dev/null || true
+
 
       - uses: actions/setup-python@v5
         with:
@@ -46,7 +51,13 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add data/processed_urls.json 2>/dev/null || true
           git diff --quiet && git diff --staged --quiet || git commit -m "Update processed URLs [skip ci]"
-          git pull --rebase || true
-          git push || true
+          
+          # 带重试的 push（最多 3 次，指数退避）
+          max_retries=3
+          for i in \$(seq 1 \$max_retries); do
+            git pull --rebase && git push && echo "Push succeeded" && break
+            echo "Push failed, attempt \$i/\$max_retries, retrying in \$((5 * i))s..."
+            sleep \$((5 * i))
+          done
 
 
