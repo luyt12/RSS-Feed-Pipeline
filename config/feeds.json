@@ -146,5 +146,12 @@
     "lang": "en",
     "max_daily": 5,
     "enabled": true
+  },
+  {
+    "name": "Financial Times US-China Relations",
+    "url": "https://ftr.fivefilters.org/makefulltextfeed.php?url=https://www.ft.com/us-china-relations?format=rss&max=5",
+    "lang": "en",
+    "max_daily": 5,
+    "enabled": true
   }
 ]
