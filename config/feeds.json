@@ -153,5 +153,12 @@
     "lang": "en",
     "max_daily": 5,
     "enabled": true
+  },
+  {
+    "name": "HuffPost World News",
+    "url": "https://ftr.fivefilters.org/makefulltextfeed.php?url=https://chaski.huffpost.com/us/auto/vertical/world-news&max=5",
+    "lang": "en",
+    "max_daily": 5,
+    "enabled": true
   }
 ]
