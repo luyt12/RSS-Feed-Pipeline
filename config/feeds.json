@@ -160,5 +160,12 @@
     "lang": "en",
     "max_daily": 5,
     "enabled": true
+  },
+  {
+    "name": "LA Times World",
+    "url": "https://ftr.fivefilters.org/makefulltextfeed.php?url=https://www.latimes.com/world/?track=rss&max=5",
+    "lang": "en",
+    "max_daily": 5,
+    "enabled": true
   }
 ]
