@@ -153,6 +153,44 @@ def count_zh_chars(text):
     return len([c for c in text if c.strip() and '\u4e00' <= c <= '\u9fff'])
 
 
+def validate_translation(original_word_count, translated_text):
+    """
+    验证翻译结果质量。
+    
+    检查中文字符数是否达到英文单词数的30%以上。
+    如果比例过低，说明翻译失败（如模型返回空内容、乱码或仅部分翻译）。
+    
+    阈值：翻译字符数应至少为原文单词数的30%。
+    这是一个保守阈值，用于捕获极端失败情况，例如：
+        1889 英文单词 → 58 中文字符（比例约 0.03）
+    
+    返回:
+        True 如果翻译有效，False 否则。
+    """
+    if not translated_text or not translated_text.strip():
+        print(f"      ⚠ 验证失败: 翻译结果为空")
+        return False
+    
+    # 统计中文字符数（CJK 统一表意文字）
+    chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', translated_text))
+    
+    # 也统计所有非空白字符作为备用（对于混合内容）
+    non_space_chars = len(re.sub(r'\s', '', translated_text))
+    
+    # 使用中文字符数和纯字符数中较大的进行验证
+    char_count = max(chinese_chars, non_space_chars)
+    
+    # 阈值：翻译字符数应至少为原文单词数的30%
+    min_chars = original_word_count * 0.3
+    
+    if char_count < min_chars:
+        print(f"      ⚠ 验证失败: {char_count} 字符 < {min_chars:.0f} 最低要求 (比例 {char_count/original_word_count:.2f})")
+        return False
+    
+    print(f"      ✓ 验证通过: {char_count} 字符 / {original_word_count} 单词 (比例 {char_count/original_word_count:.2f})")
+    return True
+
+
 def split_by_paragraphs(text, max_words=2000):
     """
     按自然段落分割文章，每部分不超过 max_words 词
@@ -233,6 +271,8 @@ def translate_with_model(text, model_name, max_retries=3):
     if not text or not KIMI_API_KEY:
         return text, False
 
+    word_count = count_words(text)
+    
     headers = {
         'Authorization': f'Bearer {KIMI_API_KEY}',
         'Content-Type': 'application/json'
@@ -256,7 +296,11 @@ def translate_with_model(text, model_name, max_retries=3):
             result = response.json()
             if result.get('choices') and result['choices'][0]:
                 translated = result['choices'][0]['message']['content']
-                if translated and len(translated) > 50:  # 确保有实质性输出
+                if translated and len(translated) > 50:
+                    # 验证翻译质量
+                    if not validate_translation(word_count, translated):
+                        print(f"    {model_name} 翻译质量验证失败")
+                        continue  # 尝试重试或下一个模型
                     return translated, True
                 else:
                     print(f"    {model_name} 返回内容过短，可能失败")
