@@ -4,7 +4,6 @@
 对齐 daily_task.py 逻辑：历史文章回退、精美邮件格式、翻译优化
 增加：SMTP失败后使用AgentMail HTTP API发送
 更新：多模型 fallback + 长文分段翻译 + 模型标注
-新增：图片嵌入功能（contentstack 图片直接链接，其他图片 CID 内嵌）
 """
 import os
 import json
@@ -14,11 +13,9 @@ import time
 import trafilatura
 import re
 import base64
-import uuid
 from datetime import datetime, timezone
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from email.mime.image import MIMEImage
 import smtplib
 import ssl
 
@@ -48,6 +45,7 @@ KIMI_API_URL = os.environ.get('KIMI_API_URL', 'https://integrate.api.nvidia.com/
 # 模型列表（按优先级排列）
 MODEL_LIST = [
     'minimaxai/minimax-m2.7',
+    'openrouter/free',
     'qwen/qwen3-coder-480b-a35b-instruct',
     'stepfun-ai/step-3.5-flash',
     'google/gemma-3n-e2b-it',
@@ -57,9 +55,6 @@ MODEL_LIST = [
 # 路径配置
 DATA_DIR = 'data'
 PROCESSED_URLS_FILE = os.path.join(DATA_DIR, 'processed_urls.json')
-
-# 图片嵌入配置：contentstack 域名直接链接，其他域名下载嵌入
-DIRECT_LINK_PREFIX = "https://gcp-na-images.contentstack.com/"
 
 # 翻译 Prompt
 TRANSLATE_PROMPT = """You are a professional translator. Translate the English article into Chinese following these rules:
@@ -80,134 +75,6 @@ The Chinese output MUST have approximately 80% of the English word count in Chin
 
 ## Output Format
 Output Chinese text directly. No meta-comments. No "This article discusses..." filler."""
-
-
-def _escape_html(text):
-    """转义 HTML 特殊字符"""
-    text = text.replace('&', '&amp;')
-    text = text.replace('<', '&lt;')
-    text = text.replace('>', '&gt;')
-    text = text.replace('"', '&quot;')
-    return text
-
-
-def _download_image(url, timeout=30):
-    """
-    下载图片。
-    跳过 m3u8 视频播放列表，大小限制 5MB。
-    返回图片字节数据，失败返回 None。
-    """
-    try:
-        if url.endswith('.m3u8') or 'manifest' in url.lower():
-            print(f"      跳过视频播放列表: {url[:60]}...")
-            return None
-        
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-            'Accept': 'image/*,*/*;q=0.8'
-        }
-        
-        response = requests.get(url, headers=headers, timeout=timeout, stream=True)
-        
-        if response.status_code != 200:
-            print(f"      图片下载失败: HTTP {response.status_code}")
-            return None
-        
-        content_type = response.headers.get('Content-Type', '')
-        if not content_type.startswith('image/'):
-            print(f"      跳过非图片内容: {content_type}")
-            return None
-        
-        image_data = b''
-        for chunk in response.iter_content(chunk_size=8192):
-            image_data += chunk
-            if len(image_data) > 5 * 1024 * 1024:  # 5MB 限制
-                print(f"      图片过大，跳过")
-                return None
-        
-        print(f"      已下载图片: {len(image_data)} bytes")
-        return image_data
-    except Exception as e:
-        print(f"      下载图片出错: {str(e)[:100]}")
-        return None
-
-
-def _extract_image_urls_from_markdown(text):
-    """
-    从 markdown 文本中提取所有图片 URL。
-    支持格式: ![alt](url) 和 ![alt][ref]
-    返回图片 URL 列表（去重）。
-    """
-    # 匹配 ![alt](url) 格式
-    pattern1 = r'!\[(.*?)\]\((.*?)\)'
-    urls1 = re.findall(pattern1, text)
-    
-    # 收集所有 URL
-    all_urls = []
-    for match in urls1:
-        url = match[1].strip()
-        if url and url.startswith('http'):
-            all_urls.append(url)
-    
-    return list(dict.fromkeys(all_urls))  # 去重保持顺序
-
-
-def _process_markdown_images(content, embedded_images):
-    """
-    处理 markdown 内容中的图片：
-    - contentstack 图片 → 保持原样（直接链接）
-    - 其他图片 → 下载并替换为 CID 引用
-    
-    返回: (processed_content, new_embedded_images)
-    """
-    # 提取所有图片 URL
-    image_urls = _extract_image_urls_from_markdown(content)
-    
-    if not image_urls:
-        return content, embedded_images
-    
-    processed_content = content
-    
-    for url in image_urls:
-        if url.startswith(DIRECT_LINK_PREFIX):
-            # contentstack 图片：转换为直接 img 标签
-            img_tag = f'<img src="{url}" alt="" style="max-width:100%;height:auto;border-radius:4px;margin-bottom:8px;display:block;" />'
-            # 替换 markdown 图片语法
-            md_pattern = f'!\[[^\]]*\]\({re.escape(url)}\)'
-            processed_content = re.sub(md_pattern, img_tag, processed_content)
-        else:
-            # 其他图片：下载并嵌入
-            print(f"      下载图片: {url[:60]}...")
-            image_data = _download_image(url)
-            
-            if image_data:
-                # 生成唯一 CID
-                cid = f"img_{uuid.uuid4().hex[:8]}"
-                
-                # 从 URL 推断 MIME 类型
-                mime_type = 'image/jpeg'
-                if '.png' in url.lower():
-                    mime_type = 'image/png'
-                elif '.gif' in url.lower():
-                    mime_type = 'image/gif'
-                elif '.webp' in url.lower():
-                    mime_type = 'image/webp'
-                
-                embedded_images.append({
-                    "cid": cid,
-                    "data": image_data,
-                    "mime_type": mime_type
-                })
-                
-                # 替换为 CID 引用的 img 标签
-                img_tag = f'<img src="cid:{cid}" alt="" style="max-width:100%;height:auto;border-radius:4px;margin-bottom:8px;display:block;" />'
-                md_pattern = f'!\[[^\]]*\]\({re.escape(url)}\)'
-                processed_content = re.sub(md_pattern, img_tag, processed_content)
-            else:
-                # 下载失败：保留原文（markdown 语法）
-                print(f"      下载失败，保留原文")
-    
-    return processed_content, embedded_images
 
 
 def load_processed_urls():
@@ -285,44 +152,6 @@ def count_zh_chars(text):
         return 0
     # 统计非空白字符的中文字符
     return len([c for c in text if c.strip() and '\u4e00' <= c <= '\u9fff'])
-
-
-def validate_translation(original_word_count, translated_text):
-    """
-    验证翻译结果质量。
-    
-    检查中文字符数是否达到英文单词数的30%以上。
-    如果比例过低，说明翻译失败（如模型返回空内容、乱码或仅部分翻译）。
-    
-    阈值：翻译字符数应至少为原文单词数的30%。
-    这是一个保守阈值，用于捕获极端失败情况，例如：
-        1889 英文单词 → 58 中文字符（比例约 0.03）
-    
-    返回:
-        True 如果翻译有效，False 否则。
-    """
-    if not translated_text or not translated_text.strip():
-        print(f"      ⚠ 验证失败: 翻译结果为空")
-        return False
-    
-    # 统计中文字符数（CJK 统一表意文字）
-    chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', translated_text))
-    
-    # 也统计所有非空白字符作为备用（对于混合内容）
-    non_space_chars = len(re.sub(r'\s', '', translated_text))
-    
-    # 使用中文字符数和纯字符数中较大的进行验证
-    char_count = max(chinese_chars, non_space_chars)
-    
-    # 阈值：翻译字符数应至少为原文单词数的30%
-    min_chars = original_word_count * 0.3
-    
-    if char_count < min_chars:
-        print(f"      ⚠ 验证失败: {char_count} 字符 < {min_chars:.0f} 最低要求 (比例 {char_count/original_word_count:.2f})")
-        return False
-    
-    print(f"      ✓ 验证通过: {char_count} 字符 / {original_word_count} 单词 (比例 {char_count/original_word_count:.2f})")
-    return True
 
 
 def split_by_paragraphs(text, max_words=2000):
@@ -405,8 +234,6 @@ def translate_with_model(text, model_name, max_retries=3):
     if not text or not KIMI_API_KEY:
         return text, False
 
-    word_count = count_words(text)
-    
     headers = {
         'Authorization': f'Bearer {KIMI_API_KEY}',
         'Content-Type': 'application/json'
@@ -430,11 +257,7 @@ def translate_with_model(text, model_name, max_retries=3):
             result = response.json()
             if result.get('choices') and result['choices'][0]:
                 translated = result['choices'][0]['message']['content']
-                if translated and len(translated) > 50:
-                    # 验证翻译质量
-                    if not validate_translation(word_count, translated):
-                        print(f"    {model_name} 翻译质量验证失败")
-                        continue  # 尝试重试或下一个模型
+                if translated and len(translated) > 50:  # 确保有实质性输出
                     return translated, True
                 else:
                     print(f"    {model_name} 返回内容过短，可能失败")
@@ -522,25 +345,11 @@ def translate_article(text):
 
 
 def build_html(feed_name, articles, is_translated, is_today):
-    """
-    构建精美 HTML 邮件。
-    
-    返回: (html_body, embedded_images)
-    embedded_images: [{"cid": str, "data": bytes, "mime_type": str}]
-    """
+    """构建精美 HTML 邮件"""
     hdr_bg = '#1b4332' if not is_translated else '#1a237e'
     badge_bg = '#40916c' if not is_translated else '#1565c0'
     badge_txt = '🌐 原文' if not is_translated else '🔄 中文翻译'
     date_label = '今日' if is_today else '历史'
-
-    embedded_images = []
-    
-    # 处理每篇文章中的图片
-    for art in articles:
-        content = art.get('content') or art.get('summary', '')
-        if content:
-            processed_content, embedded_images = _process_markdown_images(content, embedded_images)
-            art['content'] = processed_content
 
     body = f"""<!DOCTYPE html>
 <html><head><meta charset="UTF-8">
@@ -591,9 +400,9 @@ def build_html(feed_name, articles, is_translated, is_today):
         zh_chars = art.get('zh_chars', 0)
 
         # HTML 转义
-        title_esc = _escape_html(title)
-        content_html = _escape_html(content)
-        content_html = content_html.replace('\n\n', '</p><p>').replace('\n', '<br>')
+        title_esc = title.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        content = content.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        content = content.replace('\n\n', '</p><p>').replace('\n', '<br>')
 
         was_split = art.get('was_split', False)
 
@@ -619,7 +428,7 @@ def build_html(feed_name, articles, is_translated, is_today):
   <div class="art">
     <h2><span style="color:#40916c;margin-right:6px">{i}.</span><a href="{link}">{title_esc}</a></h2>
     <div class="meta">📅 {pub}</div>
-    <div class="txt"><p>{content_html}</p></div>
+    <div class="txt"><p>{content}</p></div>
     {count_tag}
     {model_tag}
   </div>
@@ -628,11 +437,11 @@ def build_html(feed_name, articles, is_translated, is_today):
     body += f"""
   <div class="ft">AI 助手自动抓取推送</div>
 </div></body></html>"""
-    return body, embedded_images
+    return body
 
 
 def send_email_via_smtp(articles, feed_name, is_translated, is_today, max_retries=5):
-    """通过SMTP发送邮件（带重试机制，支持图片嵌入）"""
+    """通过SMTP发送邮件（带重试机制）"""
     if not articles:
         print(f"[{feed_name}] 无新文章，不发送邮件")
         return False, "无新文章"
@@ -659,27 +468,16 @@ def send_email_via_smtp(articles, feed_name, is_translated, is_today, max_retrie
             model_tag = f"\n[翻译模型: {model_used}{split_note}]"
         text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
-    # HTML 版本（处理图片嵌入）
-    html_content, embedded_images = build_html(feed_name, articles, is_translated, is_today)
+    # HTML 版本
+    html_content = build_html(feed_name, articles, is_translated, is_today)
 
-    # 创建邮件（使用 related 以支持内嵌图片）
-    msg = MIMEMultipart('related')
+    # 创建邮件
+    msg = MIMEMultipart('alternative')
     msg['From'] = EMAIL_FROM
     msg['To'] = EMAIL_TO
     msg['Subject'] = subject
     msg.attach(MIMEText(text_content, 'plain', 'utf-8'))
     msg.attach(MIMEText(html_content, 'html', 'utf-8'))
-    
-    # 附加内嵌图片
-    for img_info in embedded_images:
-        try:
-            img_part = MIMEImage(img_info['data'], _subtype=img_info['mime_type'].split('/')[-1])
-            img_part.add_header('Content-ID', f'<{img_info["cid"]}>')
-            img_part.add_header('Content-Disposition', 'inline')
-            msg.attach(img_part)
-            print(f"    已附加图片: {img_info['cid']}")
-        except Exception as e:
-            print(f"    附加图片失败 {img_info['cid']}: {e}")
 
     last_error = None
     
@@ -747,8 +545,8 @@ def send_email_via_http_api(articles, feed_name, is_translated, is_today):
             model_tag = f"\n[翻译模型: {model_used}{split_note}]"
         text_content += f"\n{'='*60}\n📰 {i}. {title}\n🔗 {link}\n\n{content[:1000]}\n{model_tag}\n"
 
-    # HTML 版本（处理图片嵌入）
-    html_content, _ = build_html(feed_name, articles, is_translated, is_today)
+    # HTML 版本
+    html_content = build_html(feed_name, articles, is_translated, is_today)
 
     try:
         print(f"[{feed_name}] 尝试通过AgentMail HTTP API发送...")
