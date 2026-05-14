@@ -133,6 +133,43 @@ def extract_content(url):
         return ''
 
 
+def clean_html_content(html_content):
+    """清理 RSS content 中的 HTML 标签，返回干净的 Markdown 文本
+    
+    FiveFilters 等代理返回的 RSS content 包含大量网站结构 HTML
+    （<div>, <span>, <svg>, <script> 等），需要用 trafilatura 清理。
+    """
+    if not html_content:
+        return html_content
+    # 快速检测是否含 HTML 标签
+    if '<' not in html_content or '>' not in html_content:
+        return html_content
+    try:
+        # 用 trafilatura 从 HTML 提取纯内容
+        # 需要包装成完整 HTML 文档才能正确解析
+        wrapped = f'<html><body>{html_content}</body></html>'
+        text = trafilatura.extract(wrapped,
+                                   include_comments=False,
+                                   include_tables=True,
+                                   output_format='markdown',
+                                   favor_precision=True)
+        if text and len(text) >= 100:
+            print(f"    ✓ HTML 清理成功: {len(html_content)} → {len(text)} 字符")
+            return text
+        else:
+            # trafilatura 提取失败，用正则兜底：去除所有 HTML 标签
+            clean = re.sub(r'<[^>]+>', '', html_content)
+            clean = re.sub(r'\s+', ' ', clean).strip()
+            if clean and len(clean) >= 100:
+                print(f"    ✓ 正则清理: {len(html_content)} → {len(clean)} 字符")
+                return clean
+            print(f"    ✗ HTML 清理后内容过短，保留原始")
+            return html_content
+    except Exception as e:
+        print(f"    ✗ HTML 清理失败: {e}")
+        return html_content
+
+
 def count_words(text):
     """计算英文单词数（按空格分割）"""
     if not text:
@@ -646,8 +683,8 @@ def main():
         elif entry.get('description'):
             content = entry.description
 
-        # 不清理 HTML 标签（保留原始 content，与 TimeEmail 保持一致）
         # 不截断长度（保留完整内容）
+        # 注意：HTML 标签在后续提取阶段清理（见 clean_html_content）
 
         article = {
             'title': entry.get('title', '无标题'),
@@ -722,8 +759,9 @@ def main():
             print(f"  [跳过全文] {title[:50]}...")
             content = rss_content
         elif rss_len > 2000:
-            print(f"  RSS 已含全文 ({rss_len} 字符)，直接使用")
-            content = rss_content
+            # RSS content 可能包含 HTML 标签，需要清理
+            content = clean_html_content(rss_content)
+            print(f"  RSS 已含全文 ({rss_len} 字符)，清理后使用")
         else:
             print(f"  提取全文: {title[:50]}... (RSS 仅 {rss_len} 字符)")
             full_content = extract_content(link)
@@ -784,3 +822,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
