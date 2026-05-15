@@ -40,7 +40,7 @@ jobs:
           KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
           KIMI_API_URL: ${{ secrets.KIMI_API_URL }}
           FEED_NAME: 'New Scientist'
-          FEED_URL: 'https://ftr.fivefilters.org/makefulltextfeed.php?url=https://www.newscientist.com/feed/home/&max=5'
+          FEED_URL: 'https://www.newscientist.com/feed/home/'
           FEED_LANG: 'en'
           MAX_DAILY: 5
         run: python daily_task_single.py
