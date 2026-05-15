@@ -38,7 +38,6 @@ jobs:
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
-          KIMI_API_URL: ${{ secrets.KIMI_API_URL }}
           FEED_NAME: 'New Scientist'
           FEED_URL: 'https://www.newscientist.com/feed/home/'
           FEED_LANG: 'en'
