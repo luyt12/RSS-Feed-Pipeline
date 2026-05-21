@@ -1,0 +1,46 @@
+name: Daily EPUB Digest
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # UTC 00:00 = Beijing 08:00
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: |
+          cd scripts
+          npm install
+
+      - name: Generate EPUB and send to Feishu
+        env:
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_RECEIVE_ID: ${{ secrets.FEISHU_RECEIVE_ID }}
+        run: node scripts/generate-epub.cjs
+
+      - name: Commit and push
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add data/epubs/ data/articles/ 2>/dev/null || true
+          git diff --quiet && git diff --staged --quiet || git commit -m "Daily EPUB digest [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase && git push && echo "Push succeeded" && break
+            echo "Push failed, attempt $i/3"
+            sleep $((5 * i))
+          done
