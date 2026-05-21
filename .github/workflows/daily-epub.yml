@@ -2,7 +2,7 @@ name: Daily EPUB Digest
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # UTC 00:00 = Beijing 08:00
+    - cron: '0 15 * * *'  # UTC 15:00 = Beijing 23:00 (after all feeds have run)
   workflow_dispatch:
 
 permissions:
@@ -31,6 +31,11 @@ jobs:
           FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
           FEISHU_RECEIVE_ID: ${{ secrets.FEISHU_RECEIVE_ID }}
         run: node scripts/generate-epub.cjs
+
+      - name: Clean up article JSONs
+        run: |
+          rm -f data/articles/*.json
+          echo "Cleaned up article JSON files"
 
       - name: Commit and push
         run: |
