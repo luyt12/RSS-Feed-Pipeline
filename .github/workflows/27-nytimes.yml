@@ -32,13 +32,8 @@ jobs:
 
       - name: Process feed
         env:
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
           KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          OUTPUT_MODE: 'json'
           FEED_NAME: '纽约时报'
           FEED_URL: 'https://feedx.net/rss/nytimes.xml'
           FEED_LANG: 'zh'
@@ -49,7 +44,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add data/processed_urls.json 2>/dev/null || true
+          git add data/processed_urls.json data/articles/ 2>/dev/null || true
           git diff --quiet && git diff --staged --quiet || git commit -m "Update processed URLs [skip ci]"
           
           # Simple push with retry
