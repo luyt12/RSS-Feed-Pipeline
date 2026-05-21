@@ -25,6 +25,7 @@ FEED_URL = os.environ.get('FEED_URL', '')
 FEED_LANG = os.environ.get('FEED_LANG', 'en')
 MAX_DAILY = int(os.environ.get('MAX_DAILY', '5'))
 SKIP_TRAFILATURA = os.environ.get('SKIP_TRAFILATURA', 'false').lower() == 'true'
+OUTPUT_MODE = os.environ.get('OUTPUT_MODE', 'email')  # 'email' or 'json'
 
 # SMTP 配置
 SMTP_HOST = os.environ.get('SMTP_HOST', 'smtp.agentmail.to')
@@ -55,6 +56,7 @@ MODEL_LIST = [
 # 路径配置
 DATA_DIR = 'data'
 PROCESSED_URLS_FILE = os.path.join(DATA_DIR, 'processed_urls.json')
+ARTICLES_DIR = os.path.join(DATA_DIR, 'articles')  # OUTPUT_MODE=json output dir
 
 # 翻译 Prompt
 TRANSLATE_PROMPT = """You are a professional translator. Translate the English article into Chinese following these rules:
@@ -809,10 +811,26 @@ def main():
 
     print(f"[{FEED_NAME}] 新文章: {len(new_articles)} 篇")
 
-    # 发送邮件（使用带fallback的版本）
+    # 发送或保存文章
     is_translated = FEED_LANG != 'zh'
     if new_articles:
-        send_email_with_fallback(new_articles, FEED_NAME, is_translated, is_today)
+        if OUTPUT_MODE == 'json':
+            # Save articles as JSON for EPUB generation
+            os.makedirs(ARTICLES_DIR, exist_ok=True)
+            out_file = os.path.join(ARTICLES_DIR, f'{FEED_NAME}.json')
+            with open(out_file, 'w', encoding='utf-8') as f:
+                json.dump({
+                    'feed_name': FEED_NAME,
+                    'feed_lang': FEED_LANG,
+                    'date': datetime.now(timezone.utc).strftime('%Y-%m-%d'),
+                    'is_today': is_today,
+                    'is_translated': is_translated,
+                    'articles': new_articles
+                }, f, ensure_ascii=False, indent=2)
+            print(f"[{FEED_NAME}] Saved {len(new_articles)} articles to {out_file}")
+        else:
+            # Default: send email
+            send_email_with_fallback(new_articles, FEED_NAME, is_translated, is_today)
 
     # 保存已处理的 URL
     processed_urls[FEED_NAME] = list(feed_processed)
