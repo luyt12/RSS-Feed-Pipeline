@@ -1,0 +1,64 @@
+{
+  "feed_name": "New Scientist",
+  "feed_lang": "en",
+  "date": "2026-05-23",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Mercury may have gained all of its unexpected water in a single day",
+      "link": "https://www.newscientist.com/article/2527597-mercury-may-have-gained-all-of-its-unexpected-water-in-a-single-day/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-05-22",
+      "content": "大约在1亿年前，水星表面发生了剧烈变化。此前，水星地表相对干燥、无冰，这并不令人意外，因为那里的白天温度可超过430摄氏度（806华氏度）。然而，在一个水星日之内，一切发生了改变。\n\n水星的两极存在一些陨石坑，其底部永远照不到阳光，被称为“永久阴影区”。这些区域由于缺乏阳光照射，温度极低，因此能够保存水冰。NASA的“信使号”探测器在2011至2015年间环绕水星运行期间，发现这些陨石坑中存在数米厚的冰层。但这些水冰是如何到达那里的，一直是个谜。\n\n此前的研究认为，这些水可能来自一颗类似彗星的天体，该天体直径约17公里，以每秒约30公里的速度撞击水星。而最新的模拟结果显示，可能是一次更大、更缓慢的撞击事件带来的结果。约翰·霍普金斯大学应用物理实验室的帕尔瓦蒂·普雷姆（Parvathy Prem）和她的同事们指出，这可能是一次更大、速度更慢的撞击。\n\n普雷姆说：“我们早就知道水星的两极有冰。这些冰可能由撞击体带来，这个观点并不新鲜，但这是我们第一次真正模拟了这一过程，并试图从头到尾可视化整个过程。”“这是我们第一次详细研究这一过程到底是如何展开的。”\n\n这个过程的“电影”始于一大块冰岩撞击体猛烈撞击水星，形成了今天在水星表面可见的巨大“广延”陨石坑（Hokusai crater）。当撞击体撞击地表时，几乎完全汽化，使水星拥有了极其稀薄但富含水汽的大气层。\n\n普雷姆说：“如果我们只用肉眼观察水星，这种大气可能太稀薄而无法看到。但如果用合适的波长观察，这颗行星可能曾短暂地发光。”\n\n尽管这种大气中的大部分会很快被太阳的强烈辐射摧毁，但研究人员发现，超过五分之一的水蒸气可能迁移到了极地的永久阴影区并得以保存。这比许多早期计算结果更符合信使号的测量数据。一个比之前推测的更大、速度更慢的撞击体，可能更符合实际情况，能将更多水保留在表面。\n\n如果研究人员的推测正确，那么这一切可能在水星的一个白天内（约等于176个地球日）完成。夏威夷大学的艾米莉·科斯特洛（Emily Costello）说：“如果真是这样，这可能是水星过去十亿年历史中最戏剧性的一天。”\n\n一个直径500公里、轨道与冥王星相似的小型冰冻天体，挑战了我们对太阳系小天体的假设。\n\n这可能解释了水星极地为何有如此多的冰，而月球却没有，尽管两者在许多方面非常相似。简而言之：“水星最近经历了一次大规模的水输送，而月球没有。”科斯特洛说。\n\n这也有助于我们理解包括地球在内的内太阳系其他行星是如何以及何时获得水的。帕尔瓦蒂·普雷姆说：“水星的极地冰沉积物是内太阳系水的来源和时间的有趣地质记录，我们现在正在解读这一记录，试图理解它告诉了我们什么。”这项任务将得到“贝皮科伦号”探测器的帮助，该探测器于2018年发射，将于今年晚些时候进入水星轨道。\n\n《地球物理研究杂志：行星》（Journal of Geophysical Research: Planets）的期刊参考文献DOI为：10.1029/2025JE009399。\n\n主题：",
+      "summary": "Despite being the closest planet to the sun, Mercury has thick deposits of ice at its poles, and now we may understand the events that formed them over just one Mercurian day",
+      "model_used": "qwen/qwen3-coder-480b-a35b-instruct",
+      "was_split": false,
+      "en_words": 653,
+      "zh_chars": 971
+    },
+    {
+      "title": "Experimental mRNA vaccine may protect against multiple Ebola viruses",
+      "link": "https://www.newscientist.com/article/2527731-experimental-mrna-vaccine-may-protect-against-multiple-ebola-viruses/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-05-22",
+      "content": "\n\n一种新型mRNA疫苗已经研发成功，可能可以对埃博拉病毒家族中最致命的病毒提供长期保护，包括目前正在两个非洲国家传播的布迪布吉奥病毒株。\n\n据估计，刚果民主共和国已有超过600人感染布迪布吉奥病毒，乌干达已确认两例病例，世界卫生组织因此宣布此次疫情为国际关注的突发公共卫生事件。\n\n布迪布吉奥病毒是一类被称为正埃博拉病毒的病原体之一，该类别还包括最常见的埃博拉类型——扎伊尔病毒以及苏丹病毒。这三种病毒都能在人类中引起严重疾病。\n\n此前，与扎伊尔病毒株相比，布迪布吉奥病毒引发的疫情较为罕见。扎伊尔病毒在2014年至2016年间感染了超过28000人。目前已有两种针对扎伊尔病毒的获批疫苗，但尚无针对布迪布吉奥或苏丹病毒的疫苗。\n\n中国武汉病毒研究所的姚彦峰及其团队如今表示，他们已开发出一种在小鼠身上有效防护这三种病毒的疫苗。\n\n他们在发表研究成果的新论文中写道：“广谱疫苗的开发有潜力有效控制多种正埃博拉病毒引发的疫情。”\n\n科学家在研发对这三种埃博拉病毒都有效的疫苗时面临挑战，因为每种病毒携带不同的化合物——即对感染至关重要的糖蛋白。然而，它们都拥有相同的核蛋白，用于包裹病毒的遗传物质。\n\n姚彦峰团队构建新疫苗时，将编码每种病毒糖蛋白的信使RNA以及共享的核蛋白结合在一起，装入单个脂质纳米颗粒中。这是一种由脂肪分子组成的球体，可以保护mRNA疫苗直到其到达人体细胞。\n\n研究人员为小鼠接种疫苗并监测其免疫系统反应，然后让它们接触全部三种病毒。所有免疫动物均获得对扎伊尔病毒和苏丹病毒的完全保护，对布迪布吉奥病毒获得了“强力”保护。暴露于苏丹病毒的仓鼠也通过该疫苗获得了完全保护。\n\n研究人员表示，试验表明他们已开发出能有效防御扎伊尔、苏丹和布迪布吉奥病毒的广谱mRNA疫苗。但他们也警告，该疫苗目前仅在啮齿动物身上测试过，还需要大量工作来证明其在人体中的安全性和有效性。\n\n得克萨斯大学医学分校的罗伯特·克罗斯表示，他“很高兴看到更多创造性的下一代埃博拉疫苗正在被探索”。\n\n然而，他警告说，在非人类灵长类动物身上的测试是预测人体疗效的金标准，而且获得针对多种病原体的疫苗批准将非常困难。\n\n克罗斯说：“为特定病毒获得疫苗批准已经够难了，要使多价疫苗获得许可，其审批路径可以说更加复杂。”\n\n澳大利亚阿德莱德大学的阿德里安·埃斯特曼表示，这是一项有前景的临床前研究，但局限性在于这些发现仅适用于啮齿动物。\n\n他说：“现在给出临床使用的确切时间表可能还为时过早，但从这个阶段到人体试验通常需要数年时间，因为还需要进一步的动物实验——例如灵长类动物实验——以及生产开发和安全性测试。”\n\n期刊参考：《美国国家科学院院刊》 DOI: 10.1073/pnas.2517814123\n\n主题：",
+      "summary": "Tests with rodents suggest an mRNA vaccine in development offers protection against three strains of Ebola virus, including the one behind the current crisis",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 650,
+      "zh_chars": 973
+    },
+    {
+      "title": "Photos reveal unexpected details from the world's first atomic test",
+      "link": "https://www.newscientist.com/article/2526891-photos-reveal-unexpected-details-from-the-worlds-first-atomic-test/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-05-20",
+      "content": "\n\n此前被列为机密的照片和文件展示了1945年世界上首次原子弹试验背后的科学研究工作——数周后，核弹便被投放在了日本。",
+      "summary": "Previously classified photos and documents show the scientific work that went into the world's first atomic test in 1945 – a test that, just weeks later, would see nuclear bombs dropped in Japan",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 43,
+      "zh_chars": 49
+    },
+    {
+      "title": "Political anger affects the body differently to other forms of anger",
+      "link": "https://www.newscientist.com/article/2527614-political-anger-affects-the-body-differently-to-other-forms-of-anger/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-05-22",
+      "content": "\n\n如果全球政治带来的情绪过山车让你感到难以承受，一项新研究的发现或许能解释其中的原因。政治议题引发的情绪，似乎与日常生活中体验到的相同情绪在身体感受上有所不同。理解这种现象如何发生、为何发生，可能为我们提供线索，帮助我们在保持知情和公民参与的同时保持冷静。\n\n“感受更强烈对民主来说可能是好事，”伦敦皇家霍洛威大学的马诺斯·萨基里斯表示。“更好地感受情绪，首先要弄清楚自己的感受，然后挑战在于学会如何回应而非反应。”\n\n萨基里斯及其同事邀请近1000人在一张身体轮廓图上标注他们感受到愤怒、厌恶和希望等情绪的部位和强度。随后，他们要求参与者在阅读与政治议题相关的词汇（如恐怖主义和犯罪）时做同样的标注。\n\n研究人员利用这些回答创建了数字热图，展示每种情绪在身体上的感受部位、强度，以及这种感觉是与行动冲动相关还是与消极冷漠相关。\n\n先前的研究表明，许多情绪在不同人群中有着相似的身体体验模式，这些激活或消极化的模式似乎具有跨文化普遍性。例如，抑郁几乎普遍表现为全身性的去激活化，反映出能量和动机的缺乏，而愤怒则被感受为胸部、头部和手臂处的高能量激活状态。\n\n这项新研究在很大程度上反映了这些过往发现，但当某些情绪由政治引发时，情况有所不同。“人们通常在抑郁时感到整个身体都被激活，但与政治相关的抑郁更具动员性，”萨基里斯说道，参与者会在躯干和四肢感受到更强烈的感受。\n\n政治相关的厌恶也被感受为上半身更高能量的感觉，而非政治性厌恶主要集中在腹部。“政治厌恶更接近愤怒，”萨基里斯说。\n\n这种现象的原因尚不清楚，但萨基里斯推测，这可能是因为政治议题让人感觉太过庞大，个人难以独自应对，因此人们可能会感到有动力加入更广泛的运动以推动变革。“我们在政治中拥有的能动感相当不同，”他说。“我们可能无法独自实现改变，这需要集体努力。”\n\n英国布莱顿和苏塞克斯医学院的丽莎·夸特表示，通过更好地了解我们的情绪，我们或许能够避免陷入无休止的负面浏览和绝望循环。“我们喜欢把自己想象成理性生物，但这没有考虑到身体如何影响我们的决定、行为和反应。”\n\n夸特和她的同事此前已表明，训练人们倾听自己的心跳和其他与强烈情绪相关的身体感觉，可以减少患有焦虑症的孤独症患者的情绪失控。更好地与自身感受同步，“可能确实有助于减少被负面情绪淹没的程度，从而可能促使行动而非回避，”她说。",
+      "summary": "We all feel emotions like anger and disgust from time to time, but they seem to cause stronger bodily sensations when they're politically induced",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 575,
+      "zh_chars": 872
+    },
+    {
+      "title": "Australia is battling its largest diphtheria outbreak in living memory",
+      "link": "https://www.newscientist.com/article/2527469-australia-is-battling-its-largest-diphtheria-outbreak-in-living-memory/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-05-22",
+      "content": "\n\n白喉在澳大利亚卷土重来，这是自上世纪30年代广泛接种疫苗以来的首次大规模暴发。该国今年已记录230例这种危险细菌感染病例，并有一名成年人死亡，病例数正在加速增长。大多数病例发生在北领地和西澳大利亚偏远地区的原住民社区，昆士兰州和南澳大利亚州也有少量病例。此前每年病例数通常为零或接近零。\n\n北领地首席卫生官保罗·伯吉斯告诉澳大利亚广播公司(ABC)，此次疫情似乎始于2022年昆士兰州的一例海外输入病例。此后这种高传染性疾病已越过边境进入北领地，并在那里及其他州的原住民社区传播，很可能是因为疫苗接种缺口、社区间人员流动频繁以及住房拥挤等因素。\n\n北领地近92%的5岁儿童已接种白喉疫苗，但通过学校项目提供的加强针在13岁儿童中的覆盖率不超过67%。新南威尔士大学的雷娜·麦金太尔指出：“疫苗效力确实会减弱，需要接种加强针。”这可能解释了许多青少年和年轻人感染该病的原因。\n\n麦金太尔表示，疫苗接种率不理想的一个因素是“新冠疫情后疫苗 misinformation 的增加以及对疫苗的抵制”。这些偏远地区护士和医生的短缺可能是另一个因素。\n\n白喉由白喉棒状杆菌引起，这种细菌感染皮肤或呼吸道并产生毒素。感染会导致皮肤溃疡或在喉咙形成厚厚的灰色膜，引起疼痛并阻塞呼吸。如果毒素进入血液，可能导致心力衰竭或瘫痪。细菌可通过接触感染者的溃疡或吸入其呼吸道飞沫传播。治疗方法包括抗生素和抗毒素，但即使采用这些干预措施，部分患者仍会死亡。\n\n在白喉疫苗问世前，该病是全球儿童死亡的常见原因。20世纪20年代末和30年代初，澳大利亚有4000多人死于白喉。\n\n澳大利亚政府刚宣布投入720万澳元（约380万英镑）控制疫情，并向受影响地区部署更多医护人员。伯吉斯告诉ABC：“令人欣慰的是，我们看到社区对疫苗接种的需求相当强劲。”\n\n在全球范围内，自常规婴儿疫苗接种普及以来最大规模的白喉疫情发生在1991年苏联解体后的前苏联各共和国，疫苗接种项目崩溃导致超过14万病例和5000人死亡。麦金太尔表示：“这表明当疫苗接种项目中断时，可能发生大规模白喉疫情。”",
+      "summary": "Vaccine misinformation, nurse and doctor shortages and crowded living arrangements may be behind soaring rates of diphtheria in remote Indigenous communities in Australia",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 570,
+      "zh_chars": 730
+    }
+  ]
+}
