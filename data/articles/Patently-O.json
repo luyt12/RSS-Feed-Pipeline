@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-05-29",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "The Myth of Patent Growth",
+      "link": "https://patentlyo.com/patent/2026/05/the-myth-of-patent-growth.html",
+      "published": "2026-05-28",
+      "content": "作者：丹尼斯·克劳特\n\n美国专利申请的典型故事是增长。在过去的二十年中，美国公开的实用新型专利申请数量大约翻了一倍，从2002年的约20万件增长到2024年接近42.5万件的峰值，然后在2025年有所回落。这个总体趋势（下图中的灰色部分）看起来像是美国创新活动的稳步扩张。但是，一旦你把实际增长的部分分开来看，图表实际上讲述了一个不同的故事。\n\n图表底部的蓝色区域仅统计了美国本土的原始申请：第一发明人在美国且不是继续申请、分案申请或部分继续申请的案件。这个基础部分并没有增长。在超过二十年的完整时间范围内，它保持在一个平稳甚至下降的水平——甚至在2000年代中期比最近完成的年份还要高。在总量中的占比方面，美国本土原创申请从系列早期的约三分之一下降到2022年至2024年的约13%。\n\n灰色部分显示的增长来自两个来源：\n这两项都不衡量国内原创发明产出的增长。\n\n有趣的转折出现在图表的最右侧。2026年的预测数据显示，根据前22周发布数据的比例，美国本土申请份额预计将回升至18%左右。这种逆转有两个独立因素。一个是由于2025年1月费用变化导致的继续申请文件下降。另一个是美国本土原创申请的小幅增长，我目前还无法解释这一现象。\n\n需要注意的是，从时间上看，截至2026年发布的原创申请几乎都是在2024年提交的（无论是作为临时申请还是非临时申请）。这是在新政府上台并开始改变专利前景之前的申请。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p><b>The standard story about American patenting is growth.</b> Published U.S. utility patent applications roughly doubled over the past two decades, climbing from around 200k in 2002 to a peak near 425k in 2024 before easing back in 2025. That top line (grey in the chart below) looks like a steady expansion of American inventive activity. But, the chart actually tells a different story once you separate out what is actually growing.</p>\n<p><img alt=\"U.S.-origin original utility applications versus total U.S. utility application publications, 2002 to 2026 estimate\" src=\"https://patentlyo.com/media/2026/05/us-origin-originals-chart.jpg\" /></p>\n<p>The blue band at the base counts only <i>U.S.-origin originals</i>: applications whose first-named inventor sits in the United States and that are not continuations, divisionals, or continuations-in-part. That band has not grown. It sits in a flat or even declining range across the full twenty-plus years -- and even higher in the mid-2000s than in the most recent completed years.  As a share of the total, U.S.-origin originals fell from roughly a third early in the series to about 13% in 2022 through 2024.</p>\n<p>The growth found in grey comes from two sources:</p>\n<ol>\n<li>The first source is domestic continuation practice, which has increased over the years. These are follow-on patents relying on the same underlying disclosure of that U.S. original.  Additional exclusive rights without the corresponding additional innovation.</li>\n<li>The second source is foreign-origin filing, the rest of the world seeking U.S. patent rights.  These have also grown significantly over the years as more nations come on-line as tech generators.</li>\n</ol>\n<p>Neither of these measure growth in domestic original inventive output.</p>\n<p>The interesting wrinkle is at the far right of the chart. The 2026 projection, scaled from the first 22 weeks of publication data, projects the U.S.-origin share rising back toward 18%. That reversal has two separate factors.  One is a drop in continuation filings traceable to the January 2025 fee changes. The other is a small increase in U.S.-origin original applications that I don't yet have an explanation for.</p>\n<p>Note that timing wise, original applications published thus far in 2026 were almost all filed in 2024 (either as a provisional or non-provisional application). This was before the new administration took charge and began to shift the patenting outlook.</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "qwen/qwen3-coder-480b-a35b-instruct",
+      "was_split": false,
+      "en_words": 290,
+      "zh_chars": 495
+    }
+  ]
+}
