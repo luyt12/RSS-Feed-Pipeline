@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-06-01",
+  "is_today": true,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Pay to Cite: Applicant Disclosures Drop After the January 2025 IDS Surcharge",
+      "link": "https://patentlyo.com/patent/2026/05/pay-to-cite-applicant-disclosures-drop-after-the-january-2025-ids-surcharge.html",
+      "published": "2026-06-01",
+      "content": "\n\n作者：Dennis Crouch\n\n我一直在等待撰写这篇文章，分析美国专利商标局（USPTO）在2025年1月特朗普总统就职前实施的主要费用变更的影响。这篇初步分析着眼于申请人在信息披露声明（IDS）中引用的现有技术。下方的图表显示，在过去的16个月里，申请人提交的参考文献数量大幅下降，而且由于时间滞后的原因，我预计这一下降趋势将会持续。\n\n![图表：每个美国实用专利的申请人引用，8周移动平均线，在2025年1月IDS附加费后急剧下降](https://patentlyo.com/media/2026/05/chart_ids_surcharge.jpg)",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>I've been waiting to write about the impact of the major fee changes that the USPTO implemented just before President Trump took office in January 2025. This first cut looks at applicant citations to prior art in their information disclosure statements. What the chart below shows is that the number of references applicants are submitting has dropped tremendously over the past 16 months, and I expect the decline to continue because of the timing lag. <img alt=\"Applicant citations per US utility patent, 8-week moving average, falling sharply after the January 2025 IDS surcharge\" class=\"aligncenter\" src=\"https://patentlyo.com/media/2026/05/chart_ids_surcharge.jpg\" /></p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 147,
+      "zh_chars": 160
+    }
+  ]
+}
