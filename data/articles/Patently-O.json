@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-06-04",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Wine Railway and the Patent Marking Statute: Is a Covenant Not to Sue a Patent License?",
+      "link": "https://patentlyo.com/patent/2026/06/wine-railway-and-the-patent-marking-statute-is-a-covenant-not-to-sue-a-patent-license.html",
+      "published": "2026-06-03",
+      "content": "作者：丹尼斯·克劳特（Dennis Crouch）\n\n专利标记代表了一种奇特的通知制度。《美国法典》第35编第287节规定，专利权人可以对“任何专利产品”进行标记，这些产品是“为其或在其名下”被制造、销售或进口的。未履行标记义务将面临处罚：\n\n“如未进行标记，则在任何侵权诉讼中，专利权人不得追回损害赔偿，除非能够证明侵权人已被通知侵权行为，并在此之后继续侵权，在这种情况下，仅可追回通知之后发生的侵权损害赔偿。提起侵权诉讼即构成此类通知。”\n\n但该法规并未明确说明，一个不实施专利的专利权人（即不制造或销售专利产品的人）是否仍可追回追溯性损害赔偿。最高法院在1936年的Wine Railway Appliance Co. v. Enterprise Railway Equipment Co.案（297 U.S. 387）中直接回答了这一问题，裁定既未制造也未授权他人制造专利产品的专利权人，仍可追回全部损害赔偿，而无需履行标记义务。该判决意见开篇即指出，专利的公开发布本身即构成推定通知。此外，尽管标记法规对追溯性损害赔偿设有限制，但其目的并非“对非实施专利权人施加新的或不同的负担”，或“剥夺”其在普通法下获得全部损害赔偿的权利。最终，Wine Railway案法院认定，非实施专利权人不应因其“未标记”而受到惩罚，因为其根本无机会进行标记。\n\n在此框架下，当专利权人通过专利许可授权第三方制造时，标记义务同样适用。被许可人也需对产品进行标记，专利权人才能追回追溯性损害赔偿。\n\n该领域的最新发展体现在Ortiz & Associates Consulting, LLC v. Vizio, Inc.案（2025年12月17日）中，该案提交了调卷令申请，询问在诉讼中授予权利的行为（不起诉承诺）是否构成足以触发标记义务的授权行为。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>Patent marking represents a quirky notice doctrine. Section 287 provides that a patentee may mark \"any patented article\" that is being made, sold or imported \"for or under them.\" A penalty applies for failure to mark:</p>\n<blockquote><p>In the event of failure so to mark, no damages shall be recovered by the patentee in any action for infringement, except on proof that the infringer was notified of the infringement and continued to infringe thereafter, in which event damages may be recovered only for infringement occurring after such notice. Filing of an action for infringement shall constitute such notice.</p></blockquote>\n<p>But the statute is silent about whether a non-practicing patentee - one who does not make or sell the patented product - can still collect back damages. The Supreme Court directly answered this question in <i>Wine Railway Appliance Co. v. Enterprise Railway Equipment Co.</i>, 297 U.S. 387 (1936), holding that a patentee that has neither manufactured nor authorized anyone else to manufacture patented articles may recover full damages without any marking requirement. The opinion began with a statement that the public issuance of the patent serves as constructive notice. And, although the marking statute provides a limitation on back damages, it was not intended \"to impose a new and different burden upon non-producing patentees\" or to \"deprive\" them of their common-law right to full damages. Ultimately, the <em>Wine Railway</em> court concluded that the NPE should not be penalized for \"failure\" to mark, because there was no opportunity to mark.</p>\n<p>In this framework, the marking requirement also kicks in when the patentee authorizes manufacture by a third party via patent license.  Licensees also need to mark the products for the patentee to get back damages.</p>\n<p>The newest development in this area comes in <i>Ortiz &amp; Associates Consulting, LLC v. Vizio, Inc.</i> (Dec. 17, 2025), with a <a href=\"https://www.supremecourt.gov/DocketPDF/25/25-1326/409530/20260521152329728_260423a%20Petition%20for%20efiling.pdf\">cert petition asking whether the grant of rights in litigation</a> (a covenant not to sue) constitutes authorization sufficient to trigger marking obligations.  </p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "qwen/qwen3-coder-480b-a35b-instruct",
+      "was_split": false,
+      "en_words": 343,
+      "zh_chars": 530
+    }
+  ]
+}
