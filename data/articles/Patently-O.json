@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-06-08",
+  "is_today": true,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Integrity Versus Repose: When Claim Preclusion Bars Fraud on the Court",
+      "link": "https://patentlyo.com/patent/2026/06/integrity-versus-repose-when-claim-preclusion-bars-fraud-on-the-court.html",
+      "published": "2026-06-08",
+      "content": "\n\n<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">要继续阅读，<a href=\"https://patentlyo.com/plans/join-2026\">请成为 Patently-O 会员</a>。已是会员？只需<a href=\"https://patentlyo.com/login-2\">登录</a>即可访问完整文章。</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 44,
+      "zh_chars": 26
+    }
+  ]
+}
