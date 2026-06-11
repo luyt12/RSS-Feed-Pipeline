@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-06-11",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Trading Claims for Speed: USPTO Sweetens the Streamlined Claim Set Pilot",
+      "link": "https://patentlyo.com/patent/2026/06/trading-claims-for-speed-uspto-sweetens-the-streamlined-claim-set-pilot.html",
+      "published": "2026-06-10",
+      "content": "\n\n作者：Dennis Crouch\n\n美国专利商标局（USPTO）今日宣布，将豁免\"精简权利要求集试点计划\"的请愿费，该豁免适用于2026年6月10日或之后提交的请愿。此项豁免取消了自去年秋季该计划启动以来一直伴随请愿的《联邦法规汇编》第37编第1.17(h)条规定的费用。此前我未曾撰文介绍该计划，但值得关注的是，对于符合狭窄 eligibility 窗口的申请人而言，现在的交易条件相当优厚：以精简的权利要求集换取免费的加快审查。\n\n基本框架如下：在2025年10月27日之前依据《美国法典》第35编第111(a)条提交的原始、非继续性实用专利申请，若权利要求不超过一项独立权利要求和十项权利要求总数，则可在首次审查意见发出前被提前处理（获得特殊地位）。对于权利要求目前不符合规定的申请，可在提交请愿前或随请愿一并提交初步修正案（表格PTO/SB/472）以使其符合要求。该计划将持续至2026年10月27日，或在各技术中心受理约200个试点申请后提前终止，以先到者为准。截至今日，各技术中心仍有空余名额。\n\n---\n\n要继续阅读，<a href=\"https://patentlyo.com/plans/join-2026\">请成为 Patently-O 会员</a>。已是会员？<a href=\"https://patentlyo.com/login-2\">直接登录</a>即可访问完整文章。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>The USPTO <a href=\"https://www.uspto.gov/patents/initiatives/streamlined-claim-set-pilot-program\">announced today</a> that it is waiving the petition fee for its <a href=\"https://www.federalregister.gov/documents/2025/10/27/2025-19669/streamlined-claim-set-pilot-program\">Streamlined Claim Set Pilot Program</a>, effective for petitions filed on or after June 10, 2026. The waiver eliminates the 37 C.F.R. § 1.17(h) fee that has accompanied petitions under the program since its launch last fall.  I have not previously written about the program, but it deserves attention because the deal is now remarkably good for applicants who fit its narrow eligibility window: free expedited examination in exchange for a lean claim set.</p>\n<p>The basic structure: an original, noncontinuing utility application filed under 35 U.S.C. § 111(a) before October 27, 2025, that presents no more than one independent claim and ten total claims may be advanced out of turn (accorded special status) for its first Office action. Applications whose claims do not currently comply can be brought into compliance with a preliminary amendment filed before or with the petition (<a href=\"https://www.uspto.gov/sites/default/files/documents/sb0472.pdf\">Form PTO/SB/472</a>). The program runs until October 27, 2026, or until each Technology Center has docketed roughly 200 pilot applications, whichever comes first. As of today, every Technology Center still has open slots.</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 238,
+      "zh_chars": 358
+    }
+  ]
+}
