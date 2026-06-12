@@ -1,0 +1,64 @@
+{
+  "feed_name": "New Scientist",
+  "feed_lang": "en",
+  "date": "2026-06-12",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Global map reveals the vast scale of underground fungal networks",
+      "link": "https://www.newscientist.com/article/2530122-global-map-reveals-the-vast-scale-of-underground-fungal-networks/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-11",
+      "content": "\n\n在地表之下仅一小段距离处，110万亿公里长的富碳真菌网络与植物根系交织在一起。这个庞大的网络已在首张全球真菌菌丝网络数字地图中被完整呈现。这些真菌不仅与植物交换养分，还帮助调节我们的气候。\n\n丛枝菌根真菌是一类古老的土壤真菌，广泛分布于大多数陆地生态系统中，与全球约70%的植物物种形成共生关系，为植物提供养分和水分，同时换取碳。地下网络保护协会的贾斯汀·斯图尔特表示：“有人把植物称为这些真菌的救世主，但这些真菌同样也是植物的救世主。如果你没有与丛枝菌根真菌形成共生关系，你在植物界中反而成了异类。”\n\n鉴于真菌的重要性，斯图尔特和同事们着手量化这一隐藏的基础设施。该协会成员托比·基尔斯说：“我们提出一个问题：能否绘制出地球的地下循环系统？”\n\n首先，研究人员分析了来自全球的16000个土壤样本数据，这些样本来自322项先前的研究。他们还使用机器人成像技术测量了实验室中培养的超过30万条真菌丝，从而估算网络中的总生物量和碳储量。随后，团队将这些数据结合在一起，用于推断沙漠、苔原、森林以及其他直接测量数据稀少或无法获取地区的估算值。\n\n结果表明，全球丛枝菌根真菌网络的碳储量相当于所有在世人类总碳量的约5倍。斯图尔特说：“它们对我们星球的许多不同功能都非常重要。例如，它们将碳拉入地下——这对于气候变化至关重要。”\n\n研究人员还估计，全球约40%的丛枝菌根真菌分布在草原生态系统中，尤其是南苏丹、佛罗里达大沼泽地和青藏高原的草原。这令他们担忧，因为草原正迅速被转变为农田。\n\n与此同时，农田的真菌数量明显减少。大规模粮食种植土壤的网络密度比未开垦生态系统低约50%，尽管这些地区植物密度很高。斯图尔特解释说，这可能是因为杀真菌剂能直接杀死真菌，耕作会破坏真菌网络，而大量使用化肥可能破坏维持共生关系的养分换碳交易。\n\n去年，英国利兹大学的劳拉·卡特及其同事揭示，唑类抗真菌剂——一类广泛用于控制作物病害（如霉病和腐烂）的化学品——使菌丝（真菌的长吸管状管细胞）密度降低约70%，有益真菌定殖植物根部的程度降低高达80%。结合新发现，卡特表示：“这表明当前的做法可能正在破坏作物的一个关键自然盟友。支持丛枝菌根真菌不仅是一个生态问题，也是改善土壤健康、韧性和长期作物产量的实用途径。”\n\n加州大学欧文分校的史蒂文·艾莉森表示，他对农田下方稀疏的网络特别担忧。“由于生物量被大幅削减，我们的农业作物可能正在失去一些关键益处，如养分获取、干旱韧性和碳储存。”\n\n但他也补充了积极的一面。既然研究人员已经量化了损失规模，设计干预措施来重建真菌生物量应该会更容易。艾莉森说：“农民可以向土壤中添加真菌孢子。这项研究也可能促使农民调整做法，比如减少耕作或减少施肥。”\n\n虽然这项工作揭示了庞大的网络，但这并不意味着所有真菌都连接成一个全球性的“木材宽带网”——这是一个关于植物通过地下网络交换资源和信息的假设。斯图尔特说：“我们的研究只是问地球上存在多少菌丝，而不是问这是否是一个大型连续网络。”\n\n除研究本身外，研究人员还发布了一张交互式地图，以前所未有的细节展示真菌网络的全球分布。基尔斯表示，他们计划在今年8月于蒙古国举行的联合国荒漠化峰会期间向政策制定者展示这些发现。\n\n期刊参考：《科学》DOI: 10.1126/science.adu4373",
+      "summary": "Our soils are teeming with networks of fungi, and we're starting to understand how important they are",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 750,
+      "zh_chars": 1175
+    },
+    {
+      "title": "Have we finally worked out how Venus flytraps snap shut?",
+      "link": "https://www.newscientist.com/article/2530108-have-we-finally-worked-out-how-venus-flytraps-snap-shut/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-11",
+      "content": "捕蝇草快速闭合以捕捉昆虫的谜团可能已部分破解。捕蝇草（学名：Dionaea muscipula）的陷阱内毛须在短时间内被连续触碰两次便会触发闭合。人们知道它能捕捉多种昆虫甚至小型青蛙，但其工作原理自达尔文时代以来一直令科学家困惑。\n\n长期以来，科学界普遍认为其机制涉及水分通过组织从陷阱一侧泵送到另一侧，导致一侧收缩、另一侧膨胀，从而产生闭合所需的曲率。\n\n为验证这一假说，法国艾克斯-马赛大学的约埃尔·福特尔及其同事测量了水分通过陷阱单个细胞及植物组织的移动时间。结果显示水分从一侧移动到另一侧需30至60秒。基于昆虫通常在一秒内被捕获的事实，团队推断该机制速度过慢。\n\n随后他们发现陷阱表面被触发后会变得更粗糙——这种变化只能由细胞壁刚度降低引起。因此，他们通过微型探针测量表皮细胞内的机械力，检验细胞壁软化是否可能导致陷阱闭合。“我们发现当陷阱被触发时，外表皮层细胞壁会迅速软化，”福特尔说。\n\n毛须被触发后，电信号与钙离子波会在一秒内传遍叶片。“这些信号相当于植物的神经信号，”他表示，“能使触摸信息从触发毛须快速传至陷阱远端细胞。”\n\n当细胞接收信号后，陷阱外表面机械刚度迅速降低，释放组织中储存的内应力，使带压内细胞得以在该侧更大幅度膨胀。结果外缘伸长而内表面保持刚性，导致陷阱弯曲闭合。\n\n然而团队仍不确定何种分子触发细胞壁发生如此快速的转变。“换言之，我们理解了事件链的开端（触觉感应）与末端（陷阱运动），但连接两者的分子环节基本未知，”福特尔坦言。\n\n西澳大学的谢尔盖·沙巴拉对团队提出的机制持保留态度。他指出，团队假设水分会依次通过细胞，但实际上可能是同时移动。他也质疑细胞壁刚度变化能否快速发生，认为至少需要数分钟。“因此，尽管运用尖端工程工具进行了这些精妙测量，该研究结果并未明确排除水分移动驱动机制的可能性，”沙巴拉说。\n\n福特尔回应称，团队直接测量了陷阱组织块的膨胀时间，数据表明水分跨陷阱传输速度远不足以解释闭合现象；另一方面，他们测量的细胞壁刚度丧失速度则快得出人意料。",
+      "summary": "It was widely thought that the movement of water through Venus flytrap cells caused the trap to close, but detailed experiments have led scientists to propose an alternative mechanism",
+      "model_used": "stepfun-ai/step-3.5-flash",
+      "was_split": false,
+      "en_words": 610,
+      "zh_chars": 740
+    },
+    {
+      "title": "El Niño has started and the weather could get weird",
+      "link": "https://www.newscientist.com/article/2530202-el-nino-has-started-and-the-weather-could-get-weird/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-11",
+      "content": "全球气象机构宣布厄尔尼诺已开始，模型显示强厄尔尼诺概率过半。该气候模式加剧全球极端天气，或致气温破纪录。",
+      "summary": "Global weather agencies have declared that El Niño has begun, and models show it is more likely than not to be a \"super\" El Niño. The climate pattern boosts extreme weather around the world, and could lead to record temperatures",
+      "model_used": "stepfun-ai/step-3.5-flash",
+      "was_split": false,
+      "en_words": 50,
+      "zh_chars": 48
+    },
+    {
+      "title": "Toy universe shows that time could be a quantum illusion",
+      "link": "https://www.newscientist.com/article/2529957-toy-universe-shows-that-time-could-be-a-quantum-illusion/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-11",
+      "content": "\n\n时间的流逝可能仅仅是宇宙不同部分之间量子相互作用所呈现的幻象——至少，在一个宇宙玩具模型中确实如此。这项实验或许能为我们自身宇宙中时间的本质提供线索。\n\n英国伯明翰大学的乔瓦尼·巴罗蒂尼在观看6岁儿子玩耍时开始思考时间问题。“他正在构建自己的小宇宙，而我想到，当我们在实验室构建超冷原子系统时，其实也在做同样的事情，”他说道。“但随后我开始意识到，作为宇宙来说这相当无聊，因为那里没有太多事情发生，如果没有事情发生，时间似乎就没有流逝。”\n\n为了研究在这种系统中时间是否真的是一种幻象，巴罗蒂尼利用激光和电磁力将大约20000个铷原子冷却到接近绝对零度。他将这个玩具宇宙的原子分成两个区域，一个标记为“亮区”，另一个为“暗区”，类似于暗物质的类比。\n\n这个初始宇宙本质上是永恒不变的，但随后巴罗蒂尼用激光诱导两个区域交换原子，从而在量子层面产生相互作用。这改变了宇宙的熵，即无序程度，而我们知道在我们的宇宙中，时间朝着熵增的方向流动。因此，巴罗蒂尼可以为这个玩具宇宙定义一个内部时间。更重要的是，他可以用这个新时间在描述量子系统演化的薛定谔方程中计算原子的量子态，发现计算结果与实验结果相符。\n\n这种将时间视为从量子关联或相互作用中产生而非既定存在的观点是有先例的：在原子物理学中，物理学家内维尔·莫特在1930年代首次提出了这一想法，此后一直在理论上得到探索。直到2013年，意大利国家计量研究院的马可·热诺维塞及其同事才在纠缠光子实验中首次证明了其可行性。在这里，时间的感知同样来自量子关联。\n\n“这项工作进一步阐述了这一理念，并取得了一些显著进展，”热诺维塞说道。特别是这个冷原子宇宙比用光子构建的宇宙更为复杂，而且巴罗蒂尼能够让薛定谔方程与系统的内部时间协同工作，这是此前未曾实现过的。\n\n德国科隆大学的克劳斯·基弗表示，这个玩具宇宙实验与如何将引力和量子理论整合成适用于我们宇宙所有尺度的单一框架这一更大问题有关。他说，这个疑问至今悬而未决，但一些物理学家认为这样一种理论的根本特征是在最基本层面上不存在时间。新的实验模拟了这种情况，但基弗指出也存在差异——例如，当超冷原子在区域之间移动时，它们不会像在更大宇宙中那样进行复杂的相互作用。\n\n但法国艾克斯-马赛大学的卡洛·罗韦利表示，这类实验无法发现关于时间的新东西，因为它们是基于我们已经理解的物理学构建的。然而，他说，将它们作为重大开放问题的模拟器，或许能为如何处理未知物理学提供灵感，就像以难以捉摸的量子引力问题一样。\n\n对巴罗蒂尼来说，这项新研究是对早已存在的理念的实验验证，因此证明了这些理念并未完全被否定。但他表示，这并不是确认这就是时间在所有尺度上实际运作的方式。\n\n巴罗蒂尼说，研究整个宇宙而非实验室制造的玩具模型的宇宙学家可能会对这项工作提出异议。然而，他想进一步探索这个超冷迷你宇宙，例如用激光创造原子无法逃离的区域，类似于黑洞的引力。\n\n期刊参考：Physical Review Research DOI: 10.1103/1h9j-df4k\n\n主题：",
+      "summary": "An experiment with a toy universe made up of extremely cold atoms shows how time can emerge from quantum interactions, instead of existing by default",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 721,
+      "zh_chars": 1088
+    },
+    {
+      "title": "Dramatic photo of ibis being guided to their winter homes wins award",
+      "link": "https://www.newscientist.com/article/2529871-dramatic-photo-of-ibis-being-guided-to-their-winter-homes-wins-award/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-11",
+      "content": "\n\n学生 Gunnar Hartmann 凭借在西班牙拍摄的迁徙秃鹮照片，荣获《自然》2026年“工作中的科学家”摄影大赛冠军",
+      "summary": "Student Gunnar Hartmann wins Nature’s 2026 Scientist at Work photography competition for this shot of migrating northern bald ibis in Spain",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 33,
+      "zh_chars": 35
+    }
+  ]
+}
