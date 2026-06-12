@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-06-12",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "It’s Not You, It’s Your Claims: Disclosed but Unclaimed Embodiments at the Federal Circuit",
+      "link": "https://patentlyo.com/patent/2026/06/its-not-you-its-your-claims-disclosed-but-unclaimed-embodiments-at-the-federal-circuit.html",
+      "published": "2026-06-11",
+      "content": "\n\n作者：Dennis Crouch\n\nDynapass IP Holdings LLC v. Bank of America Corp.，案号25-1222（联邦巡回法院，2026年6月11日判决）（非先例判决）\n\n上周的庭审辩论中，陈法官提出了一个有趣的问题。他问Dynapass的代理律师，把面包和奶酪分别递给别人是否算给了他们一个奶酪三明治。2026年6月11日发布的判决将这一逻辑应用于专利权利要求，认定分别收到密码和令牌并不等于\"收到密码\"，因为密码需要两者结合。美国专利第6,993,658号。\n\nDynapass将权利要求的解释框架描述为教科书式的实施例排除错误。权利要求不要求连接，且说明书特别描述了另一种实施例中可分别提供密码和令牌。但合议庭驳回了这一前提，认为权利要求的语言优先，即使它排除了替代实施例。法院认定，权利要求1的文本要求\"在收到密码之前，从密码和令牌生成密码\"，单独的各个组件\"不是权利要求所指的'密码'\"。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p><a href=\"https://www.cafc.uscourts.gov/opinions-orders/25-1222.OPINION.6-11-2026_2708280.pdf\"><i>Dynapass IP Holdings LLC v. Bank of America Corp.</i></a>, No. 25-1222 (Fed. Cir. June 11, 2026) (nonprecedential)</p>\n<p>Last week's oral arguments included an odd question from Judge Chen. He asked asked Dynapass's counsel whether handing someone bread and cheese counts as giving them a cheese sandwich. The decision, released on June 11, 2026, applies that to the claims, holding that receiving a passcode and a token separately is not \"receiving the password\" which requires the two be joined.  U.S. Patent No. 6,993,658.</p>\n<p>Dynapass framed the construction as a textbook embodiment-exclusion error. The claims do not require concatenation and the specification particularly describes providing the passcode and token separately in an alternative embodiment.  But, the panel rejected the premise, holding that the language of the claims prevails, even if it excludes an alternative embodiment. The court found that Claim 1's text \"requires generating a password from the passcode and token before receiving the password,\" and the individual components \"are not the claimed 'password.'\"</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 216,
+      "zh_chars": 272
+    }
+  ]
+}
