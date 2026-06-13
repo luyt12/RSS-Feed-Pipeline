@@ -1,0 +1,64 @@
+{
+  "feed_name": "New Scientist",
+  "feed_lang": "en",
+  "date": "2026-06-13",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "The relationship recession is even bigger for Gen Z than we thought",
+      "link": "https://www.newscientist.com/article/2530237-the-relationship-recession-is-even-bigger-for-gen-z-than-we-thought/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-12",
+      "content": "\n\n关系衰退，尤其是年轻人中的关系衰退，可能比我们想象的更为严重。我们已知Z世代拥有稳定恋情的比例低于同龄时的千禧一代，但以往的研究通常没有将分开居住的伴侣纳入计算。考虑到这一点，事实表明Z世代处于恋爱关系中的人比我们意识到的还要少。\n\n这种情况可能由多种原因导致，从在社交媒体环境中成长到严峻的住房市场，但研究人员仍在努力弄清楚长期单身对幸福感究竟是好是坏。“我们应该谨慎，不要将这种可能选择不配对的状态病理化，”瑞士巴塞尔大学的马克西米利亚内·乌利希表示，她没有参与这项研究。\n\n伦敦大学学院的凯瑟琳·特沃姆利和同事梳理了两轮全国调查的数据，评估了英国人的恋爱状态，涵盖了各种恋爱状态和居住安排。在2010年至2012年的第一轮调查中，千禧一代参与者出生于1981年至1996年之间，当时年龄在16至29岁。第二轮调查在2022年至2024年进行，覆盖了同一年龄段的Z世代。\n\n数据显示，千禧一代中有57%表示处于某种稳定恋爱关系中，而Z世代在相同人生阶段这一比例仅为49%。“这似乎有些史无前例，”乌利希说道。\n\n研究人员发现，恋爱关系的减少主要是因为Z世代与伴侣同居的比例低于同龄时的千禧一代。特沃姆利表示，这表明关系衰退的规模比我们想象的更大，她在上月于英国爱丁堡举行的“爱情，实际上与理论”会议上展示了这一结果。\n\n这种关系变化可能由多种因素驱动。首先，“Z世代是第一代在社交媒体和智能手机环境中成长的群体，这在他们处理人际互动的方式上显而易见，”乌利希说道。\n\n新冠疫情可能也起到了一定作用。“它发生在Z世代一个非常敏感的发育时期，”乌利希说，“突然之间，社会接触不再被允许，有研究表明这可能影响了他们的社交能力以及建立友谊或同伴关系的能力。”\n\n特沃姆利表示，不断上涨的房价和租金也迫使Z世代与父母同住更长时间，这可能使他们更难建立稳定的关系。\n\n相反，Z世代可能对进入恋爱关系更加谨慎。“也许他们看到了父母的高离婚率，想要更加挑剔，在真正投入之前找到合适的人，”乌利希说道。\n\n特沃姆利表示，研究人员计划在未来的研究中探讨这些可能的解释，并追踪Z世代参与者的另一项分析结果——那些没有稳定恋爱关系的人心理健康状况更差。“可能是因为他们没有恋爱关系而感到孤独，或者正因为感到孤独而没有进入恋爱关系，”她说道。",
+      "summary": "We know that members of Gen Z are less likely to be in a steady relationship than millennials were at their age, but previous research missed out an important factor that actually widens the relationship recession",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 585,
+      "zh_chars": 819
+    },
+    {
+      "title": "Killer robots are here – we must finally decide whether to accept them",
+      "link": "https://www.newscientist.com/article/2530304-killer-robots-are-here-we-must-finally-decide-whether-to-accept-them/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-12",
+      "content": "\n\n多年来，我们不断收到未经证实的报道和传闻，称人工智能控制的武器在战场上无需人类介入即可杀死士兵。现在，我们知道这确实发生了。\n\n正如我们在报道中所述，自主杀手机器人在测试演习中的使用标志着战争的一个分水岭。但我们不应感到惊讶。这项技术已经存在了一段时间，而人类发明武器后从不克制使用它。\n\n尽管如此，改变方向并非不可能。禁止自主武器的理由很简单：部署缺乏人类监督的人工智能，可能导致武器误击友军甚至平民。此外，伦理学家指出，这类武器剥夺了战斗人员的尊严，使战争变得过于容易发动，并在致命行动的归责问题上制造混乱。\n\n然而，如果我们要禁止这些武器，就像我们对待集束炸弹和致盲激光武器一样，我们应该在它们出现之前就采取行动，而不是事后补救。联合国已经就禁止完全自主武器进行了十多年的谈判，但据人权观察组织称，印度、以色列、俄罗斯和美国否决了这些讨论。\n\n禁止自主武器的框架已经存在——它们可以很容易地加入《联合国特定常规武器公约》所禁止的过度伤害性或不加区分武器清单中。更难以应对的是，这些无人机可以用从网上订购的廉价零件和一些开源软件制造。任何懂技术的青少年都可以做到。\n\n正如我们在报道中探讨的，乌克兰战争已经清楚地表明，机器人将主导未来的战场。世界现在必须回答的问题是，人类是否应该始终参与其中，最终对扣动扳机的决定负责，还是允许机器独立行动。无论我们选择什么，都必须在技术扩散之前做出决定。",
+      "summary": "We can no longer ignore the growing threat of fully autonomous weapons. The world must either act to ban them or accept that they are the future of war",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 342,
+      "zh_chars": 540
+    },
+    {
+      "title": "Quantum computer quickly mines cryptocurrency while using less energy",
+      "link": "https://www.newscientist.com/article/2529973-quantum-computer-quickly-mines-cryptocurrency-while-using-less-energy/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-12",
+      "content": "研究人员声称，在一项开创性实验中，一台量子计算机成功挖掘加密货币，同时能耗大幅降低。加密货币与量子计算在两个方面存在显著交集。首先，足够强大的量子计算机可能破解当前保护加密货币免受黑客攻击的加密算法。其次，多项研究表明，使用量子计算机可大幅削减加密货币本已惊人的能源消耗。\n\n为实际验证这一构想，Postquant Labs的Colton Dillion及其同事构建了一个名为Quip的实验性区块链网络，该网络自今年4月起持续运行。区块链是加密货币的底层技术，相当于一个公共账本或数据库，用户通过竞争完成一种名为“工作量证明”的计算来添加新记录。在大多数加密货币中，获胜的计算机将获得代币奖励，而添加到账本中的区块则使交易永久生效。\n\n在Quip网络中，工作量证明计算是一种与优化问题相关的任务，例如为餐饮服务寻找最佳配送调度方案或构建理想投资组合。尽管参与Quip区块链的大多数设备是传统计算机，但网络还包含一台由D-Wave Quantum制造的Advantage2量子计算机，且它似乎正超越普通计算机。\n\n“该问题对经典设备而言具有足够挑战性，但又未困难到让经典和量子设备都束手无策。这意味着量子技术确实有机会产生巨大影响，”英国肯特大学的Carlos Perez-Delgado评论道，他并未参与Quip项目。\n\n历史上，D-Wave量子计算机的计算能力与实用价值一直存在争议。尤为突出的是，2024年该公司宣称其一台量子计算机解决了一个即使传统超级计算机也无法处理的问题，但另一研究团队在一年后报告称，他们仅用普通笔记本电脑就完成了类似计算。\n\nDillion认为，Quip凭借其去中心化特性提供了一种规避此类争议的途径。“这正是区块链的核心价值。不相信我们结果的人可以加入网络并亲自验证，”他表示。\n\n在6月1日的投资者演示中，D-Wave首席执行官Alan Baratz透露，Advantage2每天仅对Quip开放约5分钟。因此，Dillion解释说，它仅参与网络中约三分之一区块的竞争，却赢得了其中92%的区块，这表明在Quip的工作量证明问题中，量子机器相较于网络其他部分具有显著优势。\n\n此外，Baratz指出，Advantage2解决问题所消耗的能源远低于其他竞争计算机，但两家公司尚未公开任何详细的基准测试数据。“对我而言，量子计算就是针对复杂计算问题的节能计算，”Baratz强调。\n\nQuip的初步结果似乎印证了这一观点。Dillion表示，平均而言，使用Advantage2赢得一个区块所需的电能约为100倍少——仅12.5瓦，而传统计算机需1334瓦。他还估计，若要使传统计算机更频繁击败Advantage2，其功率需达到后者的300倍。另外，该网络在设计上已能抵御对抗性量子计算机的攻击，而许多现有区块链可能不具备此特性，它们或许需要更新软件以实现量子安全。\n\n那么，区块链更安全、更可持续的未来是否将由Quip这类网络引领？这情况复杂，Quantum Energy Initiative的Olivier Ezratty分析道。虽然量子计算机在单次计算上可能降低能耗成本，但构建、维护和运行量子硬件的费用使得从纯经济角度论证量子方法可大规模应用变得困难。“它们或许能减少总能源支出，但代价是更高的资本投入，包括制造D-Wave量子计算机本身的能源消耗，”Ezratty说。\n\nPerez-Delgado则更为乐观。“我坚信，鉴于更快、更清洁的加密货币挖掘所带来的经济激励，未来我们将看到更多此类技术应用，”他表示。事实上，其他公司也在推进量子工作量证明项目，例如BTQ Technologies和Quandela——后者生产基于光子的量子计算机，而Advantage2则采用微型超导电路构建。\n\n然而，Quip团队怀有更高远的目标。Dillion称，该网络有望发展成为一个全球分布式量子计算机，将用户连接至众多不同的量子设备，使其能竞争解决各类问题，正如Advantage2如今与传统计算机竞争一样。这将 democratize 对这些目前稀有且昂贵机器的访问权限，他说。为实现这一愿景，团队正计划 soon 引入另一个工作量证明问题，并接入D-Wave以外厂商制造的量子计算机。\n\n主题：",
+      "summary": "A superconducting quantum computer is part of a network that is mining an experimental cryptocurrency called Quip, and it is able to do it faster and with better energy efficiency than conventional machines",
+      "model_used": "stepfun-ai/step-3.5-flash",
+      "was_split": false,
+      "en_words": 868,
+      "zh_chars": 1244
+    },
+    {
+      "title": "Art and nature come together in stunning new Henry Moore exhibition",
+      "link": "https://www.newscientist.com/article/2528249-art-and-nature-come-together-in-stunning-new-henry-moore-exhibition/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-10",
+      "content": "参观邱园（Kew Gardens）举办的这位雕塑家作品展览，令人着迷地揭示了他如何从自然万物中汲取灵感。",
+      "summary": "A visit to Kew Gardens’ exhibit of the sculptor’s work is a fascinating insight into how he was inspired by nature",
+      "model_used": "stepfun-ai/step-3.5-flash",
+      "was_split": false,
+      "en_words": 32,
+      "zh_chars": 37
+    },
+    {
+      "title": "Striking photos show how sands are encroaching on oases in the Sahara",
+      "link": "https://www.newscientist.com/article/mg27035990-100-striking-photos-show-how-sands-are-encroaching-on-oases-in-the-sahara/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-10",
+      "content": "\n\n乍得毛镇旁的这片绿洲（上图）让农民得以种植椰枣树，并在周围的小块田地里培育一些作物。但气候变化导致的温度上升正日益威胁着这样的绿洲，以及依赖它们生存的人们和野生动物。\n\n这些照片是摄影师汤米·特伦查德为专题摄影报道“拯救撒哈拉绿洲”所拍摄系列中的一部分，该报道探讨了这些脆弱的生态系统如何正在消失。随着气温上升，绿洲周围的植被正在退缩，沙丘正在向它们逼近。为了阻挡流沙，乍得考村等村庄的农民正在用棕榈叶编织屏障，如下图所示。\n\n毛和考都位于萨赫勒地区，这是撒哈拉沙漠以南横贯非洲的半干旱地带，从毛里塔尼亚一直延伸至厄立特里亚。2007年，非洲联盟启动了“大绿墙”计划，试图阻止萨赫勒地区的荒漠化。\n\n作为该计划的一部分，乍得毛镇附近的巴尔卡德鲁苏等地（下图）安装了太阳能水泵，以帮助农民灌溉作物。但“大绿墙”计划存在争议，许多人质疑它是否能够奏效。\n\n即使建造屏障或安装钻井等措施确实能起到一定作用，但随着气温预计还将进一步上升，这些绿洲还能维持多久仍是未知数。",
+      "summary": "A photo essay from Tommy Trenchard explores efforts to protect the fragile ecosystems of oases in Chad",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 263,
+      "zh_chars": 382
+    }
+  ]
+}
