@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-06-17",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "The Federal Circuit’s Expanding Grip on Dismissed Patent Claims",
+      "link": "https://patentlyo.com/patent/2026/06/the-federal-circuits-expanding-grip-on-dismissed-patent-claims.html",
+      "published": "2026-06-16",
+      "content": "本文由丹尼斯·克劳奇撰写。这是关于DTSA案件Insulet Corp. v. EOFlow, Co.（联邦巡回上诉法院，2026年5月28日，案号2025-1807）的第二篇帖子。上一篇涵盖了案件实体问题，本篇则聚焦上诉管辖权，以及一项看似范围有限却可能产生广泛影响的管辖权认定。尽管Insulet原诉状包含专利侵权主张，但其自愿撤回该主张且无偏见，并修改诉状予以删除——这一步骤通常会将上诉移交至地区巡回法院。然而联邦巡回法院仍保留了此案。其认定该撤回实质上有偏见，因为Insulet所主张的一项侵权行为已超过专利法规定的六年追诉期（35 U.S.C. § 286）。\n\n联邦巡回法院受理专利案件上诉，而非商业秘密案件。但管辖法规存在过度包容性：当单一诉讼混合专利与非专利主张时，即使上诉仅争议非专利问题，专利主张仍会将整个上诉拉入联邦巡回法院。法院采用本案路径可保留Insulet事务，因其可适用于广泛的自愿撤回情形。\n\n尽管我未具体统计，但经验表明，大多数专利诉讼都涉及主张完整六年的追溯赔偿期。这意味着，即使是在起诉后次日撤回专利主张，也会被该例外情形捕获，并将任何后续非专利问题的上诉引至联邦巡回法院。\n\n在此情况下，我认为法院本应在修改后的Gunn v. Minton分析中做更多工作，以判定案件是否应留归地区巡回法院管辖。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>This is the second post about the DTSA case <i><a href=\"https://www.cafc.uscourts.gov/opinions-orders/25-1807.OPINION.5-28-2026_2700697.pdf\">Insulet Corp. v. EOFlow, Co.</a></i>, No. 2025-1807 (Fed. Cir. May 28, 2026). The last <a href=\"https://patentlyo.com/patent/2026/05/old-soil-new-clock-the-dtsa-discovery-rule-after-insulet-v-eoflow.html\">post</a> covered the merits. This one is about appellate jurisdiction, and about a jurisdictional holding whose reach may run well beyond its modest-looking facts. Although Insulet's original complaint included a patent infringement claim, Insulet voluntarily dismissed that claim without prejudice and amended the complaint to remove it, a step that ordinarily moves the appeal to the regional circuit. The Federal Circuit kept the case anyway. It held that the dismissal was effectively with prejudice because the patent statute's six-year recovery period, 35 U.S.C. § 286, had run on one of the infringing acts Insulet had pleaded.</p>\n<p>The Federal Circuit hears appeals in patent cases, not in trade secret cases. The jurisdictional statute, though, is overinclusive. When a single action mixes patent and non-patent claims, the patent claims pull the entire appeal into the Federal Circuit, even if only the non-patent issues are contested on appeal. The route the court used to keep Insulet matters beyond this case, because it can apply to a broad class of voluntary dismissals.</p>\n<p>Although I have not run the numbers on this, my experience is that most patent litigation involve claims to the full six years of back damages. That means that any dismissal of the patent claims - even on the day following the complaint filing - would be captured by this exception and direct any eventual appeal (of the non-patent issues) to the Federal Circuit.</p>\n<p>This is a situation where, I believe, the court should have done more work in a modified <em>Gunn v. Minton</em> analysis to determine whether the case should have remained with the regional circuit.</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "stepfun-ai/step-3.5-flash",
+      "was_split": false,
+      "en_words": 300,
+      "zh_chars": 427
+    }
+  ]
+}
