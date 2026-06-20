@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-06-20",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Same Direction, Different Engines: FY2026 Utility and Design Grant Projections",
+      "link": "https://patentlyo.com/patent/2026/06/same-direction-different-engines-fy2026-utility-and-design-grant-projections.html",
+      "published": "2026-06-19",
+      "content": "\n\n虽然专利每周二上午发布，但USPTO按财年记账，财年截止9月30日。FY2026是局长John Squires上任后的首个完整财年，预计实用专利和外观设计专利授予量都将略有下降。\n\n截至本财年三分之二时，USPTO已颁发约21.8万份实用专利和3.4万份外观设计专利。预计FY2026将授予约31.4万份实用专利（低于FY2024和FY2025的32.8万份），以及约4.9万份外观设计专利（低于FY2025年创纪录的5.2万份）。\n\n实用专利产出在过去十年趋于平稳。外观设计专利则持续增长，FY24和FY25大幅跃升，4.9万的预计数量仍是FY2014年的两倍左右。我在Patently-O（2025年12月30日）文章中以公历年度数据阐述过这一点，财年数据与此相符。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>Although patents issue every Tuesday morning, the agency keeps its books on a fiscal year that closes September 30. Measured that way, FY2026 is the first full fiscal year under <a href=\"https://patentlyo.com/patent/2025/09/welcome-director-squires.html\">Director John Squires</a>, who joined the Office just days before FY2025 closed.  My projections suggest that the final numbers for the year will be modestly downward both for utility and design patent grants.</p>\n<p><img alt=\"U.S. utility patent grants by fiscal year, FY2014 through a FY2026 projection of 314,000\" src=\"https://patentlyo.com/media/2026/06/utility_grants_by_fy_2014_2026.jpg\" /></p>\n<p>Through roughly two-thirds of the year, the USPTO has issued about 218,000 utility patents and 34,000 design patents. Scaling those figures forward, FY2026 is on track for roughly 314,000 utility grants (down from 328,000 in each of FY2024 and FY2025) and roughly 49,000 design grants (down from a record 52,000 in FY2025). A slight drop on each front.</p>\n<p>Utility output has flattened over the past decade - with the projected total within the band the Office has occupied for most of the decade. Design grants are a different story, we've seen a steady climb for the past 2o years, with major jumps in FY24 and FY25. A projected 49,000 steps back from the record but still roughly doubles the FY2014 figure. I made the calendar-year version of this point in Dennis Crouch, <i><a href=\"https://patentlyo.com/patent/2025/12/surprising-headline-stability.html\">The Surprising Headline of 2025: USPTO Stability?</a></i>, Patently-O (Dec. 30, 2025), and the fiscal-year data tells a compatible story.</p>\n<p><img alt=\"U.S. design patent grants by fiscal year, FY2014 through a FY2026 projection of 49,000\" src=\"https://patentlyo.com/media/2026/06/design_grants_by_fy_2014_2026.jpg\" /></p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 227,
+      "zh_chars": 199
+    }
+  ]
+}
