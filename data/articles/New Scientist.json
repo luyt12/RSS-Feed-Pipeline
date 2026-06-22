@@ -1,0 +1,64 @@
+{
+  "feed_name": "New Scientist",
+  "feed_lang": "en",
+  "date": "2026-06-22",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Autism and ADHD are on the rise due to widening diagnostic criteria",
+      "link": "https://www.newscientist.com/article/2530700-autism-and-adhd-are-on-the-rise-due-to-widening-diagnostic-criteria/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-17",
+      "content": "\n\n# 遗传学研究揭示多动症和自闭症诊断激增的背后原因\n\n我们或许开始理解近年来多动症和自闭症诊断数量激增的原因。丹麦一项涉及14万人的研究表明，最近被诊断为多动症或自闭症的患者，其相关遗传变异比十年前确诊的患者更少。这表明诊断标准的扩大化是导致病例增加的原因，但这一发现并不支持多动症和自闭症被过度诊断的说法。\n\n过去二十年间，全球多动症和自闭症诊断率上升了至多十倍，尤其在女孩和成年人群体中。针对这一现象，学界提出了多种解释，包括公众意识提升、诊断标准扩大化，甚至制药公司和私立诊断诊所的商业利益。也有人指出环境因素的变化，如屏幕使用时间增加，以及关于儿童疫苗接种和产前接触扑热息痛（对乙酰氨基酚）等缺乏依据的说法。\n\n遗传学是一个已知的重要因素。多动症和自闭症具有高度遗传性，近年来研究已识别出数千种常见基因变异，每种变异都会略微增加发展出核心特征的可能性。\n\nDNA分析技术的进步使大规模筛查目标基因成为可能，从而评估一个人的某种特征或疾病的“多基因风险评分”。丹麦哥本哈根大学医院的索尼娅·拉比安卡表示，多动症或自闭症的高评分“本身并不具有诊断意义”，因为它无法捕捉环境、文化和社会因素的影响，也无法反映罕见变异的作用。但由于人群中的DNA在十年内变化不大，这些评分为了解其他驱动因素提供了基准。\n\n拉比安卡和同事利用2018年和2019年发表的全基因组关联研究，为多动症和自闭症创建了多基因风险评分。这些评分随后应用于丹麦iPSYCH队列研究中的14万人，其中3.7万人于1994年至2016年间被诊断为多动症或自闭症。研究人员还计算了一系列心理健康状况的多基因风险评分，包括抑郁症，以及与某些特征相关的评分，如冒险倾向。\n\n他们利用这些数据探索了多动症和自闭症诊断率上升背后的三种可能情景。第一种是诊断类别的扩大降低了诊断门槛。第二种是以前被诊断为心理健康问题的人现在被重新认定为神经多样性。第三种是更好的意识使我们能够发现以前被遗漏的人群。\n\n结果显示，尽管最近确诊的患者的多动症和自闭症多基因风险评分明显低于较早确诊的患者，但他们在心理健康状况和与多动症相关的人格特质（如冲动性）方面的风险评分也更低。这可能是因为现在被诊断的不仅是那些特征最明显、同时具有最高多基因风险评分的人。拉比安卡说，这意味着病例增加的最佳解释是诊断标准的扩大化。更好的意识和减少的污名化也可能是因素，但我们支持这一结论的数据较少。\n\n**为何自闭症先驱乌塔·弗里特想要拆解自闭症谱系**\n\n在一生致力于探索自闭症神经基础之后，乌塔·弗里特坚定地发出争议性呼吁：废弃我们目前对这一疾病的看法，从头开始。\n\n这似乎证实了过度诊断的说法，但拉比安卡指出，即使那些多基因评分最低的患者，其风险变异也明显多于神经典型对照组。“这支持了我们没有过度诊断的发现，”她说。“只有当我们诊断的多基因评分与普通人群处于同一水平的人时，我才会使用过度诊断这个词。”\n\n荷兰阿姆斯特丹自由大学的廷卡·波尔德曼也表示，诊断标准扩大化是诊断率增加最可能的解释，但她警告不要假设遗传与环境是分离的。“多基因风险评分只是谜题的一部分，”她说。\n\n“如果更多人在寻求这些症状的帮助，但遗传倾向较低，我们就需要关注其他风险因素，”拉比安卡说。\n\n**期刊参考：**\n\nJAMA Psychiatry DOI: 10.1001/jamapsychiatry.2026.1450\n\n“神经多样性”一词通常用于描述自闭症或多动症等疾病的患者，但大脑在理解和帮助这些群体方面有多重要？在这个演讲中，艾米·皮尔森博士将探讨关注大脑如何帮助我们了解神经多样性人群——以及更重要的是，什么没有帮到我们。",
+      "summary": "A study of 140,000 people suggests that a broadening of the diagnostic criteria for autism and ADHD explains the sharp rise in diagnoses, but that doesn't mean too many people are being told they are autistic or have ADHD",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 854,
+      "zh_chars": 1290
+    },
+    {
+      "title": "Technology is changing our perspective on nature – at every scale",
+      "link": "https://www.newscientist.com/article/2530330-technology-is-changing-our-perspective-on-nature-at-every-scale/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-16",
+      "content": "\n\n阿丽尔·沃尔德曼独自站在一颗看起来很像火星的星球上。她的脚边是岩石碎片和贫瘠的土壤。头顶是覆盖着尘埃冰层的参差山脉。天空呈现朦胧的白色，太阳看起来非常遥远。然后，沃尔德曼微笑着解释说，她实际上身处南极洲的干谷地区，那是一片在冰冻山脉和古老冰川之间延伸的深褐色土地。虽然她可能不是来自另一个星球的现场直播，但在她新的纪录片系列《Life Unearthed》中，她或许会让你相信，地球比你想象的更加奇异。\n\n该系列目前在PBS和YouTube上播出，共6集，带领观众进入潜伏在我们星球地壳中的微观世界。沃尔德曼与地球最南端大陆的一个土壤科学团队一起工作，她带来了自己的显微镜、一个能够在拍摄微小景观时捕捉景深的微距探针镜头、一架无人机以及多个复杂的相机支架，用于拍摄世界上最不起眼的野生动物的原生状态。她还拍摄了自己工作的过程，创造了一段引人入胜的记录，展现了研究一个因气候变化而正在经历快速且有时剧烈转型的生态系统是什么样的体验。\n\n从看似毫无生命的南极洲山谷到北美大草原冒泡的湿地，她向我们介绍了线虫、轮虫和水熊虫等动物——这些微小的生物在构建和滋养我们的生态系统方面发挥着重要作用，却仍然肉眼不可见。最令人印象深刻的是，她完全独自完成了南极洲之行的拍摄。\n\n坐在旧金山她温馨的办公室里，周围环绕着显微镜和装满摄影设备的柜子，沃尔德曼告诉我，她的主要动机之一是记录南极洲和大草原的环境，在它们消失之前。“如果你想在南极洲的干谷拍摄自然纪录片，你需要显微镜才能看到那里存在的动物，”她告诉我。大草原也是如此，那里的绝大多数生物量都潜伏在潮湿的土壤深处。\n\n作为旧金山显微镜学会的正式馆长，沃尔德曼还想让一个观念变得正常化：我们应该像用望远镜仰望天空一样经常用显微镜观察泥土。这是她热爱微观世界的另一个原因。“当我们在思考在其他行星或卫星上寻找生命时，我们最好的猜测是，我们会发现某种微观的东西。”在《Life Unearthed》中，她在显微镜下拍摄水熊虫（又称苔藓猪），看着它们摆动着毛茸茸的腿，碰撞进植物细胞。这些可爱的小家伙能够在南极洲的极寒和大草原的酷热中生存——甚至在太空真空中也能存活。它们暗示了我们可能在大气层安全边界之外发现的生物类型。\n\n我第一次见到沃尔德曼时，她正在与美国宇航局合作并运营Spacehack——一个将公民科学家与太空探索项目联系起来的组织。她向我介绍了CubeSat，这是一个发射自制卫星进入轨道的团体。后来，她创建了科学黑客日，这是一个我参加过的全球性活动，科学家和爱好者可以在此合作开展从数据收集到软件开发的各种项目。从那以后，我们成了朋友，我一直关注着她融合科学、艺术和社区组织的独特职业生涯。\n\n我在她动身前往南极洲的前一天去拜访了她，当时她最大的担忧是如何将尽可能多的设备装进她的行李箱。与她合作的科学家不同，沃尔德曼的深厚学术背景是平面设计。她不仅仅想研究这个星球，她想向人们展示它，鼓励他们买一台便宜的显微镜，“把东西直接放上去看”。她相信，当人们能够看到生命的多样性时，我们就会更有信心为保护生命而发声。\n\n受1977年著名的艾姆斯短片《十的次方》的影响，沃尔德曼认为规模是理解我们在宇宙中位置的关键方式。这就是为什么她需要无人机来拍摄航拍视图，也需要她心爱的显微镜——而且，当她在地下洞穴中追踪草原小龙虾时，她甚至使用了一个设计用于穿入堵塞管道的线缆摄像机。“人类在宇宙中既非常渺小，也非常宏大，取决于你的视角，”她沉思道。如果没有技术，“如此多的生命对我们来说几乎是不可见的”。\n\n沃尔德曼希望《Life Unearthed》能激励更多人拿起显微镜，探索脚下看不见的野生动物。要理解自然的真正奇妙，我们首先需要亲眼看到它。",
+      "summary": "Inspired by Ariel Waldman’s docuseries Life Unearthed, columnist Annalee Newitz explores how microscopes, drones and specialised cameras are giving us an unprecedented view of nature from many different vantage points",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 795,
+      "zh_chars": 1329
+    },
+    {
+      "title": "Why controversial ideas in science shouldn't always be dismissed",
+      "link": "https://www.newscientist.com/article/mg27035991-900-why-controversial-ideas-in-science-shouldnt-always-be-dismissed/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-10",
+      "content": "\n\n持不同意见的科学家在更为严谨的同行中往往名声不佳。科学需要证据和共识，而标新立异很少是前进的正途。\n\n但总有一个例外能证明规律的存在。举个例子：生酮饮食——一种以快速减肥闻名的限制性饮食方案——可能成为治疗神经性厌食症的方法。考虑到这是一种以强迫性限制食物为特征的精神疾病，这个提议往好了说是荒谬，往坏了说是极其不负责任。\n\n然而，我们应该认真对待这个反直觉的想法。正如本周封面故事所揭示的，尽管只是一项小规模研究，但遵循这种饮食似乎确实能帮助患者。据认为，这是因为生酮饮食纠正了脑细胞紊乱的能量释放，从而减轻焦虑，进而消除限制食物的强迫性冲动。至少这是一个信号，表明生酮饮食值得作为厌食症潜在治疗方法进行研究。目前，三分之一的患者无法通过标准治疗康复，而厌食症是所有精神疾病中死亡率最高的。\n\n不幸的是，支持生酮饮食作为治疗严重心理健康疾病的方法，会让人与小罗伯特·F·肯尼迪等人站在同一阵线。在健康建议方面，很难找到一个比声称疫苗导致自闭症（且无任何证据）更为标新立异的人了。\n\n但认为一个想法仅仅因为通常持有糟糕想法的人支持它就是坏想法，这是一个严重的错误。多条证据指向生酮饮食对心理健康的好处——正如我们5月2日封面故事所述，它似乎有望减轻从严重抑郁症到精神分裂症等多种疾病的症状。由于研究仍处于早期阶段，生酮饮食用于厌食症只能在接受医疗监督下进行，需要更大规模的试验。但通过严谨的科学方法寻求解决衰弱性疾病的方法至关重要，即使这样做存在最初被贴上荒谬、不负责任或标新立异标签的风险。",
+      "summary": "Researchers suggesting that the keto diet could treat mental health conditions find themselves uncomfortably aligned with people like vaccine-sceptic Robert F. Kennedy Jr, but that is not a reason to reject the idea",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 356,
+      "zh_chars": 587
+    },
+    {
+      "title": "‘Forgotten’ pollutants cause 15 per cent of global warming",
+      "link": "https://www.newscientist.com/article/2530049-forgotten-pollutants-cause-15-per-cent-of-global-warming/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-11",
+      "content": "所谓间接温室气体，包括一氧化碳与挥发性有机化合物，虽能加剧全球变暖，却未纳入现有气候政策框架。这类气体本身并非强效温室物质，但会通过大气化学反应间接增加甲烷与臭氧等核心温室气体的浓度，从而推高全球气温。科学界已明确指出，若忽略其气候影响，全球控温目标将难以实现。目前国际气候协议如《巴黎协定》主要聚焦二氧化碳、甲烷等直接温室气体，对间接温室气体缺乏强制性减排条款，导致其排放持续增长。研究显示，工业、交通及农业活动是这些气体主要来源，有效管控需跨部门协作与更精细的监测体系，但政策滞后使气候行动存在显著缺口。",
+      "summary": "So-called indirect greenhouse gases, including carbon monoxide and volatile organic compounds, aren’t covered by climate policies even though they heat the planet",
+      "model_used": "stepfun-ai/step-3.5-flash",
+      "was_split": false,
+      "en_words": 31,
+      "zh_chars": 233
+    },
+    {
+      "title": "A cosmic case of mistaken identity that can only be solved right now",
+      "link": "https://www.newscientist.com/article/2529145-a-cosmic-case-of-mistaken-identity-that-can-only-be-solved-right-now/?utm_campaign=RSS%7CNSNS&utm_source=NSNS&utm_medium=RSS&utm_content=home",
+      "published": "2026-06-09",
+      "content": "\n\n我确信前人也曾对各自的时代有过类似的想法，但尽管如此，我认为我们正生活在一个星系研究的激动人心时代。尽管美国和英国的研究预算可能在做相反的事情，但我们对宇宙的理解正在迅速扩展。自从2021年圣诞节发射以来，仅短短几年时间，詹姆斯·韦布空间望远镜——我更愿意称之为“简直棒极了”空间望远镜（JWST）——已经改变了我们对早期宇宙星系外观的认知。事实证明，那些星系比我们此前标准宇宙模型所预测的更明亮——充满了更多的恒星和炽热气体。\n\nJWST的这些观测结果令人无比兴奋。我们观测到的星系存在于大爆炸后仅3亿年。当然，这听起来是很长的时间。但与宇宙的年龄相比——宇宙年龄约为138亿岁——3亿年不过是宇宙的婴儿期。我今年43岁，我生命中同样比例（约2.14%）是我不满一岁的时候。\n\n麻省理工学院的罗韩·P·奈杜领导了一个全球研究团队，去年发现了这样一个星系，并将其命名为MoM-z14。该团队的论文将MoM称为“宇宙奇迹”——比我们在宇宙演化如此早期阶段所预期的星系可能达到的亮度更加明亮。这些观测之所以直到现在才成为可能，是因为我们此前没有能够看到如此遥远且微弱天体的望远镜。说这个非常微弱的天体出人意料地明亮有点奇怪，但这就是天文学的本质。对于普通望远镜来说，它极其暗淡，但与理论预测相比，它发出的光比预期的要多。\n\n虽然这些星系的明亮特性使它们在科学上引人入胜，但它们的绝对微弱性也使其成为某种技术挑战。我们必须问自己，我们确定成像的天体实际上是一个星系吗？今年4月，加州大学戴维斯分校的玛鲁沙·布拉达奇与一个全球合作团队深入分析了数据，得出结论：JWST的两个年轻明亮星系根本不是星系！该团队在一篇尚未经过同行评审的论文中声称，这些天体实际上是银河系内的褐矮星：是我们自己星系内部的类恒星物体，而非遥远处的星系。\n\n当我看到这篇论文时完全惊呆了，因为如果你问我星系的反面是什么，褐矮星会是一个很好的候选。体型太大，不可能是像木星这样的气态巨行星，但又太小而无法维持恒星聚变——褐矮星是可能合理地嵌入某个恒星系的天体。换句话说，与包含数十亿恒星的浩瀚星系相比，褐矮星既小又紧凑。布拉达奇团队是否正确，其他旧的星系观测是否实际上是认错身份，只有时间才能证明。\n\n但我们已有足够的能力来查明。我的预测是，2026年将被铭记为天文学的里程碑年份。尽管各国政府试图压制研究，但今年智利的薇拉·C·鲁宾天文台将开始为期10年的时空Legacy巡天，这将创建南半天空的详细地图，并拍摄超过50亿个星系的图像。鲁宾不仅将与JWST同时运行，还将与NASA的下一个旗舰天文台——南希·格雷斯·罗曼空间望远镜协同工作。罗曼望远镜与欧洲航天局目前正在运行的欧几里得任务互补，将拍摄数亿个星系的图像。JWST、鲁宾、罗曼和欧几里得共同协作，可能会改变我们对像我们家园星系——银河系——是如何形成的所知的一切。",
+      "summary": "Brown dwarfs are somewhere between the size of a planet and a star, so how could we have potentially mistaken two of them for distant galaxies? Columnist Chanda Prescod-Weinstein argues that solving this cosmic mix-up is particularly possible now, as galaxy research has never been stronger",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 708,
+      "zh_chars": 1014
+    }
+  ]
+}
