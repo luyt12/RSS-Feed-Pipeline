@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-07-01",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Locked In at the Lectern: How the Federal Circuit Uses Oral Argument",
+      "link": "https://patentlyo.com/patent/2026/06/locked-in-at-the-lectern-how-the-federal-circuit-uses-oral-argument.html",
+      "published": "2026-06-30",
+      "content": "\n\n丹尼斯·克劳奇（Dennis Crouch）撰文\n\n2007年，联邦巡回法院法官几乎从不在其具有先例约束力的判决书中引用口头辩论内容。这种情况已经改变。如今，超过40%的先例判决书包含对口头辩论的直接引用。我认为，大多数律师宁愿不被引用——因为这种引用通常记录的是律师在讲台上做出的让步，而这些让步随后在判决中对其不利。\n\n在笔者审查的先例案件样本中，48%的口头辩论引用可归类为“让步”——律师承认对其不利的主张、缩小争议范围，或同意法院的不利表述。其余大部分引用被笔者归类为“中性”——引用律师的立场以提供背景，但不利用该立场对抗律师。这一发现与已故大法官露丝·巴德·金斯伯格（Ruth Bader Ginsburg）的观点相似，她将口头辩论描述为“守住阵地的行动”。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>In 2007, Federal Circuit judges almost never quoted oral argument in their precedential opinions. That has changed. Today, more than 40% of precedential opinions include a direct reference to oral argument. I expect that most attorneys would rather not be cited -- because that citation is most often a record of a concession made at the lectern that is then applied to their detriment in the opinion.</p>\n<figure class=\"wp-block-image size-large\"><img alt=\"Federal Circuit citations to oral argument, 2010-2026\" class=\"wp-image-48864\" src=\"https://patentlyo.com/media/2026/06/chart1_citations_per_year.png\" /></figure>\n<p>In the sample of precedential cases I examined, 48% of the oral argument citations could be classified as a \"concession\" -- counsel admitting against interest, narrowing scope, or agreeing with the court's adverse framing. Most of the remaining citations are what I classified as \"neutral\" -- referencing counsel's position for context without using that position against them.  This insight is parallel to that of the late Justice Ruth Bader Ginsburg who talked about oral arguments as \"a hold-the-line operation.\"</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 210,
+      "zh_chars": 255
+    }
+  ]
+}
