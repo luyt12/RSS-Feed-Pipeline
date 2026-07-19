@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-07-19",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "The Filing Clock: Hour-of-Day Patterns in USPTO Electronic Submissions",
+      "link": "https://patentlyo.com/patent/2026/07/the-filing-clock-hour-of-day-patterns-in-uspto-electronic-submissions.html",
+      "published": "2026-07-18",
+      "content": "\n\n专利律师究竟何时提交申请？既不是一早刚上班，也不是工作日临近结束时匆匆提交。在2025年5月至6月约47.5万份美国专利商标局电子申请中，申请量从上午开始稳步攀升，在东部时间下午3点达到峰值，随后在晚间逐渐回落。四分之一的申请在下午5点之后提交。周末提交量不足2%。\n\n此处的计时以弗吉尼亚州为准。根据《联邦法规汇编》第37编第1.6(a)(4)条，通过专利中心提交的任何文件，其收到日期以美国专利商标局接收时的东部时间为准。一位加州律师若在太平洋时间晚上10点点击提交，其文件将获得次日作为提交日期。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>When do patent attorneys actually file? Not first thing in the morning, and not in a rush at the end of the business day. Across roughly 475,000 USPTO electronic filings May-June 2025, volume climbs steadily through the morning, peaks in the 3:00 p.m. hour Eastern, and then runs down a long evening tail. A quarter of everything arrives after 5:00 p.m.  Weekends account for under 2%.</p>\n<p>The clock here sits in Virginia. Under 37 C.F.R. § 1.6(a)(4), the receipt date of anything submitted through Patent Center is the Eastern Time date when the USPTO received it. A California attorney who clicks submit at 10:00 p.m. Pacific gets the next day's filing date.</p>\n<p><img alt=\"USPTO e-filings by hour of day and weekday, May-June 2025\" class=\"aligncenter\" src=\"https://patentlyo.com/media/2026/07/uspto-filing-hour-weekday-heatmap.png\" width=\"700\" /></p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "minimaxai/minimax-m2.7",
+      "was_split": false,
+      "en_words": 175,
+      "zh_chars": 205
+    }
+  ]
+}
