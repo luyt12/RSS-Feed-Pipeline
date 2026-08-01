@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-08-01",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Rejection Is Not Denial: What a Final Office Action Actually Costs",
+      "link": "https://patentlyo.com/patent/2026/07/rejection-is-not-denial-what-a-final-office-action-actually-costs.html",
+      "published": "2026-07-31",
+      "content": "根据美国专利商标局（USPTO）统计数据显示，2015年至2018年期间公布的150万份实用新型专利申请中，最终有76%获得了授权。在首次非最终驳回后，这一比例为75%，首次最终驳回后则为69%。上述图表展示了专利办公室采取每一步行动后，申请最终获得批准的概率。\n\n然而，大多数申请并未达到最终驳回阶段。在这150万份申请中，仅约42%收到了最终驳回通知。在专利局的审查过程中，最常见的路径是：非最终驳回、申请人回复、准予授权。几乎所有申请都会至少被驳回一次，但初次审查即准予授权的比例约为10%。\n\n（文中图表显示了2015-2018年申请流程中各阶段通过率变化情况，详细数据见原文完整内容）",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch<img alt=\"Patent Prosecution Odds following USPTO Action, published utility applications filed 2015-2018\" class=\"alignnone size-full wp-image-49320\" src=\"https://patentlyo.com/media/2026/07/prosecution-odds-2015-2018.png\" /></p>\n<p>Across the 1.5 million published utility applications filed from 2015 through 2018, 76% eventually issued as patents. A first non-final rejection moves that to 75%. A first final rejection moves it to 69%. The chart above plots this for each action the Office takes: the probability that an application eventually grants, conditioned on the Office having taken that step.</p>\n<p>Most applications never get that far. Of the 1.5 million, only about 42% receive a final office action. The ordinary path through the Patent Office is short and undramatic: a non-final rejection, a response, an allowance. Nearly everyone is rejected at least once, though, with first action allowance at about 10%. </p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "mistralai/mistral-nemotron",
+      "was_split": false,
+      "en_words": 177,
+      "zh_chars": 226
+    }
+  ]
+}
