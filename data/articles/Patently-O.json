@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-08-04",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Boilerplate or Not: Reading “Secure” Broader Than IPSec in MPH v. Apple",
+      "link": "https://patentlyo.com/patent/2026/08/boilerplate-or-not-reading-secure-broader-than-ipsec-in-mph-v-apple.html",
+      "published": "2026-08-03",
+      "content": "联邦巡回法院今天驳回了对MPH技术公司专利中\"安全\"（secure）一词的特定解释，该解释将其限制为仅指IPSec协议。法院随即撤销了双方达成的不侵权判决协议。在另一项裁决中，法院还推翻了下级法院关于MPH公司美国专利第7,937,581号的第1项权利要求无效的判决。法官Stoll在判决书中表示，这一案件涉及专利起草不精确时专利权人应获得多大宽容度的问题。\n\n下级法院曾指出，IPSec协议在'949号专利中出现了近200次，且专利说明书明确表示：“本发明的核心思想是使用标准协议（IPSec）。”但上诉法院却更重视专利摘要部分最后一句：“本发明不限于图示和附带说明文本的细节，或任何现有协议，如目前标准化的IPSec。”法院称这一解释问题“非常棘手”，但最终认定这一句脱颖而出，因为它不仅仅是模板语句，还特别提及了具体协议名称。\n\n在无效性方面，下级法院认为前后文不一致足以导致专利无效，但上诉法院认为其权利要求范围仍然足够明确。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>The Federal Circuit today rejected a claim construction that had limited the word \"secure\" in MPH Technologies' patents to one particular protocol, IPSec.  The court then vacated the stipulated judgment of noninfringement. <a href=\"https://www.cafc.uscourts.gov/opinions-orders/25-1069.OPINION.8-3-2026_2732045.pdf\"><i>MPH Technologies Oy v. Apple Inc.</i>, No. 2025-1069 (Fed. Cir. Aug. 3, 2026)</a> (nonprecedential). Judge Stoll's opinion separately reversed a holding that claim 1 of MPH's U.S. Patent No. 7,937,581 is indefinite.</p>\n<p>I see the case as asking something like \"how much slack a patentee gets for imprecise drafting?\"</p>\n<p>The district court had noted IPSec appears in the '949 patent close to 200 times, and the specification says that \"[a]n essential idea of the invention is to use the standard protocol (IPSec).\"  But, against all of that the panel set a single sentence near the end of the summary of the invention: \"The invention is not restricted to the details of the figures and accompanying text, or any existing protocols, such as the currently standardised IPSec.\" The panel called the construction question \"a very close issue\" and held that the one sentence wins, noting that it was not simply boilerplate, but included the specific protocol by name.</p>\n<p>On indefiniteness, the district court treated a mismatch in antecedent basis as fatal, but the appellate panel found the scope reasonably certain.</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "mistralai/mistral-nemotron",
+      "was_split": false,
+      "en_words": 263,
+      "zh_chars": 325
+    }
+  ]
+}
