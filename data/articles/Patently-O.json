@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-08-12",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "The Trail Guide Problem: Judge, Jury, and Design Patent Claim Construction",
+      "link": "https://patentlyo.com/patent/2026/08/the-trail-guide-problem-judge-jury-and-design-patent-claim-construction.html",
+      "published": "2026-08-11",
+      "content": "美国联邦巡回法院今日拒绝重审《Range of Motion Products, LLC诉Armaid Co.》案（案号23-2427，2026年8月11日），维持了今年2月本案的原判决。该拒绝附带两份法官意见。\n\n法官康宁厄姆（Cunningham）与休斯（Hughes）共同撰写了多数意见，并同意拒绝重审。首席法官摩尔（Moore）则再次发表异议，与雷纳（Reyna）法官一同加入。法官斯托尔（Stoll）与斯塔克（Stark）未发表意见。纽曼（Newman）法官未参与投票，最终投票未通过。\n\n两份意见核心争议在于《Markman诉Westview Instruments, Inc.》（1996年）案是否适用于设计专利案件。《Markman》案将专利权利要求解释的职责交由法官，认为法官比陪审团更擅长解读书面文件。然而，法学院或法律实践并未训练法官解读设计图纸，正如首席法官摩尔指出，“整个设计专利都是由一系列图纸组成的”。因此，核心前提并不适用。这一问题进一步复杂化，因为设计专利权利要求解释中还涉及外观与功能的区分，这实际上属于事实认定，而相关证据并不出现在专利文件中。\n\n康宁厄姆法官认为，法官必须在陪审团进行比较之前界定权利要求范围，并比喻法官如同“向导”，通过“插旗标记布置路标”来划定设计专利的边界。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>The Federal Circuit denied rehearing today in <i><a href=\"https://www.cafc.uscourts.gov/opinions-orders/23-2427.ORDER.8-11-2026_2737015.pdf\">Range of Motion Products, LLC v. Armaid Co.</a></i>, No. 23-2427 (Fed. Cir. Aug. 11, 2026), leaving in place the panel decision I <a href=\"https://patentlyo.com/patent/2026/02/differences-substantial-infringement.html\">wrote about in February</a>. 166 F.4th 981 (Fed. Cir. 2026). The denial is accompanied by two opinions. Judge Cunningham, who wrote the panel majority, concurred in the denial and was joined by Judge Hughes, the other member of that majority. Chief Judge Moore, who dissented from the panel decision, dissented again, joined by Judge Reyna. Judges Stoll and Stark dissented without opinion. Judge Newman did not participate, and the poll failed.</p>\n<p>What the two opinions circle around is the question of whether <i>Markman v. Westview Instruments, Inc.</i>, 517 U.S. 370 (1996), belongs in design patent cases at all. <i>Markman</i> gave claim construction duty to judges based on the idea that construing written instruments is something judges do better than jurors do. But nothing in law school or legal practice teaches judges to interpret design drawings. And, as the Chief explained, \"[t]he entirety of a design patent is a series of pictures.\" In other words, the foundational premise doesn't fit. This is compounded by the ornamental-versus-functional sorting that is being pushed inside design patent claim construction. But that is really not interpretation but rather factfinding on evidence that doesn't appear in the patent document. Judge Cunningham's answer is that somebody has to fix the scope of the claim before a jury compares anything, and that in doing so the court \"guides the jury like a trail guide, placing flags and signposts to delineate the boundaries of the claimed design.\"</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "mistralai/mistral-nemotron",
+      "was_split": false,
+      "en_words": 281,
+      "zh_chars": 356
+    }
+  ]
+}
