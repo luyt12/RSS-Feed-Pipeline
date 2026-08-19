@@ -1,0 +1,42 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-08-19",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Allowable, Not Allowed: What the First Action Predicts",
+      "link": "https://patentlyo.com/patent/2026/08/allowable-not-allowed-what-the-first-action-predicts.html",
+      "published": "2026-08-18",
+      "content": "在8月17日的文章中，我探讨了首次实审通知中包含可批准主张的情况。本文将进一步分析在此类初步通知后的申请结果。\n\n我们调研了2023年收到首次实审通知的所有38.2万份实用新型专利申请案件，并于三年半后追踪了其最终结果。上述图表展示了研究结果：\n\n1. 首次实审直接获得批准的申请，最终专利批准率高达98%；\n2. 首次实审被拒但指明可批准内容的申请，最终专利批准率为93%；\n3. 首次实审被拒且未指明任何可批准内容的申请，最终专利批准率仅68%。\n\n值得注意的是，第二和第三类申请之间存在显著差距。当审查官在拒绝决定中明确指出哪些主张是可被批准的，申请的成功率明显提高。这表明审查官提供的具体反馈对申请人后续修改申请至关重要。\n\n这些数据反映了专利审查过程中反馈质量对结果的重要影响。对审查官而言，提供明确具体的指导优于简单的拒绝决定，这不仅有助于提高审查效率，也能提升申请成功率。\n\n（全文完）",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p><img alt=\"Table of eventual disposition for utility applications receiving a first examiner action in 2023, split by whether the action allowed the claims, rejected them while identifying allowable subject matter, or rejected them with nothing allowable identified\" class=\"aligncenter size-full wp-image-49469\" height=\"355\" src=\"https://patentlyo.com/media/2026/08/faoa_outcomes_2023_table.png\" width=\"700\" /></p>\n<p>Earlier this week I wrote how many first action rejections include allowable claims. Dennis Crouch, <a href=\"https://patentlyo.com/patent/2026/08/rejected-with-a-road-map-allowable-subject-matter-in-the-first-action.html\"><i>Rejected, With a Road Map: Allowable Subject Matter in the First Action</i></a>, Patently-O (Aug. 17, 2026).</p>\n<p>This post looks at outcomes following that initial action. I took every utility application that received its first substantive examiner action during calendar 2023, about 382 thousand of them, and checked where each one stands today, three and a half years later.</p>\n<p>The chart above shows the results. An application allowed on the first action is patented 98% of the time. One rejected but told what is allowable is patented 93% of the time. One rejected with nothing identified as allowable is patented only 68% of the time.  That second gap is the real one.</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "mistralai/mistral-nemotron",
+      "was_split": false,
+      "en_words": 218,
+      "zh_chars": 335
+    },
+    {
+      "title": "Rejected, With a Road Map: Allowable Subject Matter in the First Action",
+      "link": "https://patentlyo.com/patent/2026/08/rejected-with-a-road-map-allowable-subject-matter-in-the-first-action.html",
+      "published": "2026-08-17",
+      "content": "专利审查过程中的两个关键数据点之间存在张力：\n\n- 大多数专利申请在最初会被审查员拒绝；\n- 但最终大多数专利申请都会获得授权。\n\n我希望进一步研究如何顺利通过审查（\"达成一致\"）的过程，并探索成功的关键因素。\n\n根据统计，首次实体审查意见（First Action on the Merits, FAOMs）中约14%为准许通知书。这在上述图表中用蓝线表示，符合大多数申请最初被拒绝的直觉。但橙色线条补充了新信息——这些包括部分拒绝但同时指出申请中某些内容已具备可授权条件的审查意见。这条线接近40%。换句话说，在约40%的情况下，首次提出的权利要求集（初始权利要求）至少部分获得了接受。\n\n上述图表展示的是3个月移动平均值——在每两周或每月基础上，准许率存在相当大的波动。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p><img alt=\"\" class=\"aligncenter wp-image-49452 size-full\" height=\"413\" src=\"https://patentlyo.com/media/2026/08/First-Action-Allowances-e1786976842757.jpg\" width=\"800\" /></p>\n<p>Two important patent prosecution data points that are in tension:</p>\n<ul>\n<li>The vast majority of patent applications are initially rejected by the patent examiner; and</li>\n<li>The vast majority of patent applications eventually issue as a patent.</li>\n</ul>\n<p>I'm wanting to dig in further into the process of \"getting to yes\" and understand keys to success.</p>\n<p>About 14% of first actions on the merits (FAOMs) are notices of allowance. That is the blue line in the chart above -- and that fits my idea that nearly everyone gets rejected  initially.   But the orange line adds new information -- those add in actions that reject claims, but told the applicant that something in the case was already allowable. That line sits near 40%.  In other words, in about 40% of cases, the first offer (the initial claim set) is at least partially accepted.</p>\n<p>The chart above shows a 3-month moving average -- there are pretty dramatic swings in rates on both bi-week and monthly bases.</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "mistralai/mistral-nemotron",
+      "was_split": false,
+      "en_words": 220,
+      "zh_chars": 254
+    },
+    {
+      "title": "Can Harassment Risk Alone Support Obviousness-Type Double Patenting?",
+      "link": "https://patentlyo.com/patent/2026/08/can-harassment-risk-alone-support-obviousness-type-double-patenting.html",
+      "published": "2026-08-17",
+      "content": "由丹尼斯·克劳奇（Dennis Crouch）撰文\n\n随着美国专利商标局（USPTO）近期提交的陈述书，《In re Ablynx N.V.》，案号2026-1333（联邦巡回法院）现已准备就绪，由联邦巡回法院决定全国有关显而易见的双重专利（obviousness-type double patenting）的政策。本案特别问及是否可以仅基于存在多个受让人骚扰的风险而提出双重专利驳回（ODP rejection）。\n\n- [Ablynx USPTO Brief](https://patentlyo.com/media/2026/08/Ablynx-USPTO-Brief.pdf)\n\n阅读我的观点如下。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>With the USPTO's recent brief, <i>In re Ablynx N.V.</i>, No. 2026-1333 (Fed. Cir.) is now teed up for the Federal Circuit to decide the nationwide policy on obviousness-type double patenting.  The case particularly asks whether an ODP rejection may be \"based solely on the risk of harassment by multiple assignees.\"</p>\n<ul>\n<li><a href=\"https://patentlyo.com/media/2026/08/Ablynx-USPTO-Brief.pdf\">Ablynx USPTO Brief</a></li>\n</ul>\n<p>Read my take below.</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "mistralai/mistral-nemotron",
+      "was_split": false,
+      "en_words": 107,
+      "zh_chars": 107
+    }
+  ]
+}
