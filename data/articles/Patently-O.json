@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-08-26",
+  "is_today": true,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Design Patents Did It: How China Passed Japan in US Patent Grants",
+      "link": "https://patentlyo.com/patent/2026/08/design-patents-did-it-how-china-passed-japan-in-us-patent-grants.html",
+      "published": "2026-08-26",
+      "content": "密苏里大学哥伦比亚分校法学院教授丹尼斯·克鲁奇近日撰文指出，根据最新数据，中国在2024年首次超越日本成为美国专利申请最多的国家，预计到2026年中国的专利申请量将达到5.8万件，而日本仅为4.5万件。然而，这一数据背后隐藏着关键差异：日本在实用新型专利申请上仍占优势，而中国的增长主要来自设计专利的大幅增加。统计数据显示的是以发明人居住国为基础的专利申请量。\n\n克鲁奇回忆道，自己在20世纪80年代成长时，日本曾被认为是\"购买美国\"的代名词，当时日本发明人的专利申请量在1990年代初达到美国专利总量的20%以上，并在此后十五年内保持了这一水平。然而，如今日本的份额已降至12%，这一下降主要是由于其他国家专利申请量的增加，而非日本自身申请量的减少。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>China now receives more US patents than Japan. The crossover happened in 2024, and the projection for 2026 puts China around 58k compared with Japan's 45k. But, this total does hide a big exception.  Japan is still ahead on utility patents -- with China shooting ahead with a large bolus of design patents.   The charts in these posts count patents where at least one of the inventor is listed as residing in the given country.</p>\n<p><img alt=\"Line chart of all granted US patents by country of origin, China versus Japan, 1979 to 2026, showing China passing Japan in 2024\" class=\"aligncenter size-full\" src=\"https://patentlyo.com/media/2026/08/cn_jp_all_patents_count.png\" /></p>\n<p><img alt=\"Line chart of granted US utility patents, China versus Japan, 1979 to 2026, showing Japan still ahead of China\" class=\"aligncenter size-full\" src=\"https://patentlyo.com/media/2026/08/cn_jp_utility_patents_count.png\" /></p>\n<p>I grew up in the 1980s hearing that Japan was buying America, and the patent numbers were part of that story. Japanese inventors obtained a bit more than 20% of all US patents through the early 1990s and held near that level for another fifteen years. Today Japan's share is about 12%.  The collapse in share is much more about other countries increasing their filings than Japan dropping their numbers.</p>\n<p><img alt=\"Line chart of share of all granted US patents, China versus Japan, 1979 to 2026, showing Japan's share falling from above 21 percent to about 12 percent\" class=\"aligncenter size-full\" src=\"https://patentlyo.com/media/2026/08/cn_jp_all_patents_share.png\" /></p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "mistralai/mistral-nemotron",
+      "was_split": false,
+      "en_words": 160,
+      "zh_chars": 274
+    }
+  ]
+}
