@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-08-28",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "Short of Disavowal: Narrowing ‘Provision’ and ‘Activate’ in Zilkr v. Cisco",
+      "link": "https://patentlyo.com/patent/2026/08/short-of-disavowal-narrowing-provision-and-activate-in-zilkr-v-cisco.html",
+      "published": "2026-08-27",
+      "content": "## 丹尼斯·克鲁奇撰文\n**Zilkr云技术有限责任公司诉思科系统公司案**，案号2025-1207（联邦巡回法院，2026年8月26日，非上诉权威案例）。\n在本案中，虽然专利审判和上诉委员会（PTAB）的专利权利要求解释可能被视为“合理”，但“最广泛的合理解释”已不再是专利异议复审（IPR）案件的标准。上诉法院部分推翻了PTAB的决定，该决定取消了Zilkr统一通信专利权利要求，认为委员会对“请求配置”和“激活”术语的解释过于宽泛。\n裁决的核心矛盾在于专利权利要求解释中的持续争议：当规格书对术语的使用未明确定义或明显放弃时，法院应如何评估规格书对该术语的一致使用？\n本案中法院表示：应给予非常高的权重。\n本案还展示了诉讼各阶段立场的变化。在PTAB程序中，专利权人通常专注于其发明的狭窄技术方面，而专利挑战者（请愿人）则争取更广的范围以纳入更多的先前技术。在平行侵权诉讼中，双方立场通常相反，关注的是被控产品是否构成侵权。\n\n## 关键点解析\n1. **专利权利要求解释标准变化**：2019年《专利法》第32条修订后，IPR案件不再采用“最广泛的合理解释”标准，转为采用“普通技术人员视角下的最佳理解”。\n2. **规格书的证明力**：法院强调规格书中术语的一致使用，即使未明确定义，也应赋予较高权重。\n3. **诉讼立场转变**：不同诉讼阶段，双方对专利保护范围的争议焦点会发生转移，反映了专利诉讼的策略性特征。\n\n## 案件背景\nZilkr公司持有统一通信系统专利，涉及企业级通信平台的自动配置和激活功能。思科公司向PTAB提起异议，主张该专利无效。在IPR程序中，PTAB采用了广义解释，最终取消了Zilkr的专利权利要求。Zilkr不服，提起上诉。\n\n## 法院观点\n联邦巡回法院认为，PTAB对“请求配置”和“激活”术语的解释忽视了规格书中对这些术语的具体描述。规格书明确说明这些功能需要特定的软件组件和步骤，而PTAB的解释过于笼统，可能导致不当地纳入更多先前技术。因此，法院判决部分撤销PTAB的决定，要求重新审查。\n\n## 专利诉讼策略启示\n1. **规格书撰写要点**：规格书应详细描述发明的技术特征，避免模糊表述。\n2. **IPR与侵权诉讼的区别**：在IPR程序中，专利权人应侧重狭窄解释，而在侵权诉讼中，应侧重广义解释以覆盖被控产品。\n3. **法律标准的灵活运用**：律师需根据具体诉讼阶段和法院标准，调整解释策略，以最大化客户利益。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p><i><a href=\"https://www.cafc.uscourts.gov/opinions-orders/25-1207.OPINION.8-26-2026_2745487.pdf\">Zilkr Cloud Technologies, LLC v. Cisco Systems, Inc.</a></i>, No. 2025-1207 (Fed. Cir. Aug. 26, 2026) (nonprecedential).</p>\n<p>Although the PTAB's claim construction in this case might have been \"reasonable,\" the broadest reasonable interpretation is no longer the standard for <em>inter partes</em> review (IPR) cases. On appeal, the Federal Circuit vacated-in-part a PTAB decision cancelling Zilkr's unified communications patent claims, concluding that the Board construed the claim terms \"request to provision\" and \"activate\" too broadly.</p>\n<p><img alt=\"U.S. Patent No. 9,210,254, Figure 4, block diagram of the unified services platform linking the provider's branded cloud storefront and third-party application service providers, with three apps associated with the telephone number (555) 111-1111\" class=\"aligncenter size-full wp-image-49545\" src=\"https://patentlyo.com/media/2026/08/zilkr-254-fig4.png\" width=\"720\" /></p>\n<p>The decision turns on a central ongoing tension in claim interpretation: How heavily should a court weigh the specification's consistent use of a term when that usage falls short of an express definition or a clear disavowal?</p>\n<p>In this case the court says: quite heavily.</p>\n<p>The case is also useful to see how positions change throughout aspects of litigation.  Before the Board, patentees are typically focused on the narrow technical aspects of their invention while patent challengers (petitioners) argue for broad scope to allow-in more prior art.   In parallel infringement litigation, the positions are typically reversed with the focus on whether the accused product infringes.</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "mistralai/mistral-nemotron",
+      "was_split": false,
+      "en_words": 192,
+      "zh_chars": 771
+    }
+  ]
+}
