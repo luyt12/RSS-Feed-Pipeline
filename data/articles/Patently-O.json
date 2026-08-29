@@ -1,0 +1,20 @@
+{
+  "feed_name": "Patently-O",
+  "feed_lang": "en",
+  "date": "2026-08-29",
+  "is_today": false,
+  "is_translated": true,
+  "articles": [
+    {
+      "title": "USPTO Fee Setting Authority and PTAB Institution Reform",
+      "link": "https://patentlyo.com/patent/2026/08/uspto-fee-setting-authority-and-ptab-institution-reform.html",
+      "published": "2026-08-28",
+      "content": "美国专利商标局（USPTO）的收费设定权限将于2026年9月16日到期。参议院通过了一项临时延期法案，将其延长至2026年12月11日（即中期选举之后）。国会几乎肯定会延长这一权限，因为它取得了显著成功。然而，关键问题在于：(1) 是否会再次附加有效期条款；(2) 是否会附加其他限制条件。\n\n最受关注的潜在附加条款与专利局局长目前不受审查的自由裁量权相关，该权限使其可以拒绝启动IPO（专利审查）和PGR（专利审查请求）程序。\n\n此外，人们也关注专利局如何利用收费结构作为工具，以鼓励或阻止特定行为，例如提交重复RCE（继续专利申请）或重复持续申请，或提出“过多”的权利要求。",
+      "summary": "<div class=\"mp_wrapper\">\n  <div class=\"mepr-unauthorized-excerpt\">\n    <p>by Dennis Crouch</p>\n<p>USPTO's fee setting authority is set to expire on September 16, 2026.  The Senate passed a continuing resolution for a short extension - to December 11, 2026 (after the mid-term election).  Congress will almost certainly extend the authority because it has been a major success.  The key questions are (1) whether it will again include a sunsetting provision; and (2) whether it will have additional strings attached.</p>\n<p>The most focused potential tie-in relates to USPTO Director's thus-far unreviewable discretionary authority to deny IPR and PGR institution.</p>\n<p>There is also some focus the agency's use of fee structure as a tool to encourage or discourage certain activity, such as filing repeat RCEs or repeat Continuations or \"excess\" claims.</p>\n  </div>\n  <div class=\"mepr-unauthorized-message\">\n    <hr />\n<p class=\"whitespace-pre-wrap break-words\">To continue reading, <a href=\"https://patentlyo.com/plans/join-2026\">become a Patently-O member</a>. Already a member? Simply <a href=\"https://patentlyo.com/login-2\">log in</a> to access the full post.</p>\n  </div>\n  <div class=\"mepr-login-form-wrap\">\n      </div>\n</div>",
+      "model_used": "mistralai/mistral-nemotron",
+      "was_split": false,
+      "en_words": 164,
+      "zh_chars": 220
+    }
+  ]
+}
